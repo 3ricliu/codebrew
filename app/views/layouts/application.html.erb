@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+
+  <% if signed_in? %>
+    <%= current_user.username %>
+    <%= button_to "Sign Out", session_url, method: :delete %>
+  <% else %>
+    <%= button_to "Sign In", new_session_url, method: :get %>
+  <% end %>
+
 
 <%= yield %>
 
