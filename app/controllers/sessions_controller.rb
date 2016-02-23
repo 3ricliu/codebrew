@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     if user
       sign_in(user)
-      # TODO: redirect_to user homepage
+      redirect_to root_url
     else
       flash.now[:errors] = ["Invalid username or password."]
       render :new
@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to root
+    redirect_to new_user_url
   end
 end
