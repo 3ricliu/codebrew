@@ -6,8 +6,8 @@
 ## Minimum Viable Product
 Codebrew is a note taking app that benefits developers with code snippet syntax highlighting functionality, making notes that contain code easier to read, faster to understand, and visually more engaging.
 
-- [ ] Users can sign up
-- [ ] Users can log in && out
+- [x] Users can sign up
+- [x] Users can log in && out
 - [ ] Can create notebooks
 - [ ] Can create notes within notebooks
 - [ ] Can create tags for notes

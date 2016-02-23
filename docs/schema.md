@@ -16,8 +16,14 @@ title       | string    | not null
 body        | text      | not null
 author_id   | integer   | not null, foreign key (references users), indexed
 notebook_id | integer   | not null, foreign key (references notebooks), indexed
-frequented  | boolean   | not null, default false
+<!-- shortcut  | boolean   | not null, default false -->
 
+## notebooks
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+author_id   | integer   | not null, foreign key (references users), indexed
+title       | string    | not null
 
 ## tags
 column name | data type | details
@@ -33,12 +39,6 @@ name        | string    | not null
 note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
 tag_id      | integer   | not null, foreign key (references tags), indexed
 
-## notebooks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
 
 
 <!-- ## reminders

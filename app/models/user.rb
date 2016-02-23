@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :session_token, uniqueness: true
 
+  has_many :notes
+  has_many :notebooks
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     if user
