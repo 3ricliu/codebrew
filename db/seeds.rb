@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+10.times do |i|
+  author_id = (i%2 + 1)
+  title = Faker::Hipster.sentence(3)
+  body = Faker::Hipster.paragraph(3)
+  Note.create!(author_id: author_id, title: title, body: body, notebook_id: 1)
+end
