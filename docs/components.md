@@ -1,6 +1,6 @@
 ## Component Hierarchy
 
-* `App`
+* `codeBrew`
   * `SearchIndex`
   * `NotesIndex`
     * `NoteForm`

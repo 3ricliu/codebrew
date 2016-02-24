@@ -51,8 +51,8 @@ the API. Note contents can be shown through dynamic views
 - [x] create `Notebook` model
 - [x] Set up associations between Notebook and Notes
 - [x] seed the database with a sample data and test
-- [ ] set up CRUD API for notes (`NotesController`)
-  - [ ] utilize jBuilder views for notes
+- [x] set up CRUD API for notes (`NotesController`)
+  - [x] utilize jBuilder views for notes
 - [ ] setup Webpack & React + Flux structure
 - [ ] implement frontend/utils/apiUtil.js to interact with API
 - [ ] test out CRUD API interaction in the chrome console

@@ -2,6 +2,7 @@ unless @note.nil?
   json.note do
     json.notebook @note.notebook.title
     json.author @note.user.username
+    json.id @note.id
     json.title @note.title
     json.body @note.body
   end

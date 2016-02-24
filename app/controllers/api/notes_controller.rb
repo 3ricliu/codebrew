@@ -1,11 +1,17 @@
 class Api::NotesController < ApplicationController
+
   before_filter :require_sign_in!
+
   def index
     # what if we wanted to show all notes in all notebooks?
-    # for now i'll just nest all notes under notebooks since that seems logical
     @notebook = Notebook.find_by_id(params[:notebook_id])
     # this might not be necessary long term
-    @notes = Note.where(notebook_id: @notebook.id, user_id: current_user.id)
+    if(@notebook.nil?)
+      @notes = Note.where(user_id: current_user.id) #render all the notes
+    else
+      @notes = Note.where(notebook_id: @notebook.id, user_id: current_user.id)
+    end
+
     render :index
   end
 
@@ -24,7 +30,7 @@ class Api::NotesController < ApplicationController
     if @note.save
       render :show
     else
-      render :json @note.errors.full_messages, status 422
+      render json: @note.errors.full_messages, status: 422
     end
   end
 
@@ -33,7 +39,7 @@ class Api::NotesController < ApplicationController
     if @note.update_attributes(note_params)
       render :show
     else
-      render :json @note.errors.full_messages, status 422
+      render json: @note.errors.full_messages, status: 422
     end
   end
 
