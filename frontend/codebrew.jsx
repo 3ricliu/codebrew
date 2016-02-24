@@ -1,27 +1,38 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+var React = require('react'),
+    ReactDOM = require('react-dom'),
+    ReactRouter = require('react-router'),
+    Router = ReactRouter.Router,
+    Route = ReactRouter.Route,
+    IndexRoute = ReactRouter.IndexRoute;
+
+var NoteStore = require('./stores/noteStore');
+
+
 var NotesIndex = require('./components/notesIndex');
 
+var App = React.createClass({
+  // navbar stuff would go above this.props.children, hidden for now.
+  render: function () {
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    );
+  }
+});
 
-// var Router = require('react-router').Router;
-// var Route = require('react-router').Route;
-// var IndexRoute = require('react-router').IndexRoute;
-//
-//
-// var routes = (
-//
-// )
+var routes = (
+  <Route path="/" component={App}>
+    <IndexRoute component={NotesIndex} />
+    {/*<Route path="notes" component={NotesIndex} />*/}
+  </Route>
+);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(
-    <NotesIndex />,
-      document.getElementById("content")
-  );
+  ReactDOM.render(<Router>{routes}</Router>,
+    document.getElementById("content"));
 });
 
-
-
 // testing
-var NoteStore = require('./stores/noteStore');
 var ApiUtil = require('./util/apiUtil');

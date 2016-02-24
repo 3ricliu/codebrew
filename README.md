@@ -53,17 +53,17 @@ the API. Note contents can be shown through dynamic views
 - [x] seed the database with a sample data and test
 - [x] set up CRUD API for notes (`NotesController`)
   - [x] utilize jBuilder views for notes
-- [ ] setup Webpack & React + Flux structure
-- [ ] implement frontend/utils/apiUtil.js to interact with API
-- [ ] test out CRUD API interaction in the chrome console
-- [ ] create text-area and be able to save to notes
-- [ ] brainstorm how to incorporate syntax highlighting into CRUD for Notes
+- [x] setup Webpack & React + Flux structure
+- [x] implement frontend/utils/apiUtil.js to interact with API
+- [x] test out CRUD API interaction in the chrome console
 
 ### Phase 3: Flux Architecture and Router (1 day)
 
 **Objective:** Notes can be created, read, edited and destroyed with the
 user interface.
 
+- [ ] create text-area and be able to save to notes
+- [ ] brainstorm how to incorporate syntax highlighting into CRUD for Notes
 - [ ] setup the flux loop with skeleton files
 - [ ] setup React Router
 - implement each note component, building out the flux loop as needed.
@@ -73,6 +73,7 @@ user interface.
 - [ ] set up dynamic views between NotesIndex and NoteDetail
 - [ ] save Notes to the DB when the form loses focus or is left idle
   after editing (5 sec)
+- [ ] setup heroku, to have live site
 - [ ] tailor Homepage, Login NotesIndex, NoteDetail views to fit chosen bootstrap theme
 
 

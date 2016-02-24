@@ -1,5 +1,5 @@
 var Store = require('flux/utils').Store;
-var AppDispatcher = require('../dispatcher');
+var AppDispatcher = require('../dispatcher/dispatcher');
 var NoteConstants = require('../constants/noteConstants');
 var NoteStore = new Store(AppDispatcher);
 
@@ -28,9 +28,9 @@ NoteStore.__onDispatch = function (dispatchedData) {
   switch(dispatchedData.actionType) {
     case NoteConstants.All_NOTES_RECEIVED:
       receiveAllNotes(dispatchedData.payload["notes"]);
-      NoteStore.__emitChange();
       break;
   }
+  NoteStore.__emitChange();
 };
 
 
