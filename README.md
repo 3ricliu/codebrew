@@ -36,24 +36,27 @@ Codebrew is a note taking app that benefits developers with code snippet syntax 
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create `User` model
-- [ ] setup routes for homepage/new users, new session
-- [ ] implement user authentication and session control
-- [ ] create user sign up/sign in views
-- [ ] create blank landing page after sign in
+- [x] create `User` model
+- [x] setup routes for homepage/new users, new session
+- [x] implement user authentication and session control
+- [x] create user sign up/sign in views
+- [x] create blank landing page after sign in
 
 ### Phase 2: Notes Model, API, and basic APIUtil (0.5 days)
 
 **Objective:** Notes can be created, read, edited and destroyed through
 the API. Note contents can be shown through dynamic views
 
-- [ ] create `Note` model
-- [ ] seed the database with a sample data and test
+- [x] create `Note` model
+- [x] create `Notebook` model
+- [x] Set up associations between Notebook and Notes
+- [x] seed the database with a sample data and test
 - [ ] set up CRUD API for notes (`NotesController`)
-- [ ] utilize jBuilder views for notes
+  - [ ] utilize jBuilder views for notes
 - [ ] setup Webpack & React + Flux structure
 - [ ] implement frontend/utils/apiUtil.js to interact with API
-- [ ] test out CRUD API interaction in the console
+- [ ] test out CRUD API interaction in the chrome console
+- [ ] create text-area and be able to save to notes
 - [ ] brainstorm how to incorporate syntax highlighting into CRUD for Notes
 
 ### Phase 3: Flux Architecture and Router (1 day)
@@ -77,9 +80,6 @@ user interface.
 
 **Objective:** Notes belong to Notebooks, and can be viewed by notebook.
 
-- [ ] create `Notebook` model
-  - [ ] Set up associations between Notebook and Notes
-  - [ ] Seed database and test
 - build out API, Flux loop, and components for:
   - [ ] Notebook CRUD
   - [ ] adding notes requires a notebook selected

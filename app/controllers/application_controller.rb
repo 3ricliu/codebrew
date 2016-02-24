@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     session[:token] = nil
   end
 
-  def require_signed_in!
-    redirect_to root unless signed_in?
+  def require_sign_in!
+    redirect_to new_user_url unless signed_in?
   end
 end
