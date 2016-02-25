@@ -62,18 +62,15 @@ the API. Note contents can be shown through dynamic views
 **Objective:** Notes can be created, read, edited and destroyed with the
 user interface.
 
-- [ ] create text-area and be able to save to notes
-- [ ] brainstorm how to incorporate syntax highlighting into CRUD for Notes
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
+- [x] setup the flux loop with skeleton files
+- [x] setup React Router
 - implement each note component, building out the flux loop as needed.
-  - [ ] `NotesIndex`
-  - [ ] `NoteIndexItem`
-  - [ ] `NoteForm`
-- [ ] set up dynamic views between NotesIndex and NoteDetail
+  - [x] `NotesIndex`
+  - [x] `NoteIndexItem`
+  - [x] `NoteForm`
+- [x] set up dynamic views between NotesIndex and NoteDetail
 - [ ] new note button
-- [ ] setup heroku, to have live site
-- [ ] tailor Homepage, Login NotesIndex, NoteDetail views to fit chosen bootstrap theme
+- [ ] create text-area and be able to update and create notes
 
 
 ### Phase 4: Notebooks (1 day)
@@ -86,6 +83,9 @@ user interface.
   - [ ] moving notes to a different notebook (drag and drop)?
   - [ ] viewing notes by notebook
 - update NotesIndex and NoteEditArea to reflect current Notebook
+- [ ] setup heroku, to have live site
+- [ ] brainstorm how to incorporate syntax highlighting into CRUD for Notes
+- [ ] tailor Homepage, Login NotesIndex, NoteDetail views to fit chosen bootstrap theme
 
 
 TODO: be able to swap notebooks

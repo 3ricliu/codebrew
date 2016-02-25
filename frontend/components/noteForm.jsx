@@ -6,49 +6,56 @@ var ApiUtil = require('../util/apiUtil');
 var noteForm = React.createClass({
   getInitialState: function() {
     return ({
-      title: this.props.note.title,
-      body: this.props.note.body
+      note: this.props.note
     });
   },
 
   updateTitle: function(event) {
     console.log(event.target.value);
-    this.setState({title: event.target.value});
+    var newNote = this.state.note;
+    newNote.title = event.target.value;
+    this.setState({note: newNote});
   },
 
   updateBody: function(event) {
     console.log(event.target.value);
-    this.setState({body: event.target.value});
+    var newNote = this.state.note;
+    newNote.body = event.target.value;
+    this.setState({note: newNote});
   },
 
   updateNote: function() {
-    console.log(this.state.title + this.state.body);
+    ApiUtil.updateNote(this.props.note);
   },
 
   componentWillReceiveProps: function (nextProps) {
-    this.setState({title: nextProps.note.title, body: nextProps.note.body});
+    console.log(nextProps.note);
+    this.setState({note: nextProps.note});
   },
 
   render: function () {
+    // debugger;
     return(
       <div>
+        <br/> <br/>
 
-        <br/>
-        <br/>
-      <input size="30" value={this.state.title} onChange={this.updateTitle} />
+      <form onSubmit={this.updateNote}>
+
+      <input size="30" value={this.state.note.title} onChange={this.updateTitle} />
 
         <br/>
 
       <textarea
         rows="6"
         cols="50"
-        value={this.state.body}
+        value={this.state.note.body}
         onChange={this.updateBody} />
 
         <br/>
 
-      <button onClick={this.updateNote}>Update</button>
+        <input type="submit" value="Update Note" />
 
+      </form>
       </div>
     );
   }

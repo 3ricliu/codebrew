@@ -24351,6 +24351,11 @@
 	  return _notes;
 	};
 	
+	var receiveUpdatedNote = function (note) {
+	  _notes[note.id] = note;
+	  return _notes;
+	};
+	
 	NoteStore.all = function () {
 	  var notes = [];
 	  for (var id in _notes) {
@@ -24364,8 +24369,12 @@
 	
 	NoteStore.__onDispatch = function (dispatchedData) {
 	  switch (dispatchedData.actionType) {
-	    case NoteConstants.All_NOTES_RECEIVED:
+	    case NoteConstants.RECEIVE_ALL_NOTES:
 	      receiveAllNotes(dispatchedData.payload["notes"]);
+	      break;
+	    case NoteConstants.RECEIVE_UPDATED_NOTE:
+	      receiveUpdatedNote(dispatchedData.payload);
+	      // TODO: what if there was an error?
 	      break;
 	  }
 	  NoteStore.__emitChange();
@@ -31144,6 +31153,7 @@
 
 	module.exports = {
 	  RECEIVE_ALL_NOTES: "RECEIVE_ALL_NOTES",
+	  RECEIVE_UPDATED_NOTE: "RECEIVE_UPDATED_NOTE",
 	  RECEIVE_NOTEBOOK_NOTES: "RECEIVE_NOTEBOOK_NOTES"
 	};
 
@@ -31163,23 +31173,25 @@
 	  displayName: 'noteIndex',
 	
 	  getInitialState: function () {
-	    console.log("getting initial state");
 	    return { notes: [], selectedNote: 0 };
 	  },
 	
 	  componentDidMount: function () {
-	    this.notesListener = NoteStore.addListener(this._onMount);
+	    this.notesListener = NoteStore.addListener(this._onChange);
 	    ApiUtil.fetchAllNotes();
-	    console.log("mounting notesIndex..");
 	  },
 	
 	  componentWillUnmount: function () {
 	    this.notesListener.remove();
 	  },
 	
-	  _onMount: function () {
+	  _onChange: function () {
 	    var allNotes = NoteStore.all();
-	    this.setState({ notes: allNotes, selectedNote: allNotes[0] });
+	    var prevSelectedNote = allNotes[0];
+	    if (this.state.selectedNote !== 0) {
+	      prevSelectedNote = this.state.selectedNote;
+	    }
+	    this.setState({ notes: allNotes, selectedNote: prevSelectedNote });
 	  },
 	
 	  selectNote: function (note) {
@@ -31187,24 +31199,22 @@
 	  },
 	
 	  createNewNote: function () {
-	    alert("hola");
+	    //create new note and then destroy it later?
+	    //check assessment later to see if this is correct
+	
 	  },
 	
 	  render: function () {
-	    console.log("rendering in notesIndex");
-	    console.log("selected note is now " + this.state.selectedNote.title);
-	
 	    var noteFormComponent = "";
+	    // debugger;
 	    if (this.state.notes.length !== 0) {
 	      noteFormComponent = React.createElement(NoteForm, { note: this.state.selectedNote });
 	    }
 	
-	    console.log("selected note is still..." + this.state.selectedNote.title);
-	
 	    return React.createElement(
 	      'ul',
 	      null,
-	      'Notes',
+	      'Note',
 	      React.createElement('br', null),
 	      React.createElement(
 	        'button',
@@ -31243,10 +31253,25 @@
 	  },
 	
 	  createNewNote: function () {
-	    $.ajax({});
+	    $.ajax({
+	      url: 'api_notes',
+	      method: 'POST',
+	      success: function (data) {
+	        ApiActions.receiveNewNote(data); //this should be a new one
+	      }
+	    });
 	  },
 	
-	  updateNote: function () {}
+	  updateNote: function (updatedNote) {
+	    $.ajax({
+	      url: 'api/notes/' + updatedNote.id,
+	      method: 'PATCH',
+	      data: { note: updatedNote },
+	      success: function (data) {
+	        ApiActions.receiveUpdatedNote(updatedNote);
+	      }
+	    });
+	  }
 	
 	};
 	
@@ -31265,8 +31290,15 @@
 	module.exports = {
 	  receiveAllNotes: function (notes) {
 	    Dispatcher.dispatch({
-	      actionType: NoteConstants.All_NOTES_RECEIVED,
+	      actionType: NoteConstants.RECEIVE_ALL_NOTES,
 	      payload: notes
+	    });
+	  },
+	
+	  receiveUpdatedNote: function (note) {
+	    Dispatcher.dispatch({
+	      actionType: NoteConstants.RECEIVE_UPDATED_NOTE,
+	      payload: note
 	    });
 	  }
 	};
@@ -31282,15 +31314,26 @@
 	
 	  // extracted snippet from state.
 	
+	  summary: function () {
+	    var snippet = "";
+	    var noteBodyLength = this.props.note.body;
+	    if (noteBodyLength.length > 0 && noteBodyLength.length < 80) {
+	      snippet = noteBodyLength;
+	    } else if (noteBodyLength.length > 80) {
+	      snippet = noteBodyLength.substr(0, 80) + "...";
+	    }
+	    return snippet;
+	  },
+	
 	  render: function () {
+	
 	    var selected = "";
+	    //this might cause some issues down the road maybe?
+	    //persistent selection?
 	
 	    if (this.props.selected === this.props.note.id) {
-	      selected = "selected " + this.props.note.id;
-	      console.log(selected);
+	      selected = "selected";
 	    }
-	
-	    var snippet = this.props.note.body.substr(0, 80) + "...";
 	
 	    return React.createElement(
 	      "li",
@@ -31300,7 +31343,7 @@
 	        null,
 	        this.props.note.title,
 	        React.createElement("br", null),
-	        snippet
+	        this.summary()
 	      )
 	    );
 	  }
@@ -31322,47 +31365,53 @@
 	
 	  getInitialState: function () {
 	    return {
-	      title: this.props.note.title,
-	      body: this.props.note.body
+	      note: this.props.note
 	    };
 	  },
 	
 	  updateTitle: function (event) {
 	    console.log(event.target.value);
-	    this.setState({ title: event.target.value });
+	    var newNote = this.state.note;
+	    newNote.title = event.target.value;
+	    this.setState({ note: newNote });
 	  },
 	
 	  updateBody: function (event) {
 	    console.log(event.target.value);
-	    this.setState({ body: event.target.value });
+	    var newNote = this.state.note;
+	    newNote.body = event.target.value;
+	    this.setState({ note: newNote });
 	  },
 	
 	  updateNote: function () {
-	    console.log(this.state.title + this.state.body);
+	    ApiUtil.updateNote(this.props.note);
 	  },
 	
 	  componentWillReceiveProps: function (nextProps) {
-	    this.setState({ title: nextProps.note.title, body: nextProps.note.body });
+	    console.log(nextProps.note);
+	    this.setState({ note: nextProps.note });
 	  },
 	
 	  render: function () {
+	    // debugger;
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement('br', null),
-	      React.createElement('br', null),
-	      React.createElement('input', { size: '30', value: this.state.title, onChange: this.updateTitle }),
-	      React.createElement('br', null),
-	      React.createElement('textarea', {
-	        rows: '6',
-	        cols: '50',
-	        value: this.state.body,
-	        onChange: this.updateBody }),
+	      ' ',
 	      React.createElement('br', null),
 	      React.createElement(
-	        'button',
-	        { onClick: this.updateNote },
-	        'Update'
+	        'form',
+	        { onSubmit: this.updateNote },
+	        React.createElement('input', { size: '30', value: this.state.note.title, onChange: this.updateTitle }),
+	        React.createElement('br', null),
+	        React.createElement('textarea', {
+	          rows: '6',
+	          cols: '50',
+	          value: this.state.note.body,
+	          onChange: this.updateBody }),
+	        React.createElement('br', null),
+	        React.createElement('input', { type: 'submit', value: 'Update Note' })
 	      )
 	    );
 	  }

@@ -9,23 +9,25 @@ var NoteForm = require('./noteForm');
 
 var noteIndex = React.createClass({
   getInitialState: function() {
-    console.log("getting initial state");
     return { notes: [], selectedNote: 0};
   },
 
   componentDidMount: function() {
-    this.notesListener = NoteStore.addListener(this._onMount);
+    this.notesListener = NoteStore.addListener(this._onChange);
     ApiUtil.fetchAllNotes();
-    console.log("mounting notesIndex..");
   },
 
   componentWillUnmount: function() {
     this.notesListener.remove();
   },
 
-  _onMount: function () {
+  _onChange: function () {
     var allNotes = NoteStore.all();
-    this.setState({ notes: allNotes, selectedNote: allNotes[0]});
+    var prevSelectedNote = allNotes[0];
+    if(this.state.selectedNote !== 0) {
+      prevSelectedNote = this.state.selectedNote;
+    }
+    this.setState({ notes: allNotes, selectedNote: prevSelectedNote});
   },
 
   selectNote: function (note) {
@@ -33,23 +35,21 @@ var noteIndex = React.createClass({
   },
 
   createNewNote: function () {
-    alert("hola");
+    //create new note and then destroy it later?
+    //check assessment later to see if this is correct
+
   },
 
   render: function() {
-    console.log("rendering in notesIndex");
-    console.log("selected note is now " + this.state.selectedNote.title);
-
     var noteFormComponent = "";
+    // debugger;
     if(this.state.notes.length !==0){
       noteFormComponent = <NoteForm note={this.state.selectedNote} />;
     }
 
-    console.log("selected note is still..." + this.state.selectedNote.title);
-
     return(
       <ul>
-        Notes
+        Note
         <br/>
 
       <button onClick={this.createNewNote}>Create New Note</button>

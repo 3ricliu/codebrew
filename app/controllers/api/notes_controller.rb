@@ -25,8 +25,8 @@ class Api::NotesController < ApplicationController
 
   def create
     @note = Note.new(notes_params)
-    @note.user_id = current_user.id
-
+    @note.user_id = current_user.id # do we even need this since the current user won't
+    # even have access to any other user's notes to edit?
     if @note.save
       render :show
     else
@@ -36,7 +36,7 @@ class Api::NotesController < ApplicationController
 
   def update
     @note = Note.find_by_id(params[:id])
-    if @note.update_attributes(note_params)
+    if @note.update_attributes(notes_params)
       render :show
     else
       render json: @note.errors.full_messages, status: 422
@@ -50,6 +50,6 @@ class Api::NotesController < ApplicationController
   end
 
   def notes_params
-    params.require(:note).permit(:title, :body, :notebook_id)
+    params.require(:note).permit(:title, :body)
   end
 end

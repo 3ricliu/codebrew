@@ -12,12 +12,23 @@ var apiUtil = {
 
   createNewNote: function () {
     $.ajax({
-
+      url: 'api_notes',
+      method: 'POST',
+      success: function (data) {
+        ApiActions.receiveNewNote(data); //this should be a new one
+      }
     });
   },
 
-  updateNote: function () {
-    
+  updateNote: function (updatedNote) {
+    $.ajax ({
+      url: 'api/notes/' + updatedNote.id,
+      method: 'PATCH',
+      data: {note: updatedNote},
+      success: function (data) {
+        ApiActions.receiveUpdatedNote(updatedNote);
+      }
+    });
   }
 
 
