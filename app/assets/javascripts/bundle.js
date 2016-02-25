@@ -58,7 +58,7 @@
 	var App = React.createClass({
 	  displayName: 'App',
 	
-	  // navbar stuff would go above this.props.children, hidden for now.
+	  // navbar stuff would go above this.props.children, hidden for now.;
 	  render: function () {
 	    return React.createElement(
 	      'div',
@@ -31170,7 +31170,7 @@
 	  componentDidMount: function () {
 	    this.notesListener = NoteStore.addListener(this._onMount);
 	    ApiUtil.fetchAllNotes();
-	    console.log("mounting");
+	    console.log("mounting notesIndex..");
 	  },
 	
 	  componentWillUnmount: function () {
@@ -31182,26 +31182,44 @@
 	    this.setState({ notes: allNotes, selectedNote: allNotes[0] });
 	  },
 	
-	  selectedNewNote: function (note) {
-	    // alert("hola");
+	  selectNote: function (note) {
 	    this.setState({ selectedNote: note });
 	  },
 	
+	  createNewNote: function () {
+	    alert("hola");
+	  },
+	
 	  render: function () {
-	    console.log("rendering");
+	    console.log("rendering in notesIndex");
+	    console.log("selected note is now " + this.state.selectedNote.title);
+	
+	    var noteFormComponent = "";
+	    if (this.state.notes.length !== 0) {
+	      noteFormComponent = React.createElement(NoteForm, { note: this.state.selectedNote });
+	    }
+	
+	    console.log("selected note is still..." + this.state.selectedNote.title);
+	
 	    return React.createElement(
 	      'ul',
 	      null,
 	      'Notes',
+	      React.createElement('br', null),
+	      React.createElement(
+	        'button',
+	        { onClick: this.createNewNote },
+	        'Create New Note'
+	      ),
 	      this.state.notes.map(function (note) {
 	        return React.createElement(NoteIndexItem, {
 	          key: note.id,
 	          note: note,
 	          selected: this.state.selectedNote.id,
-	          onClick: this.selectedNewNote
+	          onClick: this.selectNote
 	        });
 	      }.bind(this)),
-	      React.createElement(NoteForm, { note: this.state.selectedNote })
+	      noteFormComponent
 	    );
 	  }
 	});
@@ -31222,7 +31240,14 @@
 	        ApiActions.receiveAllNotes(notes);
 	      }
 	    });
-	  }
+	  },
+	
+	  createNewNote: function () {
+	    $.ajax({});
+	  },
+	
+	  updateNote: function () {}
+	
 	};
 	
 	//testing, change back to module.exports{}
@@ -31255,21 +31280,17 @@
 	var noteIndexItem = React.createClass({
 	  displayName: "noteIndexItem",
 	
-	  getInitialState: function () {
-	    return { quickGlance: "" };
-	  },
-	
-	  componentDidMount: function () {
-	    var snippet = this.props.note.body.substr(0, 80) + "...";
-	    this.setState({ quickGlance: snippet });
-	  },
+	  // extracted snippet from state.
 	
 	  render: function () {
 	    var selected = "";
+	
 	    if (this.props.selected === this.props.note.id) {
-	      selected = "selected" + this.props.note.id;
+	      selected = "selected " + this.props.note.id;
 	      console.log(selected);
 	    }
+	
+	    var snippet = this.props.note.body.substr(0, 80) + "...";
 	
 	    return React.createElement(
 	      "li",
@@ -31279,7 +31300,7 @@
 	        null,
 	        this.props.note.title,
 	        React.createElement("br", null),
-	        this.state.quickGlance
+	        snippet
 	      )
 	    );
 	  }
@@ -31294,13 +31315,15 @@
 
 	var React = __webpack_require__(1);
 	
+	var ApiUtil = __webpack_require__(232);
+	
 	var noteForm = React.createClass({
-	  displayName: "noteForm",
+	  displayName: 'noteForm',
 	
 	  getInitialState: function () {
 	    return {
-	      title: "",
-	      body: ""
+	      title: this.props.note.title,
+	      body: this.props.note.body
 	    };
 	  },
 	
@@ -31314,16 +31337,33 @@
 	    this.setState({ body: event.target.value });
 	  },
 	
+	  updateNote: function () {
+	    console.log(this.state.title + this.state.body);
+	  },
+	
+	  componentWillReceiveProps: function (nextProps) {
+	    this.setState({ title: nextProps.note.title, body: nextProps.note.body });
+	  },
+	
 	  render: function () {
 	    return React.createElement(
-	      "div",
+	      'div',
 	      null,
-	      React.createElement("br", null),
-	      React.createElement("br", null),
-	      React.createElement("input", { size: "30", value: this.props.note.title, onChange: this.updateTitle }),
-	      React.createElement("br", null),
-	      React.createElement("textarea", { rows: "6", cols: "50", value: this.props.note.body, onChange: this.updateBody }),
-	      React.createElement("br", null)
+	      React.createElement('br', null),
+	      React.createElement('br', null),
+	      React.createElement('input', { size: '30', value: this.state.title, onChange: this.updateTitle }),
+	      React.createElement('br', null),
+	      React.createElement('textarea', {
+	        rows: '6',
+	        cols: '50',
+	        value: this.state.body,
+	        onChange: this.updateBody }),
+	      React.createElement('br', null),
+	      React.createElement(
+	        'button',
+	        { onClick: this.updateNote },
+	        'Update'
+	      )
 	    );
 	  }
 	

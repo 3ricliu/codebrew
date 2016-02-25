@@ -11,7 +11,7 @@ var NoteStore = require('./stores/noteStore');
 var NotesIndex = require('./components/notesIndex');
 
 var App = React.createClass({
-  // navbar stuff would go above this.props.children, hidden for now.
+  // navbar stuff would go above this.props.children, hidden for now.;
   render: function () {
     return (
       <div>
@@ -24,7 +24,6 @@ var App = React.createClass({
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={NotesIndex} />
-    {/*<Route path="notes" component={NotesIndex} />*/}
   </Route>
 );
 

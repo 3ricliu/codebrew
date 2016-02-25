@@ -8,7 +8,19 @@ var apiUtil = {
         ApiActions.receiveAllNotes(notes);
       }
     });
+  },
+
+  createNewNote: function () {
+    $.ajax({
+
+    });
+  },
+
+  updateNote: function () {
+    
   }
+
+
 };
 
 //testing, change back to module.exports{}

@@ -16,7 +16,7 @@ var noteIndex = React.createClass({
   componentDidMount: function() {
     this.notesListener = NoteStore.addListener(this._onMount);
     ApiUtil.fetchAllNotes();
-    console.log("mounting");
+    console.log("mounting notesIndex..");
   },
 
   componentWillUnmount: function() {
@@ -28,16 +28,31 @@ var noteIndex = React.createClass({
     this.setState({ notes: allNotes, selectedNote: allNotes[0]});
   },
 
-  selectedNewNote: function (note) {
-    // alert("hola");
+  selectNote: function (note) {
     this.setState({selectedNote: note});
   },
 
+  createNewNote: function () {
+    alert("hola");
+  },
+
   render: function() {
-    console.log("rendering");
+    console.log("rendering in notesIndex");
+    console.log("selected note is now " + this.state.selectedNote.title);
+
+    var noteFormComponent = "";
+    if(this.state.notes.length !==0){
+      noteFormComponent = <NoteForm note={this.state.selectedNote} />;
+    }
+
+    console.log("selected note is still..." + this.state.selectedNote.title);
+
     return(
       <ul>
         Notes
+        <br/>
+
+      <button onClick={this.createNewNote}>Create New Note</button>
         {
           this.state.notes.map(function (note) {
             return (
@@ -45,13 +60,13 @@ var noteIndex = React.createClass({
                 key={note.id}
                 note={note}
                 selected={this.state.selectedNote.id}
-                onClick={this.selectedNewNote}
+                onClick={this.selectNote}
               />
               );
           }.bind(this))
         }
 
-        <NoteForm note={this.state.selectedNote}/>
+        {noteFormComponent}
       </ul>
     );
   }
