@@ -3,7 +3,7 @@ var NoteConstants = require('../constants/noteConstants');
 
 module.exports = {
 
-  receiveNote: function(note) {
+  receiveNote: function (note) {
     Dispatcher.dispatch({
       actionType: NoteConstants.RECEIVE_NOTE,
       payload: note
@@ -18,4 +18,17 @@ module.exports = {
     });
   },
 
+  deleteNote: function (deletedNote) {
+    Dispatcher.dispatch({
+      actionType: NoteConstants.DELETE_NOTE,
+      payload: deletedNote
+    });
+  },
+
+  error: function(errors) {
+    Dispatcher.dispatch({
+      actionType: NoteConstants.ERROR,
+      payload: errors
+    });
+  }
 };

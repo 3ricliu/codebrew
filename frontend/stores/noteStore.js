@@ -4,6 +4,7 @@ var NoteConstants = require('../constants/noteConstants');
 var NoteStore = new Store(AppDispatcher);
 
 var _notes = {};
+var _errors = {};
 
 var receiveAllNotes = function (notes) {
   _notes = {};
@@ -20,6 +21,10 @@ var receiveNote = function (note) {
   return _notes;
 };
 
+var removeNote = function (deletedNote) {
+  delete _notes[deletedNote.id];
+};
+
 NoteStore.all = function () {
   var notes = [];
   for(var id in _notes){
@@ -32,13 +37,21 @@ NoteStore.all = function () {
 };
 
 NoteStore.__onDispatch = function (dispatchedData) {
+  _errors = {};
+
   switch(dispatchedData.actionType) {
+    case NoteConstants.ERROR:
+      //TODO: errors
+      receiveError(dispatchedData.payload["responseText"]);
+      break;
     case NoteConstants.RECEIVE_ALL_NOTES:
       receiveAllNotes(dispatchedData.payload["notes"]);
       break;
     case NoteConstants.RECEIVE_NOTE:
       receiveNote(dispatchedData.payload);
-      // TODO: what if there was an error?
+      break;
+    case NoteConstants.DELETE_NOTE:
+      removeNote(dispatchedData.payload);
       break;
   }
   NoteStore.__emitChange();

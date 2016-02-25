@@ -1,8 +1,9 @@
 var React = require('react');
+var NoteServerActions = require('../actions/noteServerActions');
+
 
 var noteIndexItem = React.createClass({
   // extracted snippet from state.
-
   summary: function () {
     var snippet = "";
     var noteBodyLength = this.props.note.body;
@@ -12,6 +13,11 @@ var noteIndexItem = React.createClass({
       snippet = noteBodyLength.substr(0,80) + "...";
     }
     return snippet;
+  },
+
+
+  deleteNote: function() {
+    NoteServerActions.deleteNote(this.props.note);
   },
 
   render: function () {
@@ -28,7 +34,10 @@ var noteIndexItem = React.createClass({
           {this.props.note.title}
           <br />
             {this.summary()}
+          <br />
+          <input type="button" value="Delete" onClick={this.deleteNote} />
         </ol>
+
       </li>
     );
   }

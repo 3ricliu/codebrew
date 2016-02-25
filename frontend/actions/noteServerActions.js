@@ -6,12 +6,16 @@ module.exports = {
     ApiUtil.fetchNotes();
   },
 
-  createNote: function () {
-    ApiUtil.createNewNote();
+  createNote: function (note) {
+    ApiUtil.createNewNote(note);
   },
 
   updateNote: function (note) {
     ApiUtil.updateNote(note);
   },
+
+  deleteNote: function (note) {
+    ApiUtil.deleteNote(note);
+  }
 
 };

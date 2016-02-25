@@ -24340,6 +24340,7 @@
 	var NoteStore = new Store(AppDispatcher);
 	
 	var _notes = {};
+	var _errors = {};
 	
 	var receiveAllNotes = function (notes) {
 	  _notes = {};
@@ -24356,6 +24357,10 @@
 	  return _notes;
 	};
 	
+	var removeNote = function (deletedNote) {
+	  delete _notes[deletedNote.id];
+	};
+	
 	NoteStore.all = function () {
 	  var notes = [];
 	  for (var id in _notes) {
@@ -24368,13 +24373,21 @@
 	};
 	
 	NoteStore.__onDispatch = function (dispatchedData) {
+	  _errors = {};
+	
 	  switch (dispatchedData.actionType) {
+	    case NoteConstants.ERROR:
+	      //TODO: errors
+	      receiveError(dispatchedData.payload["responseText"]);
+	      break;
 	    case NoteConstants.RECEIVE_ALL_NOTES:
 	      receiveAllNotes(dispatchedData.payload["notes"]);
 	      break;
 	    case NoteConstants.RECEIVE_NOTE:
 	      receiveNote(dispatchedData.payload);
-	      // TODO: what if there was an error?
+	      break;
+	    case NoteConstants.DELETE_NOTE:
+	      removeNote(dispatchedData.payload);
 	      break;
 	  }
 	  NoteStore.__emitChange();
@@ -31154,6 +31167,8 @@
 	module.exports = {
 	  RECEIVE_ALL_NOTES: "RECEIVE_ALL_NOTES",
 	  RECEIVE_NOTE: "RECEIVE_NOTE",
+	  DELETE_NOTE: "DELETE_NOTE",
+	  ERROR: "ERROR",
 	  RECEIVE_NOTEBOOK_NOTES: "RECEIVE_NOTEBOOK_NOTES"
 	};
 
@@ -31202,14 +31217,21 @@
 	  createNewNote: function () {
 	    //create new note and then destroy it later?
 	    //check to see if this is correct
-	
+	    var newNote = { title: "", body: "" };
+	    this.setState({ selectedNote: newNote });
 	  },
 	
 	  render: function () {
 	    var noteFormComponent = "";
-	    // debugger;
+	    var action = "";
+	
 	    if (this.state.notes.length !== 0) {
-	      noteFormComponent = React.createElement(NoteForm, { note: this.state.selectedNote });
+	      if (this.state.selectedNote.title !== "") {
+	        action = "Edit Note";
+	      } else {
+	        action = "Create New Note";
+	      }
+	      noteFormComponent = React.createElement(NoteForm, { note: this.state.selectedNote, buttonTitle: action });
 	    }
 	
 	    return React.createElement(
@@ -31254,23 +31276,38 @@
 	    });
 	  },
 	
-	  createNewNote: function () {
+	  createNewNote: function (newNote) {
 	    $.ajax({
-	      url: 'api_notes',
+	      url: '/api/notes',
 	      method: 'POST',
-	      success: function (data) {
-	        NoteClientActions.receiveNote(data); //this should be a new one
+	      data: { note: newNote },
+	      success: function (note) {
+	        NoteClientActions.receiveNote(note.note);
 	      }
 	    });
 	  },
 	
 	  updateNote: function (updatedNote) {
 	    $.ajax({
-	      url: 'api/notes/' + updatedNote.id,
+	      url: '/api/notes/' + updatedNote.id,
 	      method: 'PATCH',
 	      data: { note: updatedNote },
-	      success: function (data) {
+	      success: function () {
 	        NoteClientActions.receiveNote(updatedNote);
+	      },
+	      error: function (errors) {
+	        NoteClientActions.errors(errors);
+	      }
+	    });
+	  },
+	
+	  deleteNote: function (deleteNote) {
+	    $.ajax({
+	      url: '/api/notes/' + deleteNote.id,
+	      method: 'DELETE',
+	      data: { note: deleteNote },
+	      success: function (deletedNote) {
+	        NoteClientActions.deleteNote(deletedNote.note);
 	      }
 	    });
 	  }
@@ -31287,12 +31324,12 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var NoteServerActions = __webpack_require__(239);
 	
 	var noteIndexItem = React.createClass({
-	  displayName: "noteIndexItem",
+	  displayName: 'noteIndexItem',
 	
 	  // extracted snippet from state.
-	
 	  summary: function () {
 	    var snippet = "";
 	    var noteBodyLength = this.props.note.body;
@@ -31302,6 +31339,10 @@
 	      snippet = noteBodyLength.substr(0, 80) + "...";
 	    }
 	    return snippet;
+	  },
+	
+	  deleteNote: function () {
+	    NoteServerActions.deleteNote(this.props.note);
 	  },
 	
 	  render: function () {
@@ -31315,14 +31356,16 @@
 	    }
 	
 	    return React.createElement(
-	      "li",
+	      'li',
 	      { className: selected, onClick: this.props.onClick.bind(null, this.props.note) },
 	      React.createElement(
-	        "ol",
+	        'ol',
 	        null,
 	        this.props.note.title,
-	        React.createElement("br", null),
-	        this.summary()
+	        React.createElement('br', null),
+	        this.summary(),
+	        React.createElement('br', null),
+	        React.createElement('input', { type: 'button', value: 'Delete', onClick: this.deleteNote })
 	      )
 	    );
 	  }
@@ -31366,13 +31409,24 @@
 	    NoteServerActions.updateNote(this.props.note);
 	  },
 	
+	  createNote: function () {
+	    NoteServerActions.createNote(this.props.note);
+	  },
+	
 	  componentWillReceiveProps: function (nextProps) {
 	    console.log(nextProps.note);
 	    this.setState({ note: nextProps.note });
 	  },
 	
 	  render: function () {
-	    // debugger;
+	    var noteAction = "";
+	
+	    if (this.state.note.id === undefined) {
+	      noteAction = this.createNote;
+	    } else {
+	      noteAction = this.updateNote;
+	    }
+	
 	    return React.createElement(
 	      'div',
 	      null,
@@ -31381,8 +31435,10 @@
 	      React.createElement('br', null),
 	      React.createElement(
 	        'form',
-	        { onSubmit: this.updateNote },
-	        React.createElement('input', { size: '30', value: this.state.note.title, onChange: this.updateTitle }),
+	        { onSubmit: noteAction },
+	        React.createElement('input', { size: '30',
+	          value: this.state.note.title,
+	          onChange: this.updateTitle }),
 	        React.createElement('br', null),
 	        React.createElement('textarea', {
 	          rows: '6',
@@ -31390,7 +31446,7 @@
 	          value: this.state.note.body,
 	          onChange: this.updateBody }),
 	        React.createElement('br', null),
-	        React.createElement('input', { type: 'submit', value: 'Update Note' })
+	        React.createElement('input', { type: 'submit', value: this.props.buttonTitle })
 	      )
 	    );
 	  }
@@ -31421,8 +31477,21 @@
 	      actionType: NoteConstants.RECEIVE_ALL_NOTES,
 	      payload: notes
 	    });
-	  }
+	  },
 	
+	  deleteNote: function (deletedNote) {
+	    Dispatcher.dispatch({
+	      actionType: NoteConstants.DELETE_NOTE,
+	      payload: deletedNote
+	    });
+	  },
+	
+	  error: function (errors) {
+	    Dispatcher.dispatch({
+	      actionType: NoteConstants.ERROR,
+	      payload: errors
+	    });
+	  }
 	};
 
 /***/ },
@@ -31438,12 +31507,16 @@
 	    ApiUtil.fetchNotes();
 	  },
 	
-	  createNote: function () {
-	    ApiUtil.createNewNote();
+	  createNote: function (note) {
+	    ApiUtil.createNewNote(note);
 	  },
 	
 	  updateNote: function (note) {
 	    ApiUtil.updateNote(note);
+	  },
+	
+	  deleteNote: function (note) {
+	    ApiUtil.deleteNote(note);
 	  }
 	
 	};

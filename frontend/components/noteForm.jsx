@@ -28,20 +28,33 @@ var noteForm = React.createClass({
     NoteServerActions.updateNote(this.props.note);
   },
 
+  createNote: function() {
+    NoteServerActions.createNote(this.props.note);
+  },
+
   componentWillReceiveProps: function (nextProps) {
     console.log(nextProps.note);
     this.setState({note: nextProps.note});
   },
 
   render: function () {
-    // debugger;
+    var noteAction = "";
+
+    if(this.state.note.id === undefined){
+      noteAction = this.createNote;
+    } else {
+      noteAction = this.updateNote;
+    }
+
     return(
       <div>
         <br/> <br/>
 
-      <form onSubmit={this.updateNote}>
+      <form onSubmit={noteAction}>
 
-      <input size="30" value={this.state.note.title} onChange={this.updateTitle} />
+      <input size="30"
+             value={this.state.note.title}
+             onChange={this.updateTitle} />
 
         <br/>
 
@@ -53,7 +66,7 @@ var noteForm = React.createClass({
 
         <br/>
 
-        <input type="submit" value="Update Note" />
+        <input type="submit" value={this.props.buttonTitle} />
 
       </form>
       </div>

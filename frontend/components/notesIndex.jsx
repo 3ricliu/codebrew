@@ -38,14 +38,21 @@ var noteIndex = React.createClass({
   createNewNote: function () {
     //create new note and then destroy it later?
     //check to see if this is correct
-
+    var newNote = {title: "", body: ""};
+    this.setState({selectedNote: newNote });
   },
 
   render: function() {
     var noteFormComponent = "";
-    // debugger;
+    var action="";
+
     if(this.state.notes.length !==0){
-      noteFormComponent = <NoteForm note={this.state.selectedNote} />;
+      if(this.state.selectedNote.title !== ""){
+        action = "Edit Note";
+      } else {
+        action = "Create New Note";
+      }
+      noteFormComponent = <NoteForm note={this.state.selectedNote} buttonTitle={action} />;
     }
 
     return(
@@ -66,7 +73,6 @@ var noteIndex = React.createClass({
               );
           }.bind(this))
         }
-
         {noteFormComponent}
       </ul>
     );

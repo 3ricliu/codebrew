@@ -11,24 +11,39 @@ var apiUtil = {
     });
   },
 
-  createNewNote: function () {
+  createNewNote: function (newNote) {
     $.ajax({
-      url: 'api_notes',
+      url: '/api/notes',
       method: 'POST',
-      success: function (data) {
-        NoteClientActions.receiveNote(data); //this should be a new one
+      data: {note: newNote},
+      success: function (note) {
+        NoteClientActions.receiveNote(note.note);
       }
     });
   },
 
   updateNote: function (updatedNote) {
     $.ajax ({
-      url: 'api/notes/' + updatedNote.id,
+      url: '/api/notes/' + updatedNote.id,
       method: 'PATCH',
       data: {note: updatedNote},
-      success: function (data) {
+      success: function () {
         NoteClientActions.receiveNote(updatedNote);
+      },
+      error: function (errors) {
+        NoteClientActions.errors(errors);
       }
+    });
+  },
+
+  deleteNote: function (deleteNote) {
+    $.ajax ({
+      url: '/api/notes/' + deleteNote.id,
+      method: 'DELETE',
+      data: {note: deleteNote},
+      success: function (deletedNote) {
+        NoteClientActions.deleteNote(deletedNote.note);
+      },
     });
   }
 
