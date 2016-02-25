@@ -2,7 +2,7 @@ var React = require('react');
 
 var noteIndexItem = React.createClass({
   getInitialState: function() {
-    return ({quickGlance: "", selected: false});
+    return ({quickGlance: ""});
   },
 
   componentDidMount: function () {
@@ -11,8 +11,14 @@ var noteIndexItem = React.createClass({
   },
 
   render: function () {
+    var selected = "";
+    if(this.props.selected === this.props.note.id){
+      selected = "selected" + this.props.note.id;
+      console.log(selected);
+    }
+
     return(
-      <li>
+      <li className={selected} onClick={this.props.onClick.bind(null, this.props.note)}>
         <ol>
           {this.props.note.title}
           <br />

@@ -6,14 +6,17 @@ var NoteStore = require('../stores/noteStore'),
 var NoteIndexItem = require('./noteIndexItem');
 var NoteForm = require('./noteForm');
 
+
 var noteIndex = React.createClass({
   getInitialState: function() {
-    return { notes: [], selected: NaN };
+    console.log("getting initial state");
+    return { notes: [], selectedNote: 0};
   },
 
   componentDidMount: function() {
     this.notesListener = NoteStore.addListener(this._onMount);
     ApiUtil.fetchAllNotes();
+    console.log("mounting");
   },
 
   componentWillUnmount: function() {
@@ -21,20 +24,34 @@ var noteIndex = React.createClass({
   },
 
   _onMount: function () {
-    this.setState({ notes: NoteStore.all() });
+    var allNotes = NoteStore.all();
+    this.setState({ notes: allNotes, selectedNote: allNotes[0]});
   },
 
+  selectedNewNote: function (note) {
+    // alert("hola");
+    this.setState({selectedNote: note});
+  },
 
   render: function() {
+    console.log("rendering");
     return(
-      <ul> Notes
-        {this.state.notes.map(function (note) {
-          // {return <li key={note.id} onClick={this.expand}>{note.title}</li>;}
-          return <NoteIndexItem key={note.id} note={note}/>;
-        })}
+      <ul>
+        Notes
+        {
+          this.state.notes.map(function (note) {
+            return (
+              <NoteIndexItem
+                key={note.id}
+                note={note}
+                selected={this.state.selectedNote.id}
+                onClick={this.selectedNewNote}
+              />
+              );
+          }.bind(this))
+        }
 
-        <NoteForm />
-        {/*tags also go here*/}
+        <NoteForm note={this.state.selectedNote}/>
       </ul>
     );
   }

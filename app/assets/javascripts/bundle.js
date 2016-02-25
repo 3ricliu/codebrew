@@ -75,11 +75,14 @@
 	);
 	
 	document.addEventListener("DOMContentLoaded", function () {
-	  ReactDOM.render(React.createElement(
-	    Router,
-	    null,
-	    routes
-	  ), document.getElementById("content"));
+	  var content = document.getElementById("content");
+	  if (content) {
+	    ReactDOM.render(React.createElement(
+	      Router,
+	      null,
+	      routes
+	    ), content);
+	  }
 	});
 	
 	// testing
@@ -24351,7 +24354,9 @@
 	NoteStore.all = function () {
 	  var notes = [];
 	  for (var id in _notes) {
-	    notes.push(_notes[id]);
+	    if (_notes.hasOwnProperty(id)) {
+	      notes.push(_notes[id]);
+	    }
 	  }
 	
 	  return notes;
@@ -31158,12 +31163,14 @@
 	  displayName: 'noteIndex',
 	
 	  getInitialState: function () {
-	    return { notes: [], selected: NaN };
+	    console.log("getting initial state");
+	    return { notes: [], selectedNote: 0 };
 	  },
 	
 	  componentDidMount: function () {
 	    this.notesListener = NoteStore.addListener(this._onMount);
 	    ApiUtil.fetchAllNotes();
+	    console.log("mounting");
 	  },
 	
 	  componentWillUnmount: function () {
@@ -31171,19 +31178,30 @@
 	  },
 	
 	  _onMount: function () {
-	    this.setState({ notes: NoteStore.all() });
+	    var allNotes = NoteStore.all();
+	    this.setState({ notes: allNotes, selectedNote: allNotes[0] });
+	  },
+	
+	  selectedNewNote: function (note) {
+	    // alert("hola");
+	    this.setState({ selectedNote: note });
 	  },
 	
 	  render: function () {
+	    console.log("rendering");
 	    return React.createElement(
 	      'ul',
 	      null,
-	      ' Notes',
+	      'Notes',
 	      this.state.notes.map(function (note) {
-	        // {return <li key={note.id} onClick={this.expand}>{note.title}</li>;}
-	        return React.createElement(NoteIndexItem, { key: note.id, note: note });
-	      }),
-	      React.createElement(NoteForm, null)
+	        return React.createElement(NoteIndexItem, {
+	          key: note.id,
+	          note: note,
+	          selected: this.state.selectedNote.id,
+	          onClick: this.selectedNewNote
+	        });
+	      }.bind(this)),
+	      React.createElement(NoteForm, { note: this.state.selectedNote })
 	    );
 	  }
 	});
@@ -31238,7 +31256,7 @@
 	  displayName: "noteIndexItem",
 	
 	  getInitialState: function () {
-	    return { quickGlance: "", selected: false };
+	    return { quickGlance: "" };
 	  },
 	
 	  componentDidMount: function () {
@@ -31247,9 +31265,15 @@
 	  },
 	
 	  render: function () {
+	    var selected = "";
+	    if (this.props.selected === this.props.note.id) {
+	      selected = "selected" + this.props.note.id;
+	      console.log(selected);
+	    }
+	
 	    return React.createElement(
 	      "li",
-	      null,
+	      { className: selected, onClick: this.props.onClick.bind(null, this.props.note) },
 	      React.createElement(
 	        "ol",
 	        null,
@@ -31290,21 +31314,16 @@
 	    this.setState({ body: event.target.value });
 	  },
 	
-	  // updateNote: function(event) {
-	  //   debugger;
-	  //   this.setState({title: event.tar});
-	  // },
-	
-	  componentDidMount: function () {
-	    console.log("mounted, plz update me accordingly");
-	  },
-	
 	  render: function () {
 	    return React.createElement(
 	      "div",
 	      null,
-	      React.createElement("input", { value: this.state.title, onChange: this.updateTitle }),
-	      React.createElement("textarea", { value: this.state.body, onChange: this.updateBody })
+	      React.createElement("br", null),
+	      React.createElement("br", null),
+	      React.createElement("input", { size: "30", value: this.props.note.title, onChange: this.updateTitle }),
+	      React.createElement("br", null),
+	      React.createElement("textarea", { rows: "6", cols: "50", value: this.props.note.body, onChange: this.updateBody }),
+	      React.createElement("br", null)
 	    );
 	  }
 	

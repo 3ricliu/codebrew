@@ -18,7 +18,9 @@ var receiveAllNotes = function (notes) {
 NoteStore.all = function () {
   var notes = [];
   for(var id in _notes){
-    notes.push(_notes[id]);
+    if( _notes.hasOwnProperty(id) ){
+      notes.push(_notes[id]);
+    }
   }
 
   return notes;

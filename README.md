@@ -71,8 +71,7 @@ user interface.
   - [ ] `NoteIndexItem`
   - [ ] `NoteForm`
 - [ ] set up dynamic views between NotesIndex and NoteDetail
-- [ ] save Notes to the DB when the form loses focus or is left idle
-  after editing (5 sec)
+- [ ] new note button
 - [ ] setup heroku, to have live site
 - [ ] tailor Homepage, Login NotesIndex, NoteDetail views to fit chosen bootstrap theme
 
@@ -135,6 +134,8 @@ TODO: be able to swap notebooks
 - [ ] Implement site wide keyboard hotkeys for console like experience
 - [ ] Create edit toggle for notebook/tags page
 - [ ] Autosave notes with spinning icon after 10 sec
+  - [ ] save Notes to the DB when the form loses focus or is left idle
+  after editing (5 sec)
 - [ ] Share notes via email
 
 

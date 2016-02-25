@@ -13,25 +13,22 @@ var noteForm = React.createClass({
     this.setState({title: event.target.value});
   },
 
-  updateBody: function(event) { 
+  updateBody: function(event) {
     console.log(event.target.value);
     this.setState({body: event.target.value});
   },
 
-  // updateNote: function(event) {
-  //   debugger;
-  //   this.setState({title: event.tar});
-  // },
-
-  componentDidMount: function() {
-    console.log("mounted, plz update me accordingly");
-  },
 
   render: function () {
     return(
       <div>
-        <input value={this.state.title} onChange={this.updateTitle} />
-        <textarea value={this.state.body} onChange={this.updateBody} />
+        <br/>
+        <br/>
+        <input size="30" value={this.props.note.title} onChange={this.updateTitle} />
+        <br/>
+        <textarea rows="6" cols="50" value={this.props.note.body} onChange={this.updateBody} />
+        <br/>
+
       </div>
     );
   }
