@@ -15,7 +15,7 @@ var receiveAllNotes = function (notes) {
   return _notes;
 };
 
-var receiveUpdatedNote = function (note) {
+var receiveNote = function (note) {
   _notes[note.id] = note;
   return _notes;
 };
@@ -36,8 +36,8 @@ NoteStore.__onDispatch = function (dispatchedData) {
     case NoteConstants.RECEIVE_ALL_NOTES:
       receiveAllNotes(dispatchedData.payload["notes"]);
       break;
-    case NoteConstants.RECEIVE_UPDATED_NOTE:
-      receiveUpdatedNote(dispatchedData.payload);
+    case NoteConstants.RECEIVE_NOTE:
+      receiveNote(dispatchedData.payload);
       // TODO: what if there was an error?
       break;
   }

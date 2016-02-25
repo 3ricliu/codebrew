@@ -1,6 +1,6 @@
 var React = require('react');
 
-var ApiUtil = require('../util/apiUtil');
+var NoteServerActions = require('../actions/noteServerActions');
 
 
 var noteForm = React.createClass({
@@ -25,7 +25,7 @@ var noteForm = React.createClass({
   },
 
   updateNote: function() {
-    ApiUtil.updateNote(this.props.note);
+    NoteServerActions.updateNote(this.props.note);
   },
 
   componentWillReceiveProps: function (nextProps) {

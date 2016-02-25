@@ -20,9 +20,9 @@
 ### Stores
 * Tags
 ### Actions
-* ApiActions.receiveAllTags -> triggered by ApiUtil
-* ApiActions.receiveSingleTag
-* ApiActions.deleteTag
+* tagActions.receiveAllTags -> triggered by ApiUtil
+* tagActions.receiveSingleTag
+* tagActions.deleteTag
 * NotebookActions.fetchAllTags -> triggers ApiUtil
 * NotebookActions.fetchSingleTag
 

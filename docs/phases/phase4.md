@@ -20,9 +20,9 @@
 * Notebook
 
 ### Actions
-* ApiActions.receiveAllNotebooks -> triggered by ApiUtil
-* ApiActions.receiveSingleNotebook
-* ApiActions.deleteNotebook
+* notebookActions.receiveAllNotebooks -> triggered by ApiUtil
+* notebookActions.receiveSingleNotebook
+* notebookActions.deleteNotebook
 * NotebookActions.fetchAllNotebooks -> triggers ApiUtil
 * NotebookActions.fetchSingleNotebook
 

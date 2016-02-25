@@ -1,7 +1,7 @@
 var React = require('react');
 
 var NoteStore = require('../stores/noteStore'),
-    ApiUtil = require('../util/apiUtil');
+    NoteServerActions = require('../actions/noteServerActions');
 
 var NoteIndexItem = require('./noteIndexItem');
 var NoteForm = require('./noteForm');
@@ -13,17 +13,18 @@ var noteIndex = React.createClass({
   },
 
   componentDidMount: function() {
-    this.notesListener = NoteStore.addListener(this._onChange);
-    ApiUtil.fetchAllNotes();
+    this.notesListener = NoteStore.addListener(this.fetchNotes);
+    NoteServerActions.fetchNotes();
   },
 
   componentWillUnmount: function() {
     this.notesListener.remove();
   },
 
-  _onChange: function () {
+  fetchNotes: function () {
     var allNotes = NoteStore.all();
     var prevSelectedNote = allNotes[0];
+
     if(this.state.selectedNote !== 0) {
       prevSelectedNote = this.state.selectedNote;
     }
@@ -36,7 +37,7 @@ var noteIndex = React.createClass({
 
   createNewNote: function () {
     //create new note and then destroy it later?
-    //check assessment later to see if this is correct
+    //check to see if this is correct
 
   },
 

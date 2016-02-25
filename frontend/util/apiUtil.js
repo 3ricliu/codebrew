@@ -1,11 +1,12 @@
-var ApiActions = require('../actions/apiActions');
+var NoteClientActions = require('../actions/noteClientActions');
+var NoteServerActions = require('../actions/noteServerActions');
 
 var apiUtil = {
-  fetchAllNotes: function () {
+  fetchNotes: function () {
     $.ajax ({
       url: '/api/notes',
       success: function (notes) {
-        ApiActions.receiveAllNotes(notes);
+        NoteClientActions.receiveAll(notes);
       }
     });
   },
@@ -15,7 +16,7 @@ var apiUtil = {
       url: 'api_notes',
       method: 'POST',
       success: function (data) {
-        ApiActions.receiveNewNote(data); //this should be a new one
+        NoteClientActions.receiveNote(data); //this should be a new one
       }
     });
   },
@@ -26,7 +27,7 @@ var apiUtil = {
       method: 'PATCH',
       data: {note: updatedNote},
       success: function (data) {
-        ApiActions.receiveUpdatedNote(updatedNote);
+        NoteClientActions.receiveNote(updatedNote);
       }
     });
   }

@@ -24351,7 +24351,7 @@
 	  return _notes;
 	};
 	
-	var receiveUpdatedNote = function (note) {
+	var receiveNote = function (note) {
 	  _notes[note.id] = note;
 	  return _notes;
 	};
@@ -24372,8 +24372,8 @@
 	    case NoteConstants.RECEIVE_ALL_NOTES:
 	      receiveAllNotes(dispatchedData.payload["notes"]);
 	      break;
-	    case NoteConstants.RECEIVE_UPDATED_NOTE:
-	      receiveUpdatedNote(dispatchedData.payload);
+	    case NoteConstants.RECEIVE_NOTE:
+	      receiveNote(dispatchedData.payload);
 	      // TODO: what if there was an error?
 	      break;
 	  }
@@ -31153,7 +31153,7 @@
 
 	module.exports = {
 	  RECEIVE_ALL_NOTES: "RECEIVE_ALL_NOTES",
-	  RECEIVE_UPDATED_NOTE: "RECEIVE_UPDATED_NOTE",
+	  RECEIVE_NOTE: "RECEIVE_NOTE",
 	  RECEIVE_NOTEBOOK_NOTES: "RECEIVE_NOTEBOOK_NOTES"
 	};
 
@@ -31164,7 +31164,7 @@
 	var React = __webpack_require__(1);
 	
 	var NoteStore = __webpack_require__(208),
-	    ApiUtil = __webpack_require__(232);
+	    NoteServerActions = __webpack_require__(239);
 	
 	var NoteIndexItem = __webpack_require__(234);
 	var NoteForm = __webpack_require__(235);
@@ -31177,17 +31177,18 @@
 	  },
 	
 	  componentDidMount: function () {
-	    this.notesListener = NoteStore.addListener(this._onChange);
-	    ApiUtil.fetchAllNotes();
+	    this.notesListener = NoteStore.addListener(this.fetchNotes);
+	    NoteServerActions.fetchNotes();
 	  },
 	
 	  componentWillUnmount: function () {
 	    this.notesListener.remove();
 	  },
 	
-	  _onChange: function () {
+	  fetchNotes: function () {
 	    var allNotes = NoteStore.all();
 	    var prevSelectedNote = allNotes[0];
+	
 	    if (this.state.selectedNote !== 0) {
 	      prevSelectedNote = this.state.selectedNote;
 	    }
@@ -31200,7 +31201,7 @@
 	
 	  createNewNote: function () {
 	    //create new note and then destroy it later?
-	    //check assessment later to see if this is correct
+	    //check to see if this is correct
 	
 	  },
 	
@@ -31240,14 +31241,15 @@
 /* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ApiActions = __webpack_require__(233);
+	var NoteClientActions = __webpack_require__(237);
+	var NoteServerActions = __webpack_require__(239);
 	
 	var apiUtil = {
-	  fetchAllNotes: function () {
+	  fetchNotes: function () {
 	    $.ajax({
 	      url: '/api/notes',
 	      success: function (notes) {
-	        ApiActions.receiveAllNotes(notes);
+	        NoteClientActions.receiveAll(notes);
 	      }
 	    });
 	  },
@@ -31257,7 +31259,7 @@
 	      url: 'api_notes',
 	      method: 'POST',
 	      success: function (data) {
-	        ApiActions.receiveNewNote(data); //this should be a new one
+	        NoteClientActions.receiveNote(data); //this should be a new one
 	      }
 	    });
 	  },
@@ -31268,7 +31270,7 @@
 	      method: 'PATCH',
 	      data: { note: updatedNote },
 	      success: function (data) {
-	        ApiActions.receiveUpdatedNote(updatedNote);
+	        NoteClientActions.receiveNote(updatedNote);
 	      }
 	    });
 	  }
@@ -31280,30 +31282,7 @@
 	window.ApiUtil = apiUtil;
 
 /***/ },
-/* 233 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Dispatcher = __webpack_require__(227);
-	var ApiUtil = __webpack_require__(232);
-	var NoteConstants = __webpack_require__(230);
-	
-	module.exports = {
-	  receiveAllNotes: function (notes) {
-	    Dispatcher.dispatch({
-	      actionType: NoteConstants.RECEIVE_ALL_NOTES,
-	      payload: notes
-	    });
-	  },
-	
-	  receiveUpdatedNote: function (note) {
-	    Dispatcher.dispatch({
-	      actionType: NoteConstants.RECEIVE_UPDATED_NOTE,
-	      payload: note
-	    });
-	  }
-	};
-
-/***/ },
+/* 233 */,
 /* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -31358,7 +31337,7 @@
 
 	var React = __webpack_require__(1);
 	
-	var ApiUtil = __webpack_require__(232);
+	var NoteServerActions = __webpack_require__(239);
 	
 	var noteForm = React.createClass({
 	  displayName: 'noteForm',
@@ -31384,7 +31363,7 @@
 	  },
 	
 	  updateNote: function () {
-	    ApiUtil.updateNote(this.props.note);
+	    NoteServerActions.updateNote(this.props.note);
 	  },
 	
 	  componentWillReceiveProps: function (nextProps) {
@@ -31419,6 +31398,55 @@
 	});
 	
 	module.exports = noteForm;
+
+/***/ },
+/* 236 */,
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Dispatcher = __webpack_require__(227);
+	var NoteConstants = __webpack_require__(230);
+	
+	module.exports = {
+	
+	  receiveNote: function (note) {
+	    Dispatcher.dispatch({
+	      actionType: NoteConstants.RECEIVE_NOTE,
+	      payload: note
+	    });
+	  },
+	
+	  receiveAll: function (notes) {
+	    Dispatcher.dispatch({
+	      actionType: NoteConstants.RECEIVE_ALL_NOTES,
+	      payload: notes
+	    });
+	  }
+	
+	};
+
+/***/ },
+/* 238 */,
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var ApiUtil = __webpack_require__(232);
+	
+	module.exports = {
+	
+	  fetchNotes: function () {
+	    ApiUtil.fetchNotes();
+	  },
+	
+	  createNote: function () {
+	    ApiUtil.createNewNote();
+	  },
+	
+	  updateNote: function (note) {
+	    ApiUtil.updateNote(note);
+	  }
+	
+	};
 
 /***/ }
 /******/ ]);
