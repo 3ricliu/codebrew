@@ -25,7 +25,6 @@ class Api::NotesController < ApplicationController
 
   def create
     @note = Note.new(notes_params)
-    debugger
     @note.user_id = current_user.id # do we even need this since the current user won't
     # even have access to any other user's notes to edit?
     @note.notebook_id = 1 # TODO: this is hardcoded for now;

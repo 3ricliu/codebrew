@@ -5,10 +5,10 @@ var React = require('react'),
     Route = ReactRouter.Route,
     IndexRoute = ReactRouter.IndexRoute;
 
-var NoteStore = require('./stores/noteStore.js');
+var NoteStore = require('./stores/noteStore');
 
 
-var NotesIndex = require('./components/notesIndex.jsx');
+var NotesIndex = require('./components/notesIndex');
 
 var App = React.createClass({
   // navbar stuff would go above this.props.children, hidden for now.;
