@@ -75,7 +75,7 @@ var noteIndex = React.createClass({
               );
           }.bind(this))
         }
-        
+
         {noteFormComponent}
       </ul>
     );
