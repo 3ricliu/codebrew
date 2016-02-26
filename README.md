@@ -69,8 +69,8 @@ user interface.
   - [x] `NoteIndexItem`
   - [x] `NoteForm`
 - [x] set up dynamic views between NotesIndex and NoteDetail
-- [ ] new note button
-- [ ] create text-area and be able to update and create notes
+- [x] new note button
+- [x] create text-area and be able to update and create notes
 
 
 ### Phase 4: Notebooks (1 day)
@@ -83,6 +83,7 @@ user interface.
   - [ ] moving notes to a different notebook (drag and drop)?
   - [ ] viewing notes by notebook
 - update NotesIndex and NoteEditArea to reflect current Notebook
+
 - [ ] setup heroku, to have live site
 - [ ] brainstorm how to incorporate syntax highlighting into CRUD for Notes
 - [ ] tailor Homepage, Login NotesIndex, NoteDetail views to fit chosen bootstrap theme

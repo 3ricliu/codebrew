@@ -40,10 +40,6 @@ NoteStore.__onDispatch = function (dispatchedData) {
   _errors = {};
 
   switch(dispatchedData.actionType) {
-    case NoteConstants.ERROR:
-      //TODO: errors
-      receiveError(dispatchedData.payload["responseText"]);
-      break;
     case NoteConstants.RECEIVE_ALL_NOTES:
       receiveAllNotes(dispatchedData.payload["notes"]);
       break;

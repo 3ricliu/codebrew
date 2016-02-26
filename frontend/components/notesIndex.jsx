@@ -9,11 +9,11 @@ var NoteForm = require('./noteForm');
 
 var noteIndex = React.createClass({
   getInitialState: function() {
-    return { notes: [], selectedNote: 0};
+    return { notes: [], selectedNote: null};
   },
 
   componentDidMount: function() {
-    this.notesListener = NoteStore.addListener(this.fetchNotes);
+    this.notesListener = NoteStore.addListener(this.receiveNotes);
     NoteServerActions.fetchNotes();
   },
 
@@ -21,11 +21,11 @@ var noteIndex = React.createClass({
     this.notesListener.remove();
   },
 
-  fetchNotes: function () {
+  receiveNotes: function () {
     var allNotes = NoteStore.all();
     var prevSelectedNote = allNotes[0];
 
-    if(this.state.selectedNote !== 0) {
+    if(this.state.selectedNote !== null) {
       prevSelectedNote = this.state.selectedNote;
     }
     this.setState({ notes: allNotes, selectedNote: prevSelectedNote});
@@ -43,16 +43,18 @@ var noteIndex = React.createClass({
   },
 
   render: function() {
-    var noteFormComponent = "";
-    var action="";
+    var noteFormComponent;
+    var action;
 
     if(this.state.notes.length !==0){
+
       if(this.state.selectedNote.title !== ""){
         action = "Edit Note";
       } else {
         action = "Create New Note";
       }
-      noteFormComponent = <NoteForm note={this.state.selectedNote} buttonTitle={action} />;
+      noteFormComponent = <NoteForm note={this.state.selectedNote}
+                                    buttonTitle={action} />;
     }
 
     return(
@@ -73,6 +75,7 @@ var noteIndex = React.createClass({
               );
           }.bind(this))
         }
+        
         {noteFormComponent}
       </ul>
     );

@@ -1,5 +1,6 @@
 var NoteClientActions = require('../actions/noteClientActions');
-var NoteServerActions = require('../actions/noteServerActions');
+var NotebookClientActions = require('../actions/notebookClientActions');
+
 
 var apiUtil = {
   fetchNotes: function () {
@@ -12,7 +13,7 @@ var apiUtil = {
   },
 
   createNewNote: function (newNote) {
-    $.ajax({
+    $.ajax ({
       url: '/api/notes',
       method: 'POST',
       data: {note: newNote},
@@ -29,9 +30,6 @@ var apiUtil = {
       data: {note: updatedNote},
       success: function () {
         NoteClientActions.receiveNote(updatedNote);
-      },
-      error: function (errors) {
-        NoteClientActions.errors(errors);
       }
     });
   },
@@ -44,6 +42,15 @@ var apiUtil = {
       success: function (deletedNote) {
         NoteClientActions.deleteNote(deletedNote.note);
       },
+    });
+  },
+
+  fetchNotebooks: function () {
+    $.ajax ({
+      url: '/api/notebooks',
+      success: function (notebooks) {
+        NotebookClientActions.receiveAll(notebooks);
+      }
     });
   }
 

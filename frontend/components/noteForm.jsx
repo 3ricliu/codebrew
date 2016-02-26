@@ -2,45 +2,49 @@ var React = require('react');
 
 var NoteServerActions = require('../actions/noteServerActions');
 
-
 var noteForm = React.createClass({
   getInitialState: function() {
-    return ({
-      note: this.props.note
-    });
+    var title = this.props.note.title;
+    var body = this.props.note.body;
+    var id = this.props.note.id;
+    return ({title: title, body: body, id: id});
+    //maybe not even need id, and just pass it into the actions as a second param
   },
 
   updateTitle: function(event) {
-    console.log(event.target.value);
-    var newNote = this.state.note;
-    newNote.title = event.target.value;
-    this.setState({note: newNote});
+    // console.log(event.target.value);
+    // var newNote = this.state.note;
+    // newNote.title = event.target.value;
+    // this.setState({note: newNote});
+    this.setState({title: event.target.value});
   },
 
   updateBody: function(event) {
-    console.log(event.target.value);
-    var newNote = this.state.note;
-    newNote.body = event.target.value;
-    this.setState({note: newNote});
+    // console.log(event.target.value);
+    // var newNote = this.state.note;
+    // newNote.body = event.target.value;
+    // this.setState({note: newNote});
+    this.setState({body: event.target.value});
   },
 
   updateNote: function() {
-    NoteServerActions.updateNote(this.props.note);
+    NoteServerActions.updateNote(this.state);
   },
 
   createNote: function() {
-    NoteServerActions.createNote(this.props.note);
+    NoteServerActions.createNote(this.state);
   },
 
   componentWillReceiveProps: function (nextProps) {
-    console.log(nextProps.note);
-    this.setState({note: nextProps.note});
+    this.setState({title: nextProps.note.title,
+                   body: nextProps.note.body,
+                   id: nextProps.note.id});
   },
 
   render: function () {
-    var noteAction = "";
+    var noteAction;
 
-    if(this.state.note.id === undefined){
+    if(this.props.note.id === undefined){
       noteAction = this.createNote;
     } else {
       noteAction = this.updateNote;
@@ -53,7 +57,7 @@ var noteForm = React.createClass({
       <form onSubmit={noteAction}>
 
       <input size="30"
-             value={this.state.note.title}
+             value={this.state.title}
              onChange={this.updateTitle} />
 
         <br/>
@@ -61,7 +65,7 @@ var noteForm = React.createClass({
       <textarea
         rows="6"
         cols="50"
-        value={this.state.note.body}
+        value={this.state.body}
         onChange={this.updateBody} />
 
         <br/>

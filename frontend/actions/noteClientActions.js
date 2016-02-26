@@ -24,11 +24,4 @@ module.exports = {
       payload: deletedNote
     });
   },
-
-  error: function(errors) {
-    Dispatcher.dispatch({
-      actionType: NoteConstants.ERROR,
-      payload: errors
-    });
-  }
 };
