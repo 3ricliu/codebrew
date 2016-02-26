@@ -5,17 +5,17 @@ var React = require('react'),
     Route = ReactRouter.Route,
     IndexRoute = ReactRouter.IndexRoute;
 
-var NoteStore = require('./stores/noteStore');
+var NoteStore = require('./stores/noteStore.js');
 
 
-var NotesIndex = require('./components/notesIndex');
+var NotesIndex = require('./components/notesIndex.jsx');
 
 var App = React.createClass({
   // navbar stuff would go above this.props.children, hidden for now.;
   render: function () {
     return (
       <div>
-        {this.props.children} 
+        {this.props.children}
       </div>
     );
   }
@@ -36,6 +36,3 @@ document.addEventListener("DOMContentLoaded", function () {
       content);
   }
 });
-
-// testing
-var ApiUtil = require('./util/apiUtil');
