@@ -22,11 +22,11 @@ var noteIndexItem = React.createClass({
 
   render: function () {
 
-    var selected = "";
+    var selected;
     //this might cause some issues down the road maybe?
     //persistent selection?
-
-    if(this.props.selected === this.props.note.id){selected = "selected";}
+    // <Link to={"edit_note" + this.props.note.id}>
+    if(this.props.selected === this.props.note.id){ selected = "selected"; }
 
     return(
       <li className={selected} onClick={this.props.onClick.bind(null, this.props.note)}>

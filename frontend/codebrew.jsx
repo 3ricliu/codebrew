@@ -8,10 +8,11 @@ var React = require('react'),
 var NoteStore = require('./stores/noteStore');
 
 
-var NotesIndex = require('./components/notesIndex');
+var NotesIndex = require('./components/notesIndex'),
+    Account = require('./components/account');
 
 var App = React.createClass({
-  // navbar stuff would go above this.props.children, hidden for now.;
+  // navbar stuff would go above this.props.children, hidden for now.
   render: function () {
     return (
       <div>
@@ -25,6 +26,12 @@ var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={NotesIndex} />
   </Route>
+
+  // <Route path="/account" component={Account} />
+  // <Route component={Note}></Route>
+  // <Route component={NoteForm} path="edit_note/:note_id">
+  //   <Route component={NoteForm} path="/:note_id">
+  // </Route>
 );
 
 

@@ -25,7 +25,9 @@ var noteIndex = React.createClass({
     var allNotes = NoteStore.all();
     var prevSelectedNote = allNotes[0];
 
-    if(this.state.selectedNote !== null) {
+    if(allNotes.indexOf(this.state.selectedNote) === -1){
+      prevSelectedNote = {title: "", body: ""};
+    } else if (this.state.selectedNote !== null) {
       prevSelectedNote = this.state.selectedNote;
     }
     this.setState({ notes: allNotes, selectedNote: prevSelectedNote});
@@ -36,27 +38,27 @@ var noteIndex = React.createClass({
   },
 
   createNewNote: function () {
-    //create new note and then destroy it later?
-    //check to see if this is correct
     var newNote = {title: "", body: ""};
     this.setState({selectedNote: newNote });
   },
 
-  render: function() {
-    var noteFormComponent;
-    var action;
+  determineNoteForm: function () {
+    var noteForForm = {title: "", body: ""};
+    var action = "Create Note";
 
     if(this.state.notes.length !==0){
-
-      if(this.state.selectedNote.title !== ""){
-        action = "Edit Note";
-      } else {
-        action = "Create New Note";
+      if(this.state.selectedNote === undefined) {
+        this.state.selectedNote = this.state.note[0];
+      } else if(this.state.selectedNote.title !== ""){
+        action = "Update Note";
       }
-      noteFormComponent = <NoteForm note={this.state.selectedNote}
-                                    buttonTitle={action} />;
+      noteForForm = this.state.selectedNote;
     }
+    return [noteForForm, action];
+  },
 
+  render: function() {
+    var formParams = this.determineNoteForm();
     return(
       <ul>
         Note
@@ -76,7 +78,7 @@ var noteIndex = React.createClass({
           }.bind(this))
         }
 
-        {noteFormComponent}
+        <NoteForm note={formParams[0]} buttonTitle={formParams[1]} />
       </ul>
     );
   }

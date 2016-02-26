@@ -12,22 +12,16 @@ var noteForm = React.createClass({
   },
 
   updateTitle: function(event) {
-    // console.log(event.target.value);
-    // var newNote = this.state.note;
-    // newNote.title = event.target.value;
-    // this.setState({note: newNote});
     this.setState({title: event.target.value});
   },
 
   updateBody: function(event) {
-    // console.log(event.target.value);
-    // var newNote = this.state.note;
-    // newNote.body = event.target.value;
-    // this.setState({note: newNote});
     this.setState({body: event.target.value});
   },
 
   updateNote: function() {
+    this.props.note.title = this.state.title;
+    this.props.note.body = this.state.body;
     NoteServerActions.updateNote(this.state);
   },
 
@@ -40,15 +34,19 @@ var noteForm = React.createClass({
                    body: nextProps.note.body,
                    id: nextProps.note.id});
   },
+  //props.params.note_id
+
+  createOrEdit: function () {
+    if(this.props.note.id === undefined){
+      return true;
+    } else {
+      return false;
+    }
+  },
 
   render: function () {
     var noteAction;
-
-    if(this.props.note.id === undefined){
-      noteAction = this.createNote;
-    } else {
-      noteAction = this.updateNote;
-    }
+    this.createOrEdit() ? (noteAction = this.createNote) : (noteAction = this.updateNote);
 
     return(
       <div>
@@ -62,11 +60,10 @@ var noteForm = React.createClass({
 
         <br/>
 
-      <textarea
-        rows="6"
-        cols="50"
-        value={this.state.body}
-        onChange={this.updateBody} />
+      <textarea rows="6"
+                cols="50"
+                value={this.state.body}
+                onChange={this.updateBody} />
 
         <br/>
 

@@ -8,11 +8,11 @@ var _errors = {};
 
 var receiveAllNotes = function (notes) {
   _notes = {};
-
-  notes.forEach( function(note) {
-    _notes[note.id] = note;
-  });
-
+  if(notes){
+    notes.forEach( function(note) {
+      _notes[note.id] = note;
+    });
+  }
   return _notes;
 };
 
@@ -42,15 +42,17 @@ NoteStore.__onDispatch = function (dispatchedData) {
   switch(dispatchedData.actionType) {
     case NoteConstants.RECEIVE_ALL_NOTES:
       receiveAllNotes(dispatchedData.payload["notes"]);
+      NoteStore.__emitChange();
       break;
     case NoteConstants.RECEIVE_NOTE:
       receiveNote(dispatchedData.payload);
+      NoteStore.__emitChange();
       break;
     case NoteConstants.DELETE_NOTE:
       removeNote(dispatchedData.payload);
+      NoteStore.__emitChange();
       break;
   }
-  NoteStore.__emitChange();
 };
 
 
