@@ -4,7 +4,8 @@ var React = require('react'),
 
 var NotebookStore = require('../stores/notebookStore'),
     NotebookServerActions = require('../actions/notebookServerActions'),
-    NotebookForm = require('./notebooksIndex');
+    NotebookForm = require('./notebooksIndex'),
+    NotebookIndexItem = require('./notebookIndexItem');
 
 var notebooksIndex = React.createClass({
   mixins: [History],
@@ -31,8 +32,10 @@ var notebooksIndex = React.createClass({
 
   receiveNotebooks: function() {
     var notebooks = NotebookStore.all();
-    // var selected = notebooks[Object.keys(notebooks).length-1].id;
-    if(notebooks.length !== 0){
+    if(notebooks.length ===0 ){
+      this.history.push("/home/notebooks");
+      this.setState({notebooks: notebooks});
+    } else {
       var selected = notebooks[0].id;
       this.history.push("/home/notebooks/" + selected +"/notes/");
       this.setState({notebooks: notebooks,
@@ -40,16 +43,13 @@ var notebooksIndex = React.createClass({
     }
   },
 
-
   render: function() {
-    console.log(this.state.selectedNotebookId);
     var notebooks = this.state.notebooks.map(function(notebook) {
-      return(<li key={notebook.id}>
-              <Link to={'home/notebooks/' + notebook.id + '/notes'}>
-                {notebook.title}
-              </Link>
-            </li>);
+      return(<NotebookIndexItem key={notebook.id} notebook={notebook} />);
     });
+    var childrenWithProps = React.Children.map(this.props.children, function(child) {
+      return React.cloneElement(child, {notebooks: this.state.notebooks});
+    }.bind(this));
 
     return(
       <div>
@@ -58,7 +58,7 @@ var notebooksIndex = React.createClass({
         <ul>
           {notebooks}
         </ul>
-        {this.props.children}
+        {childrenWithProps}
       </div>
     );
   }

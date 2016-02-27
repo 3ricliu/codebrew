@@ -13,7 +13,7 @@ var noteIndexItem = React.createClass({
     } else if (noteBodyLength.length > 80) {
       snippet = noteBodyLength.substr(0,80) + "...";
     }
-    
+
     return snippet;
   },
 

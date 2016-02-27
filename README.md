@@ -8,8 +8,8 @@ Codebrew is a note taking app that benefits developers with code snippet syntax 
 
 - [x] Users can sign up
 - [x] Users can log in && out
-- [ ] Can create notebooks
-- [ ] Can create notes within notebooks
+- [x] Can create notebooks
+- [x] Can create notes within notebooks
 - [ ] Can create tags for notes
 - [ ] Users can create snippets of code with basic syntax highlighting
 - [ ] Can format notes with normal styling (font, font-size, color, italics, etc)
@@ -78,10 +78,10 @@ user interface.
 **Objective:** Notes belong to Notebooks, and can be viewed by notebook.
 
 - build out API, Flux loop, and components for:
-  - [ ] Notebook CRUD
-  - [ ] adding notes requires a notebook selected
+  - [x] Notebook CRUD
+  - [x] adding notes requires a notebook selected
   - [ ] moving notes to a different notebook (drag and drop)?
-  - [ ] viewing notes by notebook
+  - [x] viewing notes by notebook
 - update NotesIndex and NoteEditArea to reflect current Notebook
 
 - [ ] setup heroku, to have live site
@@ -96,10 +96,10 @@ TODO: be able to swap notebooks
 
 **Objective:** All notebooks can be viewed and selected within Navbar
 
-- build out NavBarIndex to show NotebooksIndex and NotebookForm
-- test NotebookForm and creating new notes within itself
-- build out editing and deleting capabilities for notebooks
-- Tailor new views to bootstrap
+- [x] build out NavBarIndex to show NotebooksIndex and NotebookForm
+- [x] test NotebookForm and creating new notes within itself
+- [ ] build out editing and deleting capabilities for notebooks
+- [x] Tailor new views to bootstrap
 
 
 ### Phase 6: Tags (1 day)

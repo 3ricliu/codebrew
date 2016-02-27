@@ -36,12 +36,12 @@ class Api::NotebooksController < ApplicationController
 
   def destroy
     @notebook = Notebook.find_by_id(params[:id])
-    @notebook.destry
+    @notebook.destroy
     render :show
   end
 
   private
   def notebook_params
-    params.require(:notebook).permit(:title)
+    params.require(:notebook).permit(:title, :id)
   end
 end

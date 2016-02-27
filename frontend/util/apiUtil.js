@@ -33,13 +33,13 @@ var apiUtil = {
     });
   },
 
-  updateNote: function (updatedNote) {
+  updateNote: function (updateNote) {
     $.ajax ({
-      url: '/api/notes/' + updatedNote.id,
+      url: '/api/notes/' + updateNote.id,
       method: 'PATCH',
-      data: {note: updatedNote},
-      success: function (deletedNote) {
-        NoteClientActions.receiveNote(deletedNote.note);
+      data: {note: updateNote},
+      success: function (updatedNote) {
+        NoteClientActions.receiveNote(updatedNote.note);
       }
     });
   },
@@ -75,6 +75,28 @@ var apiUtil = {
     });
   },
 
+  deleteNotebook: function (deleteNotebook) {
+    $.ajax ({
+      url: '/api/notebooks/' + deleteNotebook.id,
+      method: 'DELETE',
+      data: {note: deleteNotebook},
+      success: function (deletedNotebook) {
+        NotebookClientActions.deleteNotebook(deletedNotebook.notebook);
+      },
+    });
+  },
+
+
+  updateNotebook: function (updateNotebook) {
+    $.ajax ({
+      url: 'api/notebooks/' + updateNotebook.id,
+      method: 'PATCH',
+      data: {notebook: updateNotebook},
+      success: function (updatedNotebook) {
+        NotebookClientActions.receiveNotebook(updatedNotebook.notebook);
+      }
+    });
+  }
 
 };
 

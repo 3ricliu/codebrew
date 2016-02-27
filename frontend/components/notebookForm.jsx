@@ -15,15 +15,21 @@ var notebookForm = React.createClass({
     this.setState({title: event.target.value});
   },
 
-  createNotebook: function (e) {
+  createNotebook: function(e) {
     e.preventDefault();
     this.history.push("/home/notebooks/");
-    //+ this.props.id + "/order")
     NotebookServerActions.createNotebook(this.state);
-
   },
 
-  createOrNew: function () {
+  editNotebook: function(e) {
+    e.preventDefault();
+    var notebookId = this.props.params.notebook_id;
+    var notebookObject = {title: this.state.title, id: notebookId};
+    this.history.push("/home/notebooks/" + notebookId);
+    NotebookServerActions.updateNotebook(notebookObject);
+  },
+
+  createOrNew: function() {
     if(this.props.params.notebook_id){
       return "Edit";
     } else {
@@ -31,22 +37,30 @@ var notebookForm = React.createClass({
     }
   },
 
+
   render: function() {
     var buttonText = this.createOrNew();
+    var formAction;
+
+    if(buttonText === "Edit"){
+      formAction = this.editNotebook;
+    } else {
+      formAction = this.createNotebook;
+    }
 
     return (
-      <form onSubmit={this.createNotebook}>
+      <form onSubmit={formAction}>
 
         <input size="30"
                value={this.state.title}
-               onChange={this.updateTitle}></input>
-             <Link to={'/home/notebooks'}></Link>
+               onChange={this.updateTitle} />
+
+
              <input type="submit" value={buttonText} />
-
-
       </form>
     );
   }
 });
 
+//  <Link to={'/home/notebooks'}></Link>
 module.exports = notebookForm;

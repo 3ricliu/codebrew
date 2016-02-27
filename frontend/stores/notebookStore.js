@@ -20,7 +20,12 @@ var receiveNotebook = function(notebook) {
   return notebook;
 };
 
-NotebookStore.all = function () {
+var removeNotebook = function(deletedNotebook) {
+  delete _notebooks[deletedNotebook.id];
+  return deletedNotebook;
+};
+
+NotebookStore.all = function (){
   var notebooks = [];
   for(var id in _notebooks){
     if( _notebooks.hasOwnProperty(id) ){
@@ -39,6 +44,10 @@ NotebookStore.__onDispatch = function (dispatchedData) {
       break;
     case NotebookConstants.RECEIVE_NOTEBOOK:
       receiveNotebook(dispatchedData.payload);
+      NotebookStore.__emitChange();
+      break;
+    case NotebookConstants.DELETE_NOTEBOOK:
+      removeNotebook(dispatchedData.payload);
       NotebookStore.__emitChange();
       break;
   }

@@ -12,7 +12,8 @@ var NotesIndex = require('./components/notesIndex'),
     Account = require('./components/account'),
     NavBar = require('./components/navBar'),
     NotebooksIndex = require('./components/notebooksIndex'),
-    NotebookForm = require('./components/notebookForm');
+    NotebookForm = require('./components/notebookForm'),
+    NotebookIndexItem = require('./components/notebookForm');
 
 var App = React.createClass({
   render: function () {

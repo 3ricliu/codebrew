@@ -10,12 +10,12 @@ module.exports = {
     ApiUtil.createNewNotebook(notebook);
   },
 
-  // updateNotebook: function (notebook) {
-  //   ApiUtil.updateNotebook(notebook);
-  // },
-  //
-  // deleteNotebook: function (notebook) {
-  //   ApiUtil.deleteNotebook(notebook);
-  // }
+  updateNotebook: function (notebook) {
+    ApiUtil.updateNotebook(notebook);
+  },
+
+  deleteNotebook: function (notebook) {
+    ApiUtil.deleteNotebook(notebook);
+  }
 
 };
