@@ -22,6 +22,23 @@ var noteIndexItem = React.createClass({
     NoteServerActions.deleteNote(this.props.note);
   },
 
+  // notebookOptions: function() {
+  //   var notebooks;
+  //   debugger;
+  //   this.props.notebooks.forEach(function(notebook) {
+  //     if(notebook.id === this.props.notebookId){
+  //       notebooks.push(<option value={notebook.name} selected="true" />);
+  //     } else {
+  //       notebooks.push(<option value={notebook.name} />);
+  //     }
+  //   }.bind(this));
+  //
+  //   return notebooks;
+  // },
+  // <select>
+  //   {this.notebookOptions()}
+  // </select>
+
   render: function () {
     var selected;
     // <Link to={"edit_note" + this.props.note.id}>
@@ -35,6 +52,8 @@ var noteIndexItem = React.createClass({
           {this.props.note.title}
           <br />
             {this.summary()}
+          <br />
+
           <br />
           <input type="button" value="Delete" onClick={this.deleteNote} />
         </ol>

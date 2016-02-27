@@ -98,7 +98,7 @@ TODO: be able to swap notebooks
 
 - [x] build out NavBarIndex to show NotebooksIndex and NotebookForm
 - [x] test NotebookForm and creating new notes within itself
-- [ ] build out editing and deleting capabilities for notebooks
+- [x] build out editing and deleting capabilities for notebooks
 - [x] Tailor new views to bootstrap
 
 

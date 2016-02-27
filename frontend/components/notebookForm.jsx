@@ -8,7 +8,8 @@ var NotebookServerActions = require('../actions/notebookServerActions');
 var notebookForm = React.createClass({
   mixins: [History],
   getInitialState: function() {
-    return({title: ""});
+    var title = this.findTitle(this.props.params.notebook_id);
+    return({title: title});
   },
 
   updateTitle: function(event) {
@@ -27,6 +28,26 @@ var notebookForm = React.createClass({
     var notebookObject = {title: this.state.title, id: notebookId};
     this.history.push("/home/notebooks/" + notebookId);
     NotebookServerActions.updateNotebook(notebookObject);
+  },
+
+  componentWillReceiveProps: function(nextProps){
+    var title = this.findTitle(nextProps.params.notebook_id);
+    this.setState({title: title});
+  },
+
+  findTitle: function(notebookId) {
+    var title;
+    if(notebookId){
+      this.props.notebooks.forEach(function(notebook){
+        if (notebook.id == notebookId) {
+          title = notebook.title;
+        }
+      });
+    } else {
+      title= "";
+    }
+
+    return title;
   },
 
   createOrNew: function() {

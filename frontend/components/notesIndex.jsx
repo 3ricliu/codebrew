@@ -65,6 +65,18 @@ var noteIndex = React.createClass({
   },
 
 
+  findNotebookTitle: function() {
+    var title;
+      this.props.notebooks.forEach(function(notebook){
+        if (notebook.id == this.props.params.notebook_id) {
+          title = notebook.title;
+        }
+      }.bind(this));
+
+    return title;
+  },
+
+
   createNewNote: function () {
     var newNote = {title: "", body: ""};
     this.setState({selectedNote: newNote });
@@ -92,6 +104,7 @@ var noteIndex = React.createClass({
             key={note.id}
             note={note}
             selected={this.state.selectedNote.id}
+            notebookId={this.props.params.notebook_id}
             onClick={this.selectNote}/>);
     }.bind(this));
     return noteComponents;
@@ -102,7 +115,7 @@ var noteIndex = React.createClass({
     var formParams = this.determineNoteForm();
     return(
       <ul>
-        Notebook Name //todo
+        {this.findNotebookTitle()}
         <br/>
 
       <button onClick={this.createNewNote}>Create New Note</button>
