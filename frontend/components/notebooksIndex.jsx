@@ -13,7 +13,7 @@ var notebooksIndex = React.createClass({
   },
 
   componentDidMount: function() {
-    this.notebooksListener = NotebookStore.addListener(this.receiveNotebooks);
+    NotebookStore.addListener(this.receiveNotebooks);
     NotebookServerActions.fetchNotebooks();
   },
 
@@ -23,8 +23,9 @@ var notebooksIndex = React.createClass({
 
   componentWillReceiveProps: function(nextProps) {
     var currNotebook = nextProps.params.notebook_id;
+    // NoteServerActions.fetchNotes(currNotebook);
     // if(this.props.params.notebook_id !== undefined){
-      this.setState({selectedNotebookId: currNotebook});
+    this.setState({selectedNotebookId: currNotebook});
     // } //this will be the next selected notebook
   },
 

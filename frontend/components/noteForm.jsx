@@ -39,7 +39,8 @@ var noteForm = React.createClass({
   componentWillReceiveProps: function (nextProps) {
     this.setState({title: nextProps.note.title,
                    body: nextProps.note.body,
-                   id: nextProps.note.id});
+                   id: nextProps.note.id,
+                   notebookId: nextProps.notebookId});
   },
   //props.params.note_id
 
