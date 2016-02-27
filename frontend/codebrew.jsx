@@ -3,16 +3,18 @@ var React = require('react'),
     ReactRouter = require('react-router'),
     Router = ReactRouter.Router,
     Route = ReactRouter.Route,
-    IndexRoute = ReactRouter.IndexRoute;
+    IndexRoute = ReactRouter.IndexRoute,
+    IndexRedirect = ReactRouter.IndexRedirect;
 
 var NoteStore = require('./stores/noteStore');
 
-
 var NotesIndex = require('./components/notesIndex'),
-    Account = require('./components/account');
+    Account = require('./components/account'),
+    NavBar = require('./components/navBar'),
+    NotebooksIndex = require('./components/notebooksIndex'),
+    NotebookForm = require('./components/notebookForm');
 
 var App = React.createClass({
-  // navbar stuff would go above this.props.children, hidden for now.
   render: function () {
     return (
       <div>
@@ -22,18 +24,23 @@ var App = React.createClass({
   }
 });
 
+
 var routes = (
   <Route path="/" component={App}>
-    <IndexRoute component={NotesIndex} />
+    <IndexRedirect to="home/notebooks" />
+
+    <Route path="home" component={NavBar}>
+      <Route path="notebooks" component={NotebooksIndex}>
+        <Route path="new" component={NotebookForm} />
+        <Route path="edit/:notebook_id" component={NotebookForm} />
+      </Route>
+      <Route path="notebooks/:notebook_id" component={NotebooksIndex}>
+        <Route path="notes" component={NotesIndex} />
+      </Route>
+    </Route>
+
   </Route>
-
-  // <Route path="/account" component={Account} />
-  // <Route component={Note}></Route>
-  // <Route component={NoteForm} path="edit_note/:note_id">
-  //   <Route component={NoteForm} path="/:note_id">
-  // </Route>
 );
-
 
 
 document.addEventListener("DOMContentLoaded", function () {

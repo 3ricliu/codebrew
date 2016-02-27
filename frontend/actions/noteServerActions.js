@@ -2,8 +2,8 @@ var ApiUtil = require('../util/apiUtil');
 
 module.exports = {
 
-  fetchNotes: function () {
-    ApiUtil.fetchNotes();
+  fetchNotes: function (notebookId) {
+    ApiUtil.fetchNotes(notebookId);
   },
 
   createNote: function (note) {

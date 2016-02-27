@@ -13,7 +13,7 @@ module.exports = {
 
   receiveAll: function (notebooks) {
     Dispatcher.dispatch({
-      actionType: NotebookConstants.RECEIVE_NOTEBOOKS,
+      actionType: NotebookConstants.RECEIVE_ALL_NOTEBOOKS,
       payload: notebooks
     });
   },

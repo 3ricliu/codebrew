@@ -3,19 +3,20 @@
 <head>
   <title>Codebrew</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= stylesheet_link_tag "landing_page" %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
 
+  <h2>Codebrew</h2>
   <% if signed_in? %>
     <%= current_user.username %>
     <%= button_to "Sign Out", session_url, method: :delete %>
   <% else %>
     <%= button_to "Sign In", new_session_url, method: :get %>
   <% end %>
-
 
 <%= yield %>
 

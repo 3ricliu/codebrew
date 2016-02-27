@@ -3,13 +3,23 @@ var NotebookClientActions = require('../actions/notebookClientActions');
 
 
 var apiUtil = {
-  fetchNotes: function () {
-    $.ajax ({
-      url: '/api/notes',
-      success: function (notes) {
-        NoteClientActions.receiveAll(notes);
-      }
-    });
+  fetchNotes: function (notebookId) {
+    if(notebookId !== undefined){
+      $.ajax ({
+        url: '/api/notebooks/' + notebookId + '/notes',
+        data: {notebook_id: notebookId},
+        success: function (notes) {
+          NoteClientActions.receiveAll(notes);
+        }
+      });
+    } else {
+      $.ajax ({
+        url: '/api/notes',
+        success: function (notes) {
+          NoteClientActions.receiveAll(notes);
+        }
+      });
+    }
   },
 
   createNewNote: function (newNote) {
@@ -28,8 +38,8 @@ var apiUtil = {
       url: '/api/notes/' + updatedNote.id,
       method: 'PATCH',
       data: {note: updatedNote},
-      success: function () {
-        NoteClientActions.receiveNote(updatedNote);
+      success: function (deletedNote) {
+        NoteClientActions.receiveNote(deletedNote.note);
       }
     });
   },
@@ -52,7 +62,18 @@ var apiUtil = {
         NotebookClientActions.receiveAll(notebooks);
       }
     });
-  }
+  },
+
+  createNewNotebook: function (newNotebook) {
+    $.ajax ({
+      url: '/api/notebooks',
+      method: 'POST',
+      data: {notebook: newNotebook},
+      success: function (notebook) {
+        NotebookClientActions.receiveNotebook(notebook.notebook);
+      }
+    });
+  },
 
 
 };

@@ -1,0 +1,15 @@
+.nav {
+  background-color: #222;
+  font-family: "Proxima Nova Light", arial, sans-serif;
+  color: #ddd;
+  border-bottom: 1px solid #333;
+  height: 70px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.centered {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  background-color: #2a2a2a;
+}

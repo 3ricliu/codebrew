@@ -1,6 +1,7 @@
 unless @note.nil?
   json.note do
     json.notebook @note.notebook.title
+    json.notebook_id @note.notebook_id
     json.author @note.user.username
     json.id @note.id
     json.title @note.title

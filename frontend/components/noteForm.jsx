@@ -7,7 +7,8 @@ var noteForm = React.createClass({
     var title = this.props.note.title;
     var body = this.props.note.body;
     var id = this.props.note.id;
-    return ({title: title, body: body, id: id});
+    var notebookId = this.props.notebookId;
+    return ({title: title, body: body, id: id, notebookId: notebookId});
     //maybe not even need id, and just pass it into the actions as a second param
   },
 
@@ -15,19 +16,25 @@ var noteForm = React.createClass({
     this.setState({title: event.target.value});
   },
 
+
   updateBody: function(event) {
     this.setState({body: event.target.value});
   },
 
-  updateNote: function() {
-    this.props.note.title = this.state.title;
-    this.props.note.body = this.state.body;
+
+  updateNote: function(e) {
+    e.preventDefault();
+    // this.props.note.title = this.state.title;
+    // this.props.note.body = this.state.body;
     NoteServerActions.updateNote(this.state);
   },
 
-  createNote: function() {
+
+  createNote: function(e) {
+    e.preventDefault();
     NoteServerActions.createNote(this.state);
   },
+
 
   componentWillReceiveProps: function (nextProps) {
     this.setState({title: nextProps.note.title,
@@ -44,9 +51,15 @@ var noteForm = React.createClass({
     }
   },
 
+
   render: function () {
     var noteAction;
-    this.createOrEdit() ? (noteAction = this.createNote) : (noteAction = this.updateNote);
+
+    if(this.createOrEdit()){
+      noteAction = this.createNote;
+    } else {
+      noteAction = this.updateNote;
+    }
 
     return(
       <div>

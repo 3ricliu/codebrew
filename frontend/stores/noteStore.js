@@ -9,7 +9,7 @@ var _errors = {};
 var receiveAllNotes = function (notes) {
   _notes = {};
   if(notes){
-    notes.forEach( function(note) {
+    notes.forEach(function(note) {
       _notes[note.id] = note;
     });
   }
@@ -57,6 +57,4 @@ NoteStore.__onDispatch = function (dispatchedData) {
 
 
 module.exports = NoteStore;
-
-// testing
 window.NoteStore = NoteStore;

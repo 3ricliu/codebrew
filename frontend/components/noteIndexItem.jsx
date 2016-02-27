@@ -7,11 +7,13 @@ var noteIndexItem = React.createClass({
   summary: function () {
     var snippet = "";
     var noteBodyLength = this.props.note.body;
+
     if( noteBodyLength.length > 0 && noteBodyLength.length < 80){
       snippet = noteBodyLength;
     } else if (noteBodyLength.length > 80) {
       snippet = noteBodyLength.substr(0,80) + "...";
     }
+    
     return snippet;
   },
 
@@ -21,12 +23,11 @@ var noteIndexItem = React.createClass({
   },
 
   render: function () {
-
     var selected;
-    //this might cause some issues down the road maybe?
-    //persistent selection?
     // <Link to={"edit_note" + this.props.note.id}>
-    if(this.props.selected === this.props.note.id){ selected = "selected"; }
+    if(this.props.selected === this.props.note.id){
+      selected = "selected";
+    }
 
     return(
       <li className={selected} onClick={this.props.onClick.bind(null, this.props.note)}>
