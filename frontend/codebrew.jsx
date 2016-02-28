@@ -8,17 +8,17 @@ var React = require('react'),
 
 var NoteStore = require('./stores/noteStore');
 
-var NotesIndex = require('./components/notesIndex'),
+var NotesIndex = require('./components/notes/notesIndex'),
     Account = require('./components/account'),
     NavBar = require('./components/navBar'),
-    NotebooksIndex = require('./components/notebooksIndex'),
-    NotebookForm = require('./components/notebookForm'),
-    NotebookIndexItem = require('./components/notebookForm');
+    NotebooksIndex = require('./components/notebooks/notebooksIndex'),
+    NotebookForm = require('./components/notebooks/notebookForm'),
+    NotebookIndexItem = require('./components/notebooks/notebookForm');
 
 var App = React.createClass({
   render: function () {
     return (
-      <div>
+      <div className="App">
         {this.props.children}
       </div>
     );
@@ -29,7 +29,6 @@ var App = React.createClass({
 var routes = (
   <Route path="/" component={App}>
     <IndexRedirect to="home/notebooks" />
-
     <Route path="home" component={NavBar}>
       <Route path="notebooks" component={NotebooksIndex}>
         <Route path="new" component={NotebookForm} />

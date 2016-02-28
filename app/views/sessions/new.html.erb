@@ -1,3 +1,14 @@
+<%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+
+<h2>Codebrew</h2>
+<% if signed_in? %>
+  <%= current_user.username %>
+  <%= button_to "Sign Out", session_url, method: :delete %>
+<% else %>
+  <%= button_to "Sign In", new_session_url, method: :get %>
+<% end %>
+
+
 <h1>Codebrew</h1>
 <h2>Sign In!</h2>
 
