@@ -1,25 +1,24 @@
-<%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+<%= render "partials/navbar" %>
 
-<h2>Codebrew</h2>
-<% if signed_in? %>
-  <%= current_user.username %>
-  <%= button_to "Sign Out", session_url, method: :delete %>
-<% else %>
-  <%= button_to "Sign In", new_session_url, method: :get %>
-<% end %>
+<div class="centered">
+  <h2 class="login">Sign Up!</h2>
 
-<h2 class="signup">Sign Up!</h2>
+  <form action="<%= users_url %>" method="post">
+    <%= render "/helpers/auth" %>
 
-<form class="" action="<%= users_url %>" method="post">
-  <%= render "/helpers/auth" %>
-
-  <label for="username"> Username
-    <input type="text" name="user[username]" value="">
-  </label>
-  <br>
-  <label for="password"> Password
-    <input type="password" name="user[password]" value="">
-  </label>
-  <br>
-  <input type="submit" name="name" value="Sign Up!">
-</form>
+    <div class="sign-up">
+      <label for="username"> Username
+        <input type="text" name="user[username]" value="">
+      </label>
+    </div>
+    <br>
+    <div class="sign-up">
+      <label for="password"> Password
+        <input type="password" name="user[password]" value="" class="pw">
+      </label>
+      <br>
+    </div>
+    <input type="submit" name="name" value="Sign Up!" class="btn splash">
+  </form>
+  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+</div>

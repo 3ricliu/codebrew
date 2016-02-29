@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def new
+    @landing_page = true
     @user = User.new
     render :new
   end
 
   def create
+    @landing_page = true
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)

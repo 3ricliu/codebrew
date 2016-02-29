@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
   def new
+    @landing_page = true
     render :new
   end
 
   def create
+    @landing_page = true
     user = User.find_by_credentials(
       params[:user][:username],
       params[:user][:password]
