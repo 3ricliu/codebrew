@@ -17,14 +17,12 @@ var NotesIndex = require('./components/notes/notesIndex'),
 
 var App = React.createClass({
   render: function () {
-    return (
-      <div className="group">
+    return (<div className="app-container">
         {this.props.children}
-      </div>
+        </div>
     );
   }
 });
-
 
 var routes = (
   <Route path="/" component={App}>
