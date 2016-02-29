@@ -18,7 +18,7 @@ var NotesIndex = require('./components/notes/notesIndex'),
 var App = React.createClass({
   render: function () {
     return (
-      <div className="App">
+      <div className="group">
         {this.props.children}
       </div>
     );
