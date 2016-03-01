@@ -6,7 +6,7 @@ var NoteStore = new Store(AppDispatcher);
 var _notes = {};
 var _errors = {};
 
-var receiveAllNotes = function (notes) {
+var receiveAllNotes = function(notes) {
   _notes = {};
   if(notes){
     notes.forEach(function(note) {
@@ -16,16 +16,16 @@ var receiveAllNotes = function (notes) {
   return _notes;
 };
 
-var receiveNote = function (note) {
+var receiveNote = function(note) {
   _notes[note.id] = note;
   return _notes;
 };
 
-var removeNote = function (deletedNote) {
+var removeNote = function(deletedNote) {
   delete _notes[deletedNote.id];
 };
 
-NoteStore.all = function () {
+NoteStore.all = function() {
   var notes = [];
   for(var id in _notes){
     if( _notes.hasOwnProperty(id) ){
@@ -36,7 +36,7 @@ NoteStore.all = function () {
   return notes;
 };
 
-NoteStore.__onDispatch = function (dispatchedData) {
+NoteStore.__onDispatch = function(dispatchedData) {
   _errors = {};
 
   switch(dispatchedData.actionType) {
@@ -57,4 +57,3 @@ NoteStore.__onDispatch = function (dispatchedData) {
 
 
 module.exports = NoteStore;
-window.NoteStore = NoteStore;

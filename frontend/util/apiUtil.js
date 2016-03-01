@@ -1,8 +1,10 @@
 var NoteClientActions = require('../actions/noteClientActions');
 var NotebookClientActions = require('../actions/notebookClientActions');
+var UserClientActions = require('../actions/userClientActions');
 
 
 var apiUtil = {
+
   fetchNotes: function (notebookId) {
     if(notebookId !== undefined){
       $.ajax ({
@@ -94,6 +96,27 @@ var apiUtil = {
       data: {notebook: updateNotebook},
       success: function (updatedNotebook) {
         NotebookClientActions.receiveNotebook(updatedNotebook.notebook);
+      }
+    });
+  },
+
+  fetchUser: function () {
+    $.ajax ({
+      url: 'api/current_user',
+      method: 'GET',
+      success: function (username) {
+        UserClientActions.receiveUser(username.username);
+      }
+    });
+  },
+
+  logoutUser: function () {
+    $.ajax ({
+      url: 'session',
+      method: 'DELETE',
+      success: function () {
+        window.location = '/users/new';
+        location.reload();
       }
     });
   }

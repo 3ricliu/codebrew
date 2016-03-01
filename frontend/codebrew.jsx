@@ -9,7 +9,6 @@ var React = require('react'),
 var NoteStore = require('./stores/noteStore');
 
 var NotesIndex = require('./components/notes/notesIndex'),
-    Account = require('./components/account'),
     NavBar = require('./components/navBar'),
     NotebooksIndex = require('./components/notebooks/notebooksIndex'),
     NotebookForm = require('./components/notebooks/notebookForm'),
