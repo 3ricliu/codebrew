@@ -23,5 +23,6 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     redirect_to new_user_url
+    debugger
   end
 end

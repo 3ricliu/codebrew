@@ -18,7 +18,7 @@ var noteIndexItem = React.createClass({
   },
 
 
-  deleteNote: function() {
+  deleteNote: function () {
     NoteServerActions.deleteNote(this.props.note);
   },
 

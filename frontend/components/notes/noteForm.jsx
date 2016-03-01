@@ -1,7 +1,8 @@
 var React = require('react'),
     ReactQuill = require('react-quill');
 
-var NoteServerActions = require('../../actions/noteServerActions');
+var NoteServerActions = require('../../actions/noteServerActions'),
+    TagNoteIndex = require('../tags/tagNoteIndex');
 
 
 var noteForm = React.createClass({
@@ -24,14 +25,14 @@ var noteForm = React.createClass({
   },
 
 
-  updateNote: function(e) {
-    e.preventDefault();
+  updateNote: function(event) {
+    event.preventDefault();
     NoteServerActions.updateNote(this.state);
   },
 
 
-  createNote: function(e) {
-    e.preventDefault();
+  createNote: function(event) {
+    event.preventDefault();
     NoteServerActions.createNote(this.state);
   },
 
@@ -63,24 +64,25 @@ var noteForm = React.createClass({
     return(
       <div className="note-container">
 
-      <br/>
-
-      <form onSubmit={noteAction}>
-
-      <input className="note-title"
-             value={this.state.title}
-             placeholder={"Title your note"}
-             onChange={this.updateTitle} />
-
-        <br/>
-          <ReactQuill theme="snow"
-                    value={this.state.body}
-                    onChange={this.updateBody} />
         <br/>
 
-        <input type="submit" value={this.props.buttonTitle} className="save"/>
+        <form onSubmit={noteAction}>
 
-      </form>
+        <input className="note-title"
+               value={this.state.title}
+               placeholder={"Title your note"}
+               onChange={this.updateTitle} />
+
+          <br/>
+            <ReactQuill theme="snow"
+                      value={this.state.body}
+                      onChange={this.updateBody} />
+          <br/>
+
+          <input type="submit" value={this.props.buttonTitle} className="save"/>
+
+        </form>
+        <TagNoteIndex />
       </div>
     );
   }

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
     resources :notes, only: [:index, :show, :create, :update, :destroy]
 
+    resources :tags, only: [:index, :show, :create, :destroy]
+
     resources :notebooks, only: [:show] do
       resources :notes, only: [:index]
     end

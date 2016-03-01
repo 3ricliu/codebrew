@@ -3,13 +3,13 @@ var React = require('react');
 var NoteStore = require('../../stores/noteStore'),
     NoteServerActions = require('../../actions/noteServerActions');
 
-var NoteIndexItem = require('./noteIndexItem');
-var NoteForm = require('./noteForm');
+var NoteIndexItem = require('./noteIndexItem'),
+    NoteForm = require('./noteForm');
 
 
 var noteIndex = React.createClass({
   getInitialState: function() {
-    return { notes: [], selectedNote: null};
+    return ({ notes: [], selectedNote: null});
   },
 
 
@@ -99,7 +99,7 @@ var noteIndex = React.createClass({
 
   generateNoteIndexItems: function () {
     var noteComponents = [];
-    this.state.notes.map(function(note) {
+    this.state.notes.map(function (note) {
         noteComponents.push( <li className="notes" key={note.id}>
           <NoteIndexItem
               className="title"
@@ -112,7 +112,7 @@ var noteIndex = React.createClass({
   },
 
 
-  render: function() {
+  render: function () {
     var formParams = this.determineNoteForm();
     return(
       <div className="notes-col">

@@ -12,18 +12,18 @@ var notebookForm = React.createClass({
     return({title: title});
   },
 
-  updateTitle: function(event) {
+  updateTitle: function (event) {
     this.setState({title: event.target.value});
   },
 
-  createNotebook: function(e) {
-    e.preventDefault();
+  createNotebook: function (event) {
+    event.preventDefault();
     this.history.push("/home/notebooks/");
     NotebookServerActions.createNotebook(this.state);
   },
 
-  editNotebook: function(e) {
-    e.preventDefault();
+  editNotebook: function (event) {
+    event.preventDefault();
     var notebookId = this.props.params.notebook_id;
     var notebookObject = {title: this.state.title, id: notebookId};
     this.history.push("/home/notebooks/" + notebookId);
@@ -35,7 +35,7 @@ var notebookForm = React.createClass({
     this.setState({title: title});
   },
 
-  findTitle: function(notebookId) {
+  findTitle: function (notebookId) {
     var title;
     if(notebookId){
       this.props.notebooks.forEach(function(notebook){
@@ -50,7 +50,7 @@ var notebookForm = React.createClass({
     return title;
   },
 
-  createOrNew: function() {
+  createOrNew: function () {
     if(this.props.params.notebook_id){
       return "Edit";
     } else {
@@ -59,7 +59,7 @@ var notebookForm = React.createClass({
   },
 
 
-  render: function() {
+  render: function () {
     var buttonText = this.createOrNew();
     var formAction;
 
@@ -77,7 +77,7 @@ var notebookForm = React.createClass({
                onChange={this.updateTitle} />
 
 
-             <input type="submit" value={buttonText} className="btn" />
+        <input type="submit" value={buttonText} className="btn" />
       </form>
     );
   }

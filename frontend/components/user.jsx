@@ -5,6 +5,7 @@ var UserStore = require('../stores/userStore'),
 
 
 var user = React.createClass({
+
   getInitialState: function () {
     return({user: ""});
   },

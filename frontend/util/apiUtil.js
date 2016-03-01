@@ -1,6 +1,7 @@
 var NoteClientActions = require('../actions/noteClientActions');
 var NotebookClientActions = require('../actions/notebookClientActions');
 var UserClientActions = require('../actions/userClientActions');
+var TagClientActions = require('../actions/tagClientActions');
 
 
 var apiUtil = {
@@ -110,13 +111,43 @@ var apiUtil = {
     });
   },
 
+  fetchTags: function () {
+    $.ajax ({
+      url: '/api/tags',
+      success: function (tags) {
+        TagClientActions.receiveTags(tags);
+      }
+    });
+  },
+
+  createTag: function (newTag) {
+    $.ajax ({
+      url: '/api/tags',
+      method: 'POST',
+      data: {tag: newTag},
+      success: function (tag) {
+
+      }
+    });
+  },
+
+  deleteTag: function (deleteTag) {
+    $.ajax ({
+      url: '/api/tags/' + deleteTag.id,
+      method: 'DELETE',
+      data: {tag: deleteTag},
+      success: function (deletedTag) {
+
+      },
+    });
+  },
+
   logoutUser: function () {
     $.ajax ({
       url: 'session',
       method: 'DELETE',
       success: function () {
         window.location = '/users/new';
-        location.reload();
       }
     });
   }
