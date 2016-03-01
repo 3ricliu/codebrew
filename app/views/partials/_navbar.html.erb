@@ -1,0 +1,15 @@
+<div class="navbar">
+    <div class="logo"></div>
+    <a href="/" class="brand">Codebrew</a>
+
+  <% if signed_in? %>
+    <div class="username">
+      <%= current_user.username %>
+    </div>
+    <%= button_to "Sign Out", session_url, method: :delete, class: "btn nav" %>
+  <% else %>
+    <% unless(params["controller"] == "sessions") %>
+      <%= button_to "Sign In", new_session_url, method: :get, class: "btn nav" %>
+    <% end %>
+  <% end %>
+</div>

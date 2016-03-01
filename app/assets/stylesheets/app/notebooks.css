@@ -1,0 +1,82 @@
+.notebook-form {
+  /*outline: 3px solid white;*/
+  width: 22%;
+  left: 20%;
+  top: 3%;
+  position: absolute;
+  padding: 5px;
+}
+
+.new-notebook-form {
+  padding: 10px;
+  padding: 10px 15px;
+}
+
+.notebook-form > input {
+  color: white;
+  border: 1px solid white;
+  position: relative;
+  top: 2px
+}
+
+.notebook-form > .btn {
+  position: relative;
+  left: 4px;
+  top: 2px;
+}
+
+.notebooks {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.nb-delete {
+  float: right;
+}
+
+.nb-btn  {
+  font-size: 12px;
+}
+
+.nb-btn:hover {
+  cursor: pointer;
+}
+
+.title {
+  padding: 10px 0px 10px 0px;
+  display: inline-block;
+}
+
+
+.notebooks-col > ul {
+  height: 57%;
+  overflow-y: scroll;
+  position: absolute;
+  width: 90%;
+  top: 10%;
+  left: 20px;
+}
+
+.notes-list-col > li:after {
+  content: '';
+  clear: both;
+  display: block;
+
+}
+
+.user-logout {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  width: 100%;
+}
+
+.user-logout > span {
+  position: absolute;
+  left: 75px;
+}
+
+.user-logout > button {
+  position: absolute;
+  right: 75px;
+}

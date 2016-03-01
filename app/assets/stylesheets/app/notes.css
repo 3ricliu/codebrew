@@ -1,0 +1,39 @@
+.notes {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.create-note {
+  width: 25%;
+  font-size: 12px;
+  position: absolute;
+  top: 6.5%;
+  right: 38%;
+  text-align: center;
+}
+
+.notebook-title {
+  left: 0px;
+  position: absolute;
+  right: 0px;
+  top: 14px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 30px;
+}
+
+
+.n-title {
+  padding: 10px 0px 10px 0px;
+  display: inline-block;
+}
+
+
+.notes-list-col > ul {
+  overflow-y: auto;
+  position: absolute;
+  height: 90%;
+  width: 88%;
+  top: 10%;
+}

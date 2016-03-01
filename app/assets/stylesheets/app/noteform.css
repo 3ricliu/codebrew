@@ -1,0 +1,47 @@
+.note-container {
+  height: 100%;
+}
+
+.note-container > form {
+  height: 95%;
+  color: white;
+}
+
+.quill {
+  width: 87%;
+  position: absolute;
+  left: 6%;
+  top: 11%;
+  height: 80%;
+  outline: solid;
+}
+
+.quill-contents {
+  height: 95%
+}
+
+.note-title {
+  top: 2%;
+  position: absolute;
+  left: 6%;
+  font-size: 50px;
+  width: 85%;
+}
+
+
+
+
+input[type=button] {
+  cursor: pointer;
+}
+
+.save {
+  position: absolute;
+  bottom: 4%;
+  right: 8%;
+  font-size: 15px;
+}
+
+.shadow {
+
+}
