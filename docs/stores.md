@@ -35,15 +35,6 @@ Holds all persisted notebook data.
 ##### Listeners:
 - `NotebookIndex`
 
-<!-- ### NotebookFormStore
-
-Holds un-persisted notebook data to send to the API.
-
-##### Actions:
-- `receiveNotebookFormParams`
-
-##### Listeners:
-- `NotebookForm` -->
 
 ### SearchStore
 

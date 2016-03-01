@@ -3,4 +3,6 @@ class Note < ActiveRecord::Base
 
   belongs_to :notebook
   belongs_to :user
+
+  has_many :taggings
 end
