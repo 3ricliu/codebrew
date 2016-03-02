@@ -21,3 +21,6 @@
 
 # Ignore webpack
 bundle.js*
+
+#Ignore DS store
+.DS_Store`
