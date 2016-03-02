@@ -22,7 +22,7 @@ var tagNoteIndex = React.createClass({
 
   componentWillReceiveProps: function (nextProps) {
     if(this.props.noteId !== nextProps.noteId){
-      var nextTags = TagStore.fetchNoteTags(this.nextProps.noteId);
+      var nextTags = TagStore.fetchNoteTags(nextProps.noteId);
       this.setState({tags: nextTags});
     }
   },
@@ -33,11 +33,10 @@ var tagNoteIndex = React.createClass({
   },
 
   generateTagList: function () {
-    var tagList;
-    debugger;
+    var tagList = [];
     this.state.tags.map(function (tag) {
       tagList.push(<li className='tag-item' key={tag.id}>
-        <TagIndexItem name={tag.name}/>
+        <TagIndexItem tag={tag}/>
       </li>);
     });
 
@@ -48,7 +47,7 @@ var tagNoteIndex = React.createClass({
     return (
       <div className="tag-list">
         {this.generateTagList()}
-        <TagForm />
+        <TagForm noteId={this.props.noteId} />
       </div>);
   }
 });

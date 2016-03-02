@@ -1,12 +1,7 @@
-unless @tags.empty?
-  json.tags @tags do |tag|
-    json.id tag.id
-    json.title tag.name
-
-    unless tag.notes.empty?
-      json.notes tag.notes do |note|
-        json.note_id note.id
-      end
+unless @tags_with_note_ids.empty?
+  json.tags @tags_with_note_ids.each do |tag|
+    json.id tag[0].id
+    json.name tag[0].name
+    json.note_ids tag[1]
     end
-  end
 end

@@ -114,8 +114,9 @@ var apiUtil = {
   fetchTags: function () {
     $.ajax ({
       url: '/api/tags',
+      method: 'GET',
       success: function (tags) {
-        TagClientActions.receiveTags(tags);
+        TagClientActions.receiveTags(tags.tags);
       }
     });
   },
@@ -125,19 +126,19 @@ var apiUtil = {
       url: '/api/tags',
       method: 'POST',
       data: {tag: newTag},
-      success: function (tag) {
-
+      success: function (nTag) {
+        TagClientActions.createTag(nTag.tag);
       }
     });
   },
 
-  deleteTag: function (deleteTag) {
+  deleteTag: function (tagId) {
     $.ajax ({
-      url: '/api/tags/' + deleteTag.id,
+      url: '/api/tags/' + tagId,
       method: 'DELETE',
-      data: {tag: deleteTag},
+      data: {tag: tagId},
       success: function (deletedTag) {
-
+        TagClientActions.deleteTag(deletedTag.tag);
       },
     });
   },

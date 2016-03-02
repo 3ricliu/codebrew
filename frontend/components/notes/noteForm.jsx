@@ -52,8 +52,17 @@ var noteForm = React.createClass({
     }
   },
 
+  createTagComponent: function () {
+    var tagComponent;
+    if(this.props.note.id !== undefined) {
+      tagComponent = <TagNoteIndex noteId={this.props.note.id} />;
+    }
+    return tagComponent;
+  },
+
   render: function () {
     var noteAction;
+    var tagComponent = this.createTagComponent();
 
     if(this.createOrEdit()){
       noteAction = this.createNote;
@@ -82,7 +91,8 @@ var noteForm = React.createClass({
           <input type="submit" value={this.props.buttonTitle} className="save"/>
 
         </form>
-        <TagNoteIndex />
+
+        {tagComponent}
       </div>
     );
   }

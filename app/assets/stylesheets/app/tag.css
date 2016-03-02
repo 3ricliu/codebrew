@@ -1,0 +1,7 @@
+.tag-list {
+  color: white;
+  position: absolute;
+  bottom: 3%;
+  left: 6%;
+  list-style-type: none;
+}

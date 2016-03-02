@@ -12,4 +12,18 @@ module.exports = {
 
   },
 
+  createTag: function (newTag) {
+    Dispatcher.dispatch({
+      actionType: TagConstants.CREATE_TAG,
+      payload: newTag
+    });
+  },
+
+  deleteTag: function (deletedTag) {
+    Dispatcher.dispatch({
+      actionType: TagConstants.DELETE_TAG,
+      payload: deletedTag
+    });
+  }
+
 };

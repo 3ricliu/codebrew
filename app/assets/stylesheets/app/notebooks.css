@@ -9,7 +9,13 @@
 
 .new-notebook-form {
   padding: 10px;
-  padding: 10px 15px;
+}
+
+.new-notebook-form a {
+  position: relative;
+  padding: 10px auto;
+  width: 100%;
+  right: 0;
 }
 
 .notebook-form > input {

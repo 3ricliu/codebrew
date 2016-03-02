@@ -77,7 +77,8 @@ var noteIndex = React.createClass({
   },
 
 
-  createNewNote: function () {
+  createNewNote: function (e) {
+    e.preventDefault();
     var newNote = {title: "", body: ""};
     this.setState({selectedNote: newNote });
   },

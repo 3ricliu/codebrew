@@ -5,16 +5,18 @@ var TagServerActions = require('../../actions/tagServerActions');
 var tagForm = React.createClass({
 
   getInitialState: function () {
-    return({title: ""});
+    return({name: ""});
   },
 
   updateTitle: function (event) {
-    this.setState({title: event.target.value});
+    this.setState({name: event.target.value});
   },
 
-  createTitle: function (event) {
+  createTag: function (event) {
     event.preventDefault();
-    TagServerActions.createTag(this.state);
+    var tag = {name: this.state.name, noteId: this.props.noteId};
+    TagServerActions.createTag(tag);
+    this.setState({name: ""});
   },
 
 
@@ -22,7 +24,7 @@ var tagForm = React.createClass({
     return (
       <form className="tag-form" onSubmit={this.createTag}>
 
-        <input value={this.state.title}
+        <input value={this.state.name}
                onChange={this.updateTitle} />
 
              <input type="submit" value="create" />

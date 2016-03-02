@@ -26,6 +26,7 @@
   left: 6%;
   font-size: 50px;
   width: 85%;
+  text-overflow: ellipsis;
 }
 
 
