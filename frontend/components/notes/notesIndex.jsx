@@ -6,7 +6,6 @@ var NoteStore = require('../../stores/noteStore'),
 var NoteIndexItem = require('./noteIndexItem'),
     NoteForm = require('./noteForm');
 
-
 var noteIndex = React.createClass({
   getInitialState: function() {
     return ({ notes: [], selectedNote: null});
@@ -107,10 +106,14 @@ var noteIndex = React.createClass({
               note={note}
               selected={this.state.selectedNote.id}
               notebookId={this.props.params.notebook_id}
-              onClick={this.selectNote}/></li>);
-    }.bind(this));
+              onClick={this.selectNote}/></li> );
+    }.bind(this)
+
+  );
     return noteComponents;
   },
+
+  //notebookId is not necessary
 
 
   render: function () {

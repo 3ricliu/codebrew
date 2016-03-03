@@ -35,6 +35,17 @@ TagStore.fetchNoteTags = function (noteId) {
   return noteTags;
 },
 
+TagStore.fetchAllTags = function () {
+  var tags = [];
+  for(var id in _tags){
+    if( _tags.hasOwnProperty(id) ){
+      tags.push(_tags[id]);
+    }
+  }
+
+  return tags;
+},
+
 TagStore.__onDispatch = function (dispatchedData) {
   switch(dispatchedData.actionType) {
     case TagConstants.RECEIVE_ALL_TAGS:

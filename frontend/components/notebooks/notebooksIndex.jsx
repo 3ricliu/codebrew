@@ -6,6 +6,7 @@ var NotebookStore = require('../../stores/notebookStore'),
     NotebookServerActions = require('../../actions/notebookServerActions'),
     NotebookForm = require('./notebooksIndex'),
     NotebookIndexItem = require('./notebookIndexItem'),
+    TagNavIndex = require('../tags/tagNavIndex'),
     User = require('../user');
 
 var notebooksIndex = React.createClass({
@@ -64,6 +65,9 @@ var notebooksIndex = React.createClass({
           <br/>
           <ul>
             {notebooks}
+          </ul>
+          <ul>
+            <TagNavIndex />
           </ul>
           <User />
         </div>

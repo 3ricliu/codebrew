@@ -1,13 +1,9 @@
-var React = require('react');
-var Prosemirror = require('prosemirror');
-require("prosemirror/dist/menu/menubar");
+var React = require('react'),
+    ReactQuill = require('react-quill');
 
 var NoteServerActions = require('../../actions/noteServerActions'),
     TagNoteIndex = require('../tags/tagNoteIndex');
 
-var PrismCode = require('react-prism');
-
-var _editor;
 
 var noteForm = React.createClass({
 
@@ -19,29 +15,15 @@ var noteForm = React.createClass({
     return ({title: title, body: body, id: id, notebookId: notebookId});
   },
 
-  componentDidMount: function () {
-    this.proseSetup();
-  },
-
-  proseSetup: function () {
-    _editor = new Prosemirror.ProseMirror({
-      place: document.getElementById('editor'),
-      menuBar: true
-    });
-
-    _editor.on('change', function () {
-      this.updateBody();
-    }.bind(this));
-  },
-
   updateTitle: function(event) {
-    // event.preventDefault();
     this.setState({title: event.target.value});
   },
 
-  updateBody: function () {
-    this.setState({body: _editor.getContent("html")});
+
+  updateBody: function(event) {
+    this.setState({body: event});
   },
+
 
   updateNote: function(event) {
     event.preventDefault();
@@ -60,8 +42,6 @@ var noteForm = React.createClass({
 
 
   componentWillReceiveProps: function (nextProps) {
-    _editor.setContent(nextProps.note.body, "html");
-
     this.setState({title: nextProps.note.title,
                    body: nextProps.note.body,
                    id: nextProps.note.id,
@@ -84,10 +64,6 @@ var noteForm = React.createClass({
     return tagComponent;
   },
 
-  debug: function () {
-    debugger;
-  },
-
   render: function () {
     var noteAction;
     var tagComponent = this.createTagComponent();
@@ -97,12 +73,6 @@ var noteForm = React.createClass({
     } else {
       noteAction = this.updateNote;
     }
-
-    // var highlight;
-    // if(this.props.note.id !== undefined){
-    //   Prism.highlightElement(test);
-    //   debugger;
-    // }
 
 
     return(
@@ -118,11 +88,14 @@ var noteForm = React.createClass({
                onChange={this.updateTitle} />
 
           <br/>
-            <div id='editor' />
+            <ReactQuill theme="snow"
+                      value={this.state.body}
+                      onChange={this.updateBody} />;
           <br/>
           <input type="submit" value={this.props.buttonTitle} className="save"/>
-          <input type="button" value="debug" onClick={this.debug} />
+
         </form>
+
         {tagComponent}
       </div>
     );

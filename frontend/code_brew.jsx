@@ -14,6 +14,8 @@ var NotesIndex = require('./components/notes/notesIndex'),
     NotebookForm = require('./components/notebooks/notebookForm'),
     NotebookIndexItem = require('./components/notebooks/notebookForm');
 
+var DraftEditor = require('./components/notes/draftEditor');
+
 var App = React.createClass({
   render: function () {
     return (<div className="app-container">
@@ -30,6 +32,10 @@ var routes = (
       <Route path="notebooks" component={NotebooksIndex}>
         <Route path="new" component={NotebookForm} />
         <Route path="edit/:notebook_id" component={NotebookForm} />
+
+        <Route path="notes" component={NotesIndex} />
+
+        <Route path="tags/:tag_id" component={NotesIndex} />
       </Route>
       <Route path="notebooks/:notebook_id" component={NotebooksIndex}>
         <Route path="notes" component={NotesIndex} />
@@ -39,6 +45,7 @@ var routes = (
   </Route>
 );
 
+// <Route path="allnotes" component={}
 
 document.addEventListener("DOMContentLoaded", function () {
   var content = document.getElementById("content");

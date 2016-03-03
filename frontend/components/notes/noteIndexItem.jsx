@@ -1,18 +1,33 @@
 var React = require('react');
+var Prosemirror = require('prosemirror');
 var NoteServerActions = require('../../actions/noteServerActions');
 
+var _translator;
 
 var noteIndexItem = React.createClass({
+
+  componentWillMount: function() {
+    _translator = new Prosemirror.ProseMirror();
+  },
+
   // extracted snippet from state.
   summary: function () {
-    var snippet = "";
-    var noteBodyLength = this.props.note.body;
+    var snippet;
 
-    if( noteBodyLength.length > 0 && noteBodyLength.length < 80){
-      snippet = noteBodyLength;
-    } else if (noteBodyLength.length > 80) {
-      snippet = noteBodyLength.substr(0,80) + "...";
-    }
+    var noteBody = this.props.note.body;
+
+    snippet = noteBody.substr(0,80);
+
+    _translator.setContent(snippet, "html");
+    snippet = _translator.getContent("text");
+
+    // if( noteBody.length > 0 && noteBody.length < 80){
+    //   _translator.setContent(note.body, "html");
+    //   note.body = _translator.getContent("text");
+    //   snippet = noteBody;
+    // } else if (noteBody.length > 80) {
+    //   snippet = noteBody.substr(0,80) + "...";
+    // }
 
     return snippet;
   },

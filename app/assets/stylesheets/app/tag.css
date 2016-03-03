@@ -5,3 +5,9 @@
   left: 6%;
   list-style-type: none;
 }
+
+
+.new-notebook-form .tag-list {
+  width: 92%;
+  height: 39%;
+}

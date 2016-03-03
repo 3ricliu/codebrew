@@ -101,15 +101,6 @@ var apiUtil = {
     });
   },
 
-  fetchUser: function () {
-    $.ajax ({
-      url: 'api/current_user',
-      method: 'GET',
-      success: function (username) {
-        UserClientActions.receiveUser(username.username);
-      }
-    });
-  },
 
   fetchTags: function () {
     $.ajax ({
@@ -140,6 +131,16 @@ var apiUtil = {
       success: function (deletedTag) {
         TagClientActions.deleteTag(deletedTag.tag);
       },
+    });
+  },
+
+  fetchUser: function () {
+    $.ajax ({
+      url: 'api/current_user',
+      method: 'GET',
+      success: function (username) {
+        UserClientActions.receiveUser(username.username);
+      }
     });
   },
 
