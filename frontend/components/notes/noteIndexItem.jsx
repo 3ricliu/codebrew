@@ -37,8 +37,12 @@ var noteIndexItem = React.createClass({
     }
 
     return(
-      <ul className={selected} onClick={this.props.onClick.bind(null, this.props.note)}>
-          {this.props.note.title}
+      <ul className={selected}
+          className="note-index-item"
+          onClick={this.props.onClick.bind(null, this.props.note)}>
+          <div className="note-summary-title">
+            {this.props.note.title}
+          </div>
           <br />
             {this.summary()}
           <br />

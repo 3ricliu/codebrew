@@ -22,6 +22,10 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    render json: {}
+    if(params[:react])
+      render json: {}
+    else
+      redirect_to new_user_url
+    end
   end
 end

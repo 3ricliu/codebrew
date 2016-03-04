@@ -158,6 +158,7 @@ var apiUtil = {
     $.ajax ({
       url: 'session',
       method: 'DELETE',
+      data: {react: true},
       success: function () {
         window.location = '/users/new';
       }

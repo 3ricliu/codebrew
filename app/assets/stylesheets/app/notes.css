@@ -1,16 +1,54 @@
 .notes {
   padding: 10px;
   border-bottom: 1px solid black;
+  word-wrap: break-word;
 }
 
 .create-note {
-  width: 25%;
-  font-size: 12px;
+	border: 3px solid #fff;
+	color: #fff;
   position: absolute;
-  top: 6.5%;
-  right: 38%;
-  text-align: center;
+  outline: 1px solid white;
+  left: 82%;
+  top: 3%;
 }
+
+/* Button 1a */
+.create-note:hover,
+.create-note:active {
+	color: #34495E;
+	background: #fff;
+}
+.create-note {
+  outline: 1px solid white;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+  padding: 5px 5px;
+	display: inline-block;
+	letter-spacing: 1px;
+	outline: none;
+	position: absolute;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  font-size: 15px
+}
+
+.create-note:after {
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+
+
+
+
+
 
 .notebook-title {
   left: 0px;
@@ -21,8 +59,20 @@
   font-weight: bold;
   padding: 10px;
   font-size: 30px;
+  width: 82%;
 }
 
+.note-summary-title {
+  margin: 0px 0px -10px 0px;
+}
+
+.note-index-items {
+  font-size: 13px;
+}
+
+.note-index-item {
+  cursor: pointer;
+}
 
 .n-title {
   padding: 10px 0px 10px 0px;
@@ -36,4 +86,59 @@
   height: 90%;
   width: 88%;
   top: 10%;
+}
+
+.note-form-buttons > .snippet {
+  left: 28%
+}
+
+.note-form-buttons > .save {
+  left: 46%
+}
+
+
+
+.note-form-button {
+	border: 3px solid #fff;
+	color: #fff;
+  position: absolute;
+  outline: 1px solid wite;
+}
+
+/* Button 1a */
+.note-form-button:hover,
+.note-form-button:active {
+	color: #34495E;
+	background: #fff;
+}
+.note-form-button {
+  outline: 1px solid white;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	padding: 10px 10px;
+	display: inline-block;
+	letter-spacing: 1px;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  font-size: 15px
+}
+
+.note-form-button:after {
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+
+.note-form-buttons {
+  top: 93%;
+  position: absolute;
+  width: 100%;
 }

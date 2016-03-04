@@ -35,9 +35,7 @@ var tagNoteIndex = React.createClass({
   generateTagList: function () {
     var tagList = [];
     this.state.tags.map(function (tag) {
-      tagList.push(<li className='tag-item' key={tag.id}>
-        <TagIndexItem tag={tag}/>
-      </li>);
+      tagList.push(<TagIndexItem tag={tag} key={tag.id}/>);
     });
 
     return tagList;
@@ -45,8 +43,10 @@ var tagNoteIndex = React.createClass({
 
   render: function () {
     return (
-      <div className="tag-list">
-        {this.generateTagList()}
+      <div id="tag-list">
+        <ul>
+          {this.generateTagList()}
+        </ul>
         <TagForm noteId={this.props.noteId} />
       </div>);
   }

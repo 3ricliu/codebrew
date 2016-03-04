@@ -25,7 +25,7 @@ var removeNotebook = function(deletedNotebook) {
   return deletedNotebook;
 };
 
-NotebookStore.all = function (){
+NotebookStore.all = function () {
   var notebooks = [];
   for(var id in _notebooks){
     if( _notebooks.hasOwnProperty(id) ){

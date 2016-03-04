@@ -118,14 +118,16 @@ var noteForm = React.createClass({
 
         <input className="note-title"
                value={this.state.title}
-               placeholder={"Title your note"}
+               placeholder={"New Title"}
                onChange={this.updateTitle} />
 
           <br/>
             <div id='editor' />
           <br/>
-          <input type="button" value="Create Snippit" className="snippet" onClick={this.createSnippet}/>
-          <input type="submit" value={this.props.buttonTitle} className="save"/>
+          <div className='note-form-buttons'>
+            <input type="button" value="Create Snippet" className="note-form-button snippet" onClick={this.createSnippet} />
+            <input type="submit" value={this.props.buttonTitle} className="note-form-button save" />
+          </div>
         </form>
         {tagComponent}
       </div>

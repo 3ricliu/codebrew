@@ -11,10 +11,10 @@ var tagIndexItem = React.createClass({
 
   render: function () {
     return(
-    <div className='tag'>
+    <li className='tag'>
       {this.props.tag.name}
-      <button onClick={this.deleteTag}>Delete</button>
-    </div>);
+      <button onClick={this.deleteTag}>x</button>
+    </li>);
   }
 });
 

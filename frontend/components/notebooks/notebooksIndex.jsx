@@ -59,14 +59,20 @@ var notebooksIndex = React.createClass({
     return(
       <div className="notes-container">
         <div className="notebooks-col">
-          <Link to={'home/notebooks/notes'}>All Notes</Link>
-          <div className="new-notebook-form btn">
-            <Link to={'home/notebooks/new'}>New Notebook</Link>
+          <div className="all-notes">
+            <Link to={'home/notebooks/notes'}
+                  className="nav-button">All Notes</Link>
           </div>
+          <div className="new-notebook-form">
+            <Link to={'home/notebooks/new'}
+                  className="nav-button">New Notebook</Link>
+          </div>
+          <div className="notebook-desc">Notebooks</div>
           <br/>
-          <ul className="nav-note-list">
+          <ul className="nav-notebook-list">
             {notebooks}
           </ul>
+          <div className="tag-desc">Tag</div>
           <ul className="nav-tag-list">
             <TagNavIndex />
           </ul>

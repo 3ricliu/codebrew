@@ -77,7 +77,7 @@ var notebookForm = React.createClass({
                onChange={this.updateTitle} />
 
 
-        <input type="submit" value={buttonText} className="btn" />
+             <input type="submit" value={buttonText} className="new-notebook-button" />
       </form>
     );
   }

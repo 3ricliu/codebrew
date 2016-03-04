@@ -28,16 +28,11 @@ var myEditor = React.createClass({
     this.setState({body: _editor.getContent("text")});
   },
 
-  button: function () {
-    debugger;
-  },
-
 
   render: function () {
     var editorState = this.state.editorState;
     return (
       <div id='editor'>
-        <input type="button" className="cos" value="debug" onClick={this.button} />
        </div>
     );
   },

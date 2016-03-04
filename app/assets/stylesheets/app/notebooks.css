@@ -18,6 +18,58 @@
   right: 0;
 }
 
+.user-logout {
+  position: absolute;
+  bottom: 8%;
+  left: -10px;
+  width: 85%;
+}
+
+.user-logout > span {
+  position: absolute;
+  left: 75px;
+}
+
+.user-logout > button {
+  position: absolute;
+  right: 10%;
+}
+
+
+.nav-button .logout {
+  position: absolute;
+  right: 31px;
+}
+
+.all-notes {
+  padding: 10px;
+}
+
+.all-notes a {
+  position: relative;
+  padding: 10px auto;
+  width: 100%;
+  right: 0;
+}
+
+.notebook-desc {
+  padding: 10px;
+  top: 18%;
+  position: absolute;
+  border-bottom: 3px solid white;
+  width: 88%;
+  font-size: 23px;
+}
+
+.tag-desc {
+  padding: 10px;
+  top: 66%;
+  position: absolute;
+  border-bottom: 3px solid white;
+  width: 88%;
+  font-size: 23px;
+}
+
 .notebook-form > input {
   color: white;
   border: 1px solid white;
@@ -51,15 +103,18 @@
 .title {
   padding: 10px 0px 10px 0px;
   display: inline-block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  width: 100%;
 }
 
 
-.nav-note-list {
-  height: 57%;
+.nav-notebook-list {
+  height: 40%;
   overflow-y: scroll;
   position: absolute;
   width: 90%;
-  top: 10%;
+  top: 23%;
   left: 20px;
 }
 
@@ -70,19 +125,98 @@
 
 }
 
-.user-logout {
+
+.nav-button {
+	border: 3px solid #fff;
+	color: #fff;
   position: absolute;
-  bottom: 8%;
-  left: 0;
+  outline: 1px solid white;
+}
+
+/* Button 1a */
+.nav-button:hover,
+.nav-button:active {
+	color: #34495E;
+	background: #fff;
+}
+.nav-button {
+  outline: 1px solid white;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	padding: 10px 10px;
+	display: inline-block;
+	letter-spacing: 1px;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  font-size: 15px
+}
+
+.nav-button:after {
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+
+.buttons {
+  top: 93%;
+  position: absolute;
   width: 100%;
 }
 
-.user-logout > span {
+
+
+
+
+
+
+
+/* new notebook form button */
+
+
+
+.new-notebook-button {
+	border: 3px solid #fff;
+	color: #fff;
   position: absolute;
-  left: 75px;
+  outline: 1px solid white;
+  left: 9px
 }
 
-.user-logout > button {
-  position: absolute;
-  right: 75px;
+/* Button 1a */
+.new-notebook-button:hover,
+.new-notebook-button:active {
+	color: #34495E;
+	background: #fff;
+}
+.new-notebook-button {
+  outline: 1px solid white;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	padding: 6px 6px;
+	display: inline-block;
+	letter-spacing: 1px;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  font-size: 15px
+}
+
+.new-notebook-button:after {
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
 }

@@ -41,8 +41,10 @@ var tagNavIndex = React.createClass({
 
   render: function () {
     return (
-      <div>
-        {this.generateTagList()}
+      <div id="tag-nav-list">
+        <ul>
+          {this.generateTagList()}
+        </ul>
       </div>);
   }
 });

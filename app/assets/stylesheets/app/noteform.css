@@ -27,6 +27,11 @@
   overflow-y: auto;
 }
 
+.ProseMirror-content > ul {
+  list-style: initial;
+}
+
+
 .ProseMirror-menubar {
   min-height: 23px;
 }
@@ -50,6 +55,9 @@
   font-size: 50px;
   width: 85%;
   text-overflow: ellipsis;
+  border-bottom: 3px solid white;
+  width: 87%;
+  padding: 6px;
 }
 
 
