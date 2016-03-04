@@ -9,36 +9,26 @@
 
 User.create(username: "demo", password: "password");
 
-Notebook.create(user_id: 1, title: "Today I Learned")
+Notebook.create(user_id: 1, title: "Sorting Algorithm")
+
+Note.create(user_id: 1, notebook_id: 1, title: "Bubble Sort",
+body:  "<pre><code>def bubble_sort(array)\n  n = array.length\n  loop do\n    swapped = false\n\n    (n-1).times do |i|\n      if array[i] &gt; array[i+1]\n        array[i], array[i+1] = array[i+1], array[i]\n        swapped = true\n      end\n    end\n\n    break if not swapped\n  end\n\n  array\nend</code></pre><p></p><p><em>Bubble sort</em> is a simple sorting algorithm. The algorithm starts at the beginning of the data set. It compares the first two elements, and if the first is greater than the second, it swaps them. It continues doing this for each pair of adjacent elements to the end of the data set. It then starts again with the first two elements, repeating until no swaps have occurred on the last pass.<a href=\"https://en.wikipedia.org/wiki/Sorting_algorithm#cite_note-28\">[28]</a> This algorithm's average and worst-case performance is O(<em>n</em>2), so it is rarely used to sort large, unordered data sets. Bubble sort can be used to sort a small number of items (where its asymptotic inefficiency is not a high penalty). Bubble sort can also be used efficiently on a list of any length that is nearly sorted (that is, the elements are not significantly out of place). For example, if any number of elements are out of place by only one position (e.g. 0123546789 and 1032547698), bubble sort's exchange will get them in order on the first pass, the second pass will find all elements in order, so the sort will take only 2<em>n</em> time.</p><p></p><p></p>")
+
+
+
+
+Note.create(user_id: 1, notebook_id: 1, title: "Bubble Sort",
+body:  "<pre><code>def bubble_sort(array)\n  n = array.length\n  loop do\n    swapped = false\n\n    (n-1).times do |i|\n      if array[i] &gt; array[i+1]\n        array[i], array[i+1] = array[i+1], array[i]\n        swapped = true\n      end\n    end\n\n    break if not swapped\n  end\n\n  array\nend</code></pre><p></p><p><em>Bubble sort</em> is a simple sorting algorithm. The algorithm starts at the beginning of the data set. It compares the first two elements, and if the first is greater than the second, it swaps them. It continues doing this for each pair of adjacent elements to the end of the data set. It then starts again with the first two elements, repeating until no swaps have occurred on the last pass.<a href=\"https://en.wikipedia.org/wiki/Sorting_algorithm#cite_note-28\">[28]</a> This algorithm's average and worst-case performance is O(<em>n</em>2), so it is rarely used to sort large, unordered data sets. Bubble sort can be used to sort a small number of items (where its asymptotic inefficiency is not a high penalty). Bubble sort can also be used efficiently on a list of any length that is nearly sorted (that is, the elements are not significantly out of place). For example, if any number of elements are out of place by only one position (e.g. 0123546789 and 1032547698), bubble sort's exchange will get them in order on the first pass, the second pass will find all elements in order, so the sort will take only 2<em>n</em> time.</p><p></p><p></p>")
+
+
+
+
+
 
 Notebook.create(user_id: 1, title: "Explained like I'm 5")
 
 
-Note.create(user_id: 1, notebook_id: 1, title: "Two con men sold a fake painting for €1.5 million, only to find out that all the money was counterfeit",
-body: "Spanish Police have arrested two brothers from Girona, Spain, who attempted to sell a fake Francisco de Goya painting to a purported sheikh, EFE reports. But the sheikh was no victim: he paid the pair with photocopied money.
 
-The con artists realized they had been tricked when they tried to deposit 1.7 million Swiss francs (€1.5 million) in a Geneva bank and were told that the banknotes were mere photocopies.
-
-Spanish police officers found out about the scam in December 2014, when the Avignon customs warned them that they had intercepted two Spanish brothers trying to smuggle 1.7 million fake Swiss francs.
-
-Related: Forger Claims Leonardo da Vinci's La Bella Principessa Is Actually His Painting of a Supermarket Cashier
-
-The sheikh had purportedly agreed to pay a total of €4 million for the Goya painting, entitled Portrait of don Antonio María Esquivel. The first batch of cash was to be collected in Turin, and was delivered by a middleman from the prince's entourage. Apparently, the brothers verified the cash was legit with a machine, but the middleman managed to switch it before they left for Switzerland.
-
-Adding Insult to Injury
-The brothers had also given a €300,000 premium to the middleman who had introduced them to the sheikh. In order to do so, they had asked a friend to lend them the money, promising to give it back the following day, with an extra €80,000.
-
-But things did not pan out as expected. The sheikh and the middleman, carrying the €300,000, have gone underground and their whereabouts are currently unknown. Meanwhile, the fake Goya painting—which was found in one of the brothers' houses upon their arrest—is currently being held by police.
-
-Related: Drug Bust Uncovers $700 Million Worth of Methamphetamines in Art Supplies
-
-The shambolic art swindle began back in 2003, when the brothers first agreed to buy the Goya painting for €270,000, convinced it was the real deal.
-
-They only paid a deposit of €20,000, however, as the transaction was halted due to the painting's lack of a certificate of authenticity. In 2006, a Goya expert hired by the Girona Provincial Court deemed that the painting was a fake, done by a Goya contemporary rather than the Spanish master himself. The expert cited a key element that had allowed him to establish its fake provenance: the forger had forgotten to paint a specific medal of honor on the subject's chest, clearly visible in the original.
-
-The Provincial Court thus let the brothers keep the fake and relieved them of having to pay the standing amount, €250,000. Knowing they owned a fake, they started to look for someone to sell it to, just as they had been conned themselves. Little did they know they were soon to meet their match.
-
-Goya paintings have been in the news—see Unknown Goya Self-Portrait Discovered Languishing in French Museum and Spanish Politicians Busted for Money Laundering Involving Goya Paintings.")
 
 
 Note.create(user_id: 1, notebook_id: 1, title:"During the height of the cold war, Neil Armstrong's final task on the moon was to place memorial items honoring fallen Russian cosmonauts.", body: "On 26 April 1967, Komarov was given a state funeral in Moscow, and his ashes were interred in the Kremlin Wall Necropolis at Red Square. The American astronauts requested the Soviet government to allow a representative to attend, but were turned down.
