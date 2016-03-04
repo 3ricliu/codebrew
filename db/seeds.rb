@@ -9,12 +9,10 @@
 
 User.create(username: "demo", password: "password");
 
-Notebook.create(user_id: 1, title: "Sorting Algorithm")
+Notebook.create(user_id: 12, title: "Sorting Algorithm")
 
-Note.create(user_id: 1, notebook_id: 1, title: "Bubble Sort",
+Note.create(user_id: 1, notebook_id: 12, title: "Bubble Sort",
 body:  "<pre><code>def bubble_sort(array)\n  n = array.length\n  loop do\n    swapped = false\n\n    (n-1).times do |i|\n      if array[i] &gt; array[i+1]\n        array[i], array[i+1] = array[i+1], array[i]\n        swapped = true\n      end\n    end\n\n    break if not swapped\n  end\n\n  array\nend</code></pre><p></p><p><em>Bubble sort</em> is a simple sorting algorithm. The algorithm starts at the beginning of the data set. It compares the first two elements, and if the first is greater than the second, it swaps them. It continues doing this for each pair of adjacent elements to the end of the data set. It then starts again with the first two elements, repeating until no swaps have occurred on the last pass.<a href=\"https://en.wikipedia.org/wiki/Sorting_algorithm#cite_note-28\">[28]</a> This algorithm's average and worst-case performance is O(<em>n</em>2), so it is rarely used to sort large, unordered data sets. Bubble sort can be used to sort a small number of items (where its asymptotic inefficiency is not a high penalty). Bubble sort can also be used efficiently on a list of any length that is nearly sorted (that is, the elements are not significantly out of place). For example, if any number of elements are out of place by only one position (e.g. 0123546789 and 1032547698), bubble sort's exchange will get them in order on the first pass, the second pass will find all elements in order, so the sort will take only 2<em>n</em> time.</p><p></p><p></p>")
-
-
 
 
 Note.create(user_id: 1, notebook_id: 1, title: "Bubble Sort",
