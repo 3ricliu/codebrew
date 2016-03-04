@@ -25,6 +25,16 @@ var apiUtil = {
     }
   },
 
+  fetchTaggedNotes: function (tagName) {
+    $.ajax ({
+      url: 'api/tagged_notes',
+      data: {tag_name: tagName},
+      success: function (notes) {
+        NoteClientActions.receiveAll(notes);
+      }
+    });
+  },
+
   createNewNote: function (newNote) {
     $.ajax ({
       url: '/api/notes',

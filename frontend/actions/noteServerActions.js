@@ -6,6 +6,11 @@ module.exports = {
     ApiUtil.fetchNotes(notebookId);
   },
 
+  fetchTaggedNotes: function (tagName) {
+    ApiUtil.fetchTaggedNotes(tagName);
+  },
+
+
   createNote: function (note) {
     ApiUtil.createNewNote(note);
   },

@@ -15,6 +15,14 @@ class Api::NotesController < ApplicationController
     render :index
   end
 
+  def tagged
+    @notes = []
+    tags = Tag.includes(:notes);
+    @notes = tags.find_by_name(params[:tag_name]).notes
+
+    render :index
+  end
+
   def show
     @note = Note.find_by_id(params[:id])
     @note = nil unless @note.user_id == current_user.id

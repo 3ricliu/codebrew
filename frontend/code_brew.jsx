@@ -32,10 +32,8 @@ var routes = (
       <Route path="notebooks" component={NotebooksIndex}>
         <Route path="new" component={NotebookForm} />
         <Route path="edit/:notebook_id" component={NotebookForm} />
-
         <Route path="notes" component={NotesIndex} />
-
-        <Route path="tags/:tag_id" component={NotesIndex} />
+        <Route path="tags/:tag_name" component={NotesIndex} />
       </Route>
       <Route path="notebooks/:notebook_id" component={NotebooksIndex}>
         <Route path="notes" component={NotesIndex} />

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     get 'current_user', to: 'sessions#current'
 
+    get 'tagged_notes', to: 'notes#tagged'
+
     resources :notebooks, only: [:index, :create, :update, :destroy]
 
     resources :notes, only: [:index, :show, :create, :update, :destroy]

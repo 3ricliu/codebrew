@@ -60,6 +60,7 @@ var noteForm = React.createClass({
 
 
   componentWillReceiveProps: function (nextProps) {
+
     _editor.setContent(nextProps.note.body, "html");
 
     this.setState({title: nextProps.note.title,
@@ -84,8 +85,11 @@ var noteForm = React.createClass({
     return tagComponent;
   },
 
-  debug: function () {
-    debugger;
+  createSnippet: function () {
+    var body = _editor.getContent("html");
+    body = body + "<pre><code> </pre></code>";
+    _editor.setContent(body, "html");
+    _editor.focus();
   },
 
   render: function () {
@@ -120,8 +124,8 @@ var noteForm = React.createClass({
           <br/>
             <div id='editor' />
           <br/>
+          <input type="button" value="Create Snippit" className="snippet" onClick={this.createSnippet}/>
           <input type="submit" value={this.props.buttonTitle} className="save"/>
-          <input type="button" value="debug" onClick={this.debug} />
         </form>
         {tagComponent}
       </div>

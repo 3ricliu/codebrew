@@ -24,8 +24,12 @@ var noteIndex = React.createClass({
 
   componentWillReceiveProps: function(nextProps) {
     console.log("received props");
-    if(this.props.params.notebook_id !== nextProps.params.notebook_id){
+    if (nextProps.params.tag_name !== undefined) {
+      NoteServerActions.fetchTaggedNotes(nextProps.params.tag_name);
+    } else if (this.props.params.notebook_id !== nextProps.params.notebook_id) {
       NoteServerActions.fetchNotes(nextProps.params.notebook_id);
+    } else {
+      NoteServerActions.fetchNotes();
     }
   },
 
@@ -35,10 +39,16 @@ var noteIndex = React.createClass({
 
     if(allNotes.length === 0){ //if no notes created in notebook, create new note
       prevSelectedNote = {title: "", body: ""};
-    } else if(this.state.selectedNote === null) { //first time mounting
+    } else if(this.state.selectedNote === null
+           || this.state.selectedNote.title === "" ) { //first time mounting
       prevSelectedNote = allNotes[0];
     } else if(this.state.selectedNote.title !== "") { //still editing the last note
-      prevSelectedNote = allNotes[this.stillEditing(allNotes)];
+      var editing = this.stillEditing(allNotes);
+        if(editing === false){
+          prevSelectedNote = allNotes[0];
+        } else {
+          prevSelectedNote = allNotes[editing];
+        }
     }
     console.log("receiving notes");
     this.setState({ notes: allNotes, selectedNote: prevSelectedNote });
@@ -67,11 +77,18 @@ var noteIndex = React.createClass({
   findNotebookTitle: function() {
     var title;
       this.props.notebooks.forEach(function(notebook){
-        if (notebook.id == this.props.params.notebook_id) {
+        if (notebook.id === parseInt(this.props.params.notebook_id)) {
           title = notebook.title;
         }
       }.bind(this));
 
+      if(title === undefined) {
+        if(this.props.params.tag_name !== undefined) {
+          title = "#" + this.props.params.tag_name;
+        } else {
+          title = "All Notes";
+        }
+      }
     return title;
   },
 
@@ -83,9 +100,17 @@ var noteIndex = React.createClass({
   },
 
 
+  determineCreateButton: function () {
+    if(this.props.params.notebook_id !== undefined){
+      return (<button className="create-note btn"
+                      onClick={this.createNewNote}>New Note</button>);
+    }
+  },
+
   determineNoteForm: function () {
     var noteForForm = {title: "", body: ""};
     var action = "Create Note";
+
     if(this.state.notes.length !==0){
       if(this.state.selectedNote === undefined) {
         this.state.selectedNote = noteForForm;
@@ -105,7 +130,6 @@ var noteIndex = React.createClass({
               className="title"
               note={note}
               selected={this.state.selectedNote.id}
-              notebookId={this.props.params.notebook_id}
               onClick={this.selectNote}/></li> );
     }.bind(this)
 
@@ -113,11 +137,12 @@ var noteIndex = React.createClass({
     return noteComponents;
   },
 
-  //notebookId is not necessary
 
 
   render: function () {
+
     var formParams = this.determineNoteForm();
+    var createButton = this.determineCreateButton();
     return(
       <div className="notes-col">
         <div className="notes-list-col">
@@ -125,7 +150,7 @@ var noteIndex = React.createClass({
             {this.findNotebookTitle()}
           </div>
             <br/>
-          <button className="create-note btn" onClick={this.createNewNote}>New Note</button>
+            {createButton}
           <ul>
             {this.generateNoteIndexItems()}
           </ul>

@@ -54,7 +54,7 @@
 }
 
 
-.notebooks-col > ul {
+.nav-note-list {
   height: 57%;
   overflow-y: scroll;
   position: absolute;

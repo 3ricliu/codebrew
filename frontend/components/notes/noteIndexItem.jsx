@@ -21,14 +21,6 @@ var noteIndexItem = React.createClass({
     _translator.setContent(snippet, "html");
     snippet = _translator.getContent("text");
 
-    // if( noteBody.length > 0 && noteBody.length < 80){
-    //   _translator.setContent(note.body, "html");
-    //   note.body = _translator.getContent("text");
-    //   snippet = noteBody;
-    // } else if (noteBody.length > 80) {
-    //   snippet = noteBody.substr(0,80) + "...";
-    // }
-
     return snippet;
   },
 
@@ -40,7 +32,6 @@ var noteIndexItem = React.createClass({
 
   render: function () {
     var selected;
-    // <Link to={"edit_note" + this.props.note.id}>
     if(this.props.selected === this.props.note.id){
       selected = "selected";
     }

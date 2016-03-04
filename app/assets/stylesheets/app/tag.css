@@ -6,8 +6,13 @@
   list-style-type: none;
 }
 
+.nav-tag-list {
+  top: 68%;
+  height: 6%;
+}
 
-.new-notebook-form .tag-list {
-  width: 92%;
-  height: 39%;
+.nav-tag-list {
+  top: 70%;
+  position: absolute;
+  width: 90%;
 }

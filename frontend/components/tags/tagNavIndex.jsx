@@ -4,6 +4,7 @@ var React = require('react'),
 
 var TagIndexItem = require('./tagIndexItem'),
     TagStore = require('../../stores/tagStore'),
+    TagIndexItem = require('./tagIndexItem'),
     TagServerActions = require('../../actions/tagServerActions');
 
 var tagNavIndex = React.createClass({
@@ -30,8 +31,8 @@ var tagNavIndex = React.createClass({
     var tagList = [];
     this.state.tags.map(function (tag) {
       tagList.push(
-        <Link to={'/home/notebooks/tags/' + tag.name} key={tag.id}>
-        <li className='tag-item' key={tag.id}>{tag.name}</li>
+        <Link to={'/home/notebooks/tags/' + tag.name} key={tag.id} className='tag-item'>
+          <TagIndexItem tag={tag}/>
         </Link>);
     });
 
@@ -40,7 +41,7 @@ var tagNavIndex = React.createClass({
 
   render: function () {
     return (
-      <div className="tag-list">
+      <div>
         {this.generateTagList()}
       </div>);
   }

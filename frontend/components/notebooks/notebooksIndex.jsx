@@ -34,7 +34,7 @@ var notebooksIndex = React.createClass({
 
   receiveNotebooks: function() {
     var notebooks = NotebookStore.all();
-    if(notebooks.length ===0 ){
+    if(notebooks.length === 0 ){
       this.history.push("/home/notebooks");
       this.setState({notebooks: notebooks});
     } else {
@@ -59,14 +59,15 @@ var notebooksIndex = React.createClass({
     return(
       <div className="notes-container">
         <div className="notebooks-col">
+          <Link to={'home/notebooks/notes'}>All Notes</Link>
           <div className="new-notebook-form btn">
             <Link to={'home/notebooks/new'}>New Notebook</Link>
           </div>
           <br/>
-          <ul>
+          <ul className="nav-note-list">
             {notebooks}
           </ul>
-          <ul>
+          <ul className="nav-tag-list">
             <TagNavIndex />
           </ul>
           <User />
