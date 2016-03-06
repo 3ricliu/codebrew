@@ -20,6 +20,14 @@
   overflow-y: auto;
 }
 
+.tag-form {
+  display: inline;
+  /*bottom: 8.5%;
+  left: 6%;*/
+}
+
+
+
 .new-tag-bar {
   border-bottom: 1px solid white;
   font-size: 13px;
@@ -30,15 +38,20 @@
 }
 
 .tag-submit {
-  position: absolute;
+  /*position: absolute;*/
   color: white;
-  top: 14px;
-  font-size: 37px;
+  /*top: 14px;*/
+  font-size: 16px;
 }
+/*
+.tag-submit {
+  position: absolute;
+  top: -57%;
+}*/
 
 /* taglist in nav section */
 #tag-nav-list {
-  position: absolute;
+  /*position: absolute;*/
   bottom: 8%;
   left: -2%;
   padding: 0px;
@@ -78,9 +91,12 @@
 /* taglist in notes section */
 #tag-list {
   position: absolute;
-  bottom: 8%;
+  bottom: 5%;
   left: 5%;
   padding: 8px;
+  height: 51px;
+  overflow-y: auto;
+  width: 88.5%;
 }
 
 #tag-list li{
@@ -109,4 +125,13 @@
   transition: all 0.3s;
 	color: #34495E;
 	background: #fff;
+}
+
+
+
+#note-form-tag-area {
+  height: 6%;
+  position: absolute;
+  width: 100%;
+  bottom: 8%;
 }

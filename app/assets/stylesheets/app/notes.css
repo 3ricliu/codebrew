@@ -10,7 +10,7 @@
   position: absolute;
   outline: 1px solid white;
   left: 82%;
-  top: 3%;
+  top: 2.7%;
 }
 
 /* Button 1a */
@@ -59,7 +59,7 @@
   font-weight: bold;
   padding: 10px;
   font-size: 30px;
-  width: 82%;
+  width: 100%;
 }
 
 .note-summary-title {

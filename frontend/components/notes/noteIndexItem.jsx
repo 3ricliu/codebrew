@@ -16,7 +16,7 @@ var noteIndexItem = React.createClass({
 
     var noteBody = this.props.note.body;
 
-    snippet = noteBody.substr(0,80);
+    snippet = noteBody.substr(0,120);
 
     _translator.setContent(snippet, "html");
     snippet = _translator.getContent("text");
@@ -41,7 +41,7 @@ var noteIndexItem = React.createClass({
           className="note-index-item"
           onClick={this.props.onClick.bind(null, this.props.note)}>
           <div className="note-summary-title">
-            {this.props.note.title}
+            {this.props.note.title.substr(0,60)}
           </div>
           <br />
             {this.summary()}

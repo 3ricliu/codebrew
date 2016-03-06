@@ -72,7 +72,7 @@ var notebooksIndex = React.createClass({
           <ul className="nav-notebook-list">
             {notebooks}
           </ul>
-          <div className="tag-desc">Tag</div>
+          <div className="tag-desc">Tags</div>
           <ul className="nav-tag-list">
             <TagNavIndex />
           </ul>

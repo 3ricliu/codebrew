@@ -43,11 +43,13 @@ var tagNoteIndex = React.createClass({
 
   render: function () {
     return (
-      <div id="tag-list">
-        <ul>
+      <div id="note-form-tag-area">
+        <ul id="tag-list">
           {this.generateTagList()}
+          <li>
+            <TagForm noteId={this.props.noteId} />
+          </li>
         </ul>
-        <TagForm noteId={this.props.noteId} />
       </div>);
   }
 });

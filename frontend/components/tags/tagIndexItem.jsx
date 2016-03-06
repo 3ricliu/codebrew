@@ -12,7 +12,7 @@ var tagIndexItem = React.createClass({
   render: function () {
     return(
     <li className='tag'>
-      {this.props.tag.name}
+      {'#' + this.props.tag.name}
       <button onClick={this.deleteTag}>x</button>
     </li>);
   }

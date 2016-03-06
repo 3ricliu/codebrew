@@ -90,7 +90,7 @@ var noteIndex = React.createClass({
         title = "All Notes";
       }
     }
-    return title;
+    return title.substr(0,21);
   },
 
 

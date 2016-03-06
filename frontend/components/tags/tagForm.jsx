@@ -23,7 +23,6 @@ var tagForm = React.createClass({
   render: function () {
     return (
       <form className="tag-form" onSubmit={this.createTag}>
-
         <input value={this.state.name}
                onChange={this.updateTitle}
                className="new-tag-bar"
