@@ -16,7 +16,11 @@ var receiveAllTags = function (tags) {
 };
 
 var deleteTag = function (tag) {
-  delete _tags[tag.id];
+  if(tag.note_ids.length === 0){
+    delete _tags[tag.id];
+  } else {
+    _tags[tag.id] = tag;
+  }
 };
 
 var createTag = function (tag) {
@@ -33,7 +37,7 @@ TagStore.fetchNoteTags = function (noteId) {
   });
 
   return noteTags;
-},
+};
 
 TagStore.fetchAllTags = function () {
   var tags = [];
@@ -44,7 +48,7 @@ TagStore.fetchAllTags = function () {
   }
 
   return tags;
-},
+};
 
 TagStore.__onDispatch = function (dispatchedData) {
   switch(dispatchedData.actionType) {

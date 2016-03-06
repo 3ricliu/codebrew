@@ -12,16 +12,16 @@
 
 .nav-tag-list {
   position: absolute;
-  width: 90%;
+  width: 88%;
   top: 72%;
   position: absolute;
-  width: 90%;
-  height: 8%;
+  height: 16%;
   overflow-y: auto;
 }
 
 .tag-form {
   display: inline;
+  padding: 0px 0px 0px 10px;
   /*bottom: 8.5%;
   left: 6%;*/
 }
@@ -55,15 +55,21 @@
   bottom: 8%;
   left: -2%;
   padding: 0px;
-  width: 97%;
+}
+
+#tag-nav-list ul {
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -o-pre-wrap; /* Opera */
+  white-space: pre-wrap; /* Chrome */
+  word-wrap: break-word; /* IE */
 }
 
 #tag-nav-list li{
   list-style: none;
-  display: inline;
+  display: inline-block;
   color: white;
-  font-size: 14px;
-  padding: 0px 5px 0px 5px;
+  font-size: 15px;
+  padding: 2px 5px 8px 5px;
 }
 
 #tag-nav-list li button {
@@ -73,6 +79,17 @@
 
 #tag-nav-list li span {
   padding: 0px 4px;
+  border: 1.5px solid;
+  border-radius: 25px;
+}
+
+#tag-nav-list li span:hover,
+#tag-nav-list li span:active{
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  color: #34495E;
+  background: #fff;
 }
 
 

@@ -19,11 +19,30 @@
 }
 
 .user-logout {
+  position: relative;
+  padding: 10px;
+  width: 100%;
+  height: 5%;
+  top: 78%;
+
+/*
   position: absolute;
   bottom: 8%;
   left: -10px;
-  width: 85%;
+  width: 85%;*/
 }
+
+/*
+.all-notes {
+  padding: 10px;
+}
+
+.all-notes a {
+  position: relative;
+  padding: 10px auto;
+  width: 100%;
+  right: 0;
+}*/
 
 .user-logout > span {
   position: absolute;
@@ -31,8 +50,9 @@
 }
 
 .user-logout > button {
-  position: absolute;
-  right: 10%;
+  position: relative;
+  width: 100%;
+  text-align: center;
 }
 
 

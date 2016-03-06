@@ -35,8 +35,10 @@ var tagNoteIndex = React.createClass({
   generateTagList: function () {
     var tagList = [];
     this.state.tags.map(function (tag) {
-      tagList.push(<TagIndexItem tag={tag} key={tag.id}/>);
-    });
+      tagList.push(<TagIndexItem key={tag.id}
+                                 tag={tag}
+                                 noteId={this.props.noteId}/>);
+    }.bind(this));
 
     return tagList;
   },

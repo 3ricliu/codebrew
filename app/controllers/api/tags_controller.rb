@@ -40,13 +40,28 @@ class Api::TagsController < ApplicationController
   end
 
   def destroy
-    @tag = Tag.find_by_id(params[:id])
-    @tag.destroy
+    @tag = Tag.find_by_id(params[:tag][:id])
+    disassociate_note = Note.find_by_id(params[:tag][:noteId].to_i)
+    @tag.notes.delete(disassociate_note)
+
+    @note_id = []
+    if(@tag.notes.empty?)
+      @tag.destroy
+    else
+      @tag.notes.each do |note|
+        @note_id.push(note.id)
+      end
+    end
+    
     render :show
+    # disassociate_note.tags.find_by_id(@tag.id).delete
+    # @tag = Tag.find_by_id(params[:id])
+    # @tag.destroy
+    # render :show
   end
 
   private
   def tags_params
-    params.require(:tag).permit(:name, :noteId)
+    params.require(:tag).permit(:id, :name, :noteId)
   end
 end

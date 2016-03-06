@@ -133,11 +133,12 @@ var apiUtil = {
     });
   },
 
-  deleteTag: function (tagId) {
+  deleteTag: function (tagId, noteId) {
+    var toDeleteTag = {id: tagId, noteId: noteId};
     $.ajax ({
       url: '/api/tags/' + tagId,
       method: 'DELETE',
-      data: {tag: tagId},
+      data: {tag: toDeleteTag},
       success: function (deletedTag) {
         TagClientActions.deleteTag(deletedTag.tag);
       },

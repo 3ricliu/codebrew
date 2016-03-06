@@ -10,8 +10,8 @@ module.exports = {
     ApiUtil.createTag(tagName);
   },
 
-  deleteTag: function (tagId) {
-    ApiUtil.deleteTag(tagId);
+  deleteTag: function (tagId, noteId) {
+    ApiUtil.deleteTag(tagId, noteId);
   }
 
 };

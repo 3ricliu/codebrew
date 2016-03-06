@@ -32,7 +32,7 @@ var tagNavIndex = React.createClass({
     this.state.tags.map(function (tag) {
       tagList.push(
         <Link to={'/home/notebooks/tags/' + tag.name} key={tag.id} className='tag-item'>
-          <TagIndexItem tag={tag}/>
+          <TagIndexItem tag={tag} nav="true" />
         </Link>);
     });
 
