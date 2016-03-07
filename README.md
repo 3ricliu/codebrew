@@ -80,13 +80,13 @@ user interface.
 - build out API, Flux loop, and components for:
   - [x] Notebook CRUD
   - [x] adding notes requires a notebook selected
-  - [ ] moving notes to a different notebook (drag and drop)?
+  - [x] moving notes to a different notebook (drag and drop)?
   - [x] viewing notes by notebook
 - update NotesIndex and NoteEditArea to reflect current Notebook
 
-- [ ] setup heroku, to have live site
-- [ ] brainstorm how to incorporate syntax highlighting into CRUD for Notes
-- [ ] tailor Homepage, Login NotesIndex, NoteDetail views to fit chosen bootstrap theme
+- [x] setup heroku, to have live site
+- [x] brainstorm how to incorporate syntax highlighting into CRUD for Notes
+- [x] tailor Homepage, Login NotesIndex, NoteDetail views to fit chosen bootstrap theme
 
 
 TODO: be able to swap notebooks
@@ -106,33 +106,33 @@ TODO: be able to swap notebooks
 
 **Objective:** Notes can be tagged with multiple tags, and tags are searchable.
 
-- [ ] create `Tag` model and join table
+- [x] create `Tag` model and join table
 - build out API, Flux loop, and components for:
-  - [ ] fetching tags for notes within notebook
-  - [ ] adding tags to notes
-  - [ ] creating tags while adding to notes
-  - [ ] searching notes by tag
+  - [x] fetching tags for notes within notebook
+  - [x] adding tags to notes
+  - [x] creating tags while adding to notes
+  - [x] searching notes by tag
 - update and test notes to ensure they are tagable.
-- [ ] Style new elements
+- [x] Style new elements
 
 ### Phase 7: Allow Complex Styling in Notes (2 days)
 
 **objective:** Enable code styling and usual text styling of notes.
-- [ ] Implement solution for incorporating syntax highlighting for code snippets into notes
-- [ ] Integrate `react-quill` (based on Quill.js).
-- [ ] Use Rails helpers to sanitize HTML before rendering.
-- [ ] Style the new Quill elements.
+- [x] Implement solution for incorporating syntax highlighting for code snippets into notes
+- [x] Integrate `react-quill` (based on Quill.js).
+- [x] Use Rails helpers to sanitize HTML before rendering.
+- [x] Style the new Quill elements.
 
 ### Phase 8: Styling Cleanup and Seeding (1 day)
 
 **objective:** Make the site feel more cohesive and awesome.
 
-- [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules, make sure everything is congruent
-- [ ] Add modals, transitions, and other styling flourishes.
+- [x] Get feedback on my UI from others
+- [x] Refactor HTML classes & CSS rules, make sure everything is congruent
+- [x] Add modals, transitions, and other styling flourishes.
 
 ### Bonus Features (TBD)
-- [ ] Implement site wide keyboard hotkeys for console like experience
+- [x] Implement site wide keyboard hotkeys for console like experience
 - [ ] Create edit toggle for notebook/tags page
 - [ ] Autosave notes with spinning icon after 10 sec
   - [ ] save Notes to the DB when the form loses focus or is left idle
