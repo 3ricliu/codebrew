@@ -18,7 +18,7 @@ class Api::NotesController < ApplicationController
   def tagged
     @notes = []
     tags = Tag.includes(:notes);
-    @notes = tags.find_by_name(params[:tag_name]).notes
+    @notes = tags.find_by_name(params[:tag_name]).notes.where(user_id: current_user.id)
 
     render :index
   end

@@ -14,8 +14,6 @@ var NotesIndex = require('./components/notes/notesIndex'),
     NotebookForm = require('./components/notebooks/notebookForm'),
     NotebookIndexItem = require('./components/notebooks/notebookForm');
 
-var DraftEditor = require('./components/notes/draftEditor');
-
 var App = React.createClass({
   render: function () {
     return (<div className="app-container">

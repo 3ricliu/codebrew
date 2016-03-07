@@ -16,6 +16,7 @@
 }
 
 .notebooks-col {
+  min-width: 250px;
   position: absolute;
   left: 0px;
   height: 100%;
@@ -48,6 +49,7 @@
 }
 
 .notes-list-col {
+  min-width: 285px;
   position: absolute;
   left: 0px;
   height:100%;

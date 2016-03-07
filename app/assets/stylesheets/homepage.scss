@@ -107,12 +107,25 @@ input[type=password] {
   padding: 5px;
 }
 
+.guest-btn {
+  padding: 10px 15px;
+  font-size: 15px;
+  float: left;
+  position: relative;
+  top: 25px;
+}
+
 .login-btn {
   padding: 10px 15px;
   font-size: 15px;
   float: right;
   position: relative;
   top: 25px;
+}
+
+.errors {
+  position: absolute;
+  color: firebrick;
 }
 
 .btn{

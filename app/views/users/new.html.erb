@@ -9,6 +9,8 @@
 <div class="centered">
   <h2 class="login">Sign Up!</h2>
 
+
+
   <form action="<%= users_url %>" method="post">
     <%= render "/helpers/auth" %>
 
@@ -24,7 +26,18 @@
       </label>
       <br>
     </div>
+
     <input type="submit" name="name" value="Sign Up!" class="login-btn btn">
   </form>
-  <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+
+  <div class="errors">
+    <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
+  </div>
+  
+  <form action="<%= session_url %>" method="post">
+    <%= render "/helpers/auth" %>
+    <input type="hidden" name="user[username]" value="Guest@codebrew.com">
+    <input type="hidden" name="user[password]" value="codecodecode">
+    <input class="guest-btn btn" type="submit" value="Explore as Guest">
+  </form>
 </div>

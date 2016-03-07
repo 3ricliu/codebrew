@@ -6,13 +6,17 @@ class Api::TagsController < ApplicationController
     @tags_with_note_ids = []
     tags.each do |tag|
       current_tag = []
-      current_tag.push(tag)
       current_tag_note_ids = []
       tag.notes.each do |note|
-        current_tag_note_ids.push(note.id)
+        if note.user_id == current_user.id
+          current_tag_note_ids.push(note.id)
+        end
       end
 
-      @tags_with_note_ids.push(current_tag.push(current_tag_note_ids))
+      if current_tag_note_ids.length != 0
+        current_tag.push(tag)
+        @tags_with_note_ids.push(current_tag.push(current_tag_note_ids))
+      end
     end
     render :index
   end
@@ -52,7 +56,7 @@ class Api::TagsController < ApplicationController
         @note_id.push(note.id)
       end
     end
-    
+
     render :show
     # disassociate_note.tags.find_by_id(@tag.id).delete
     # @tag = Tag.find_by_id(params[:id])
