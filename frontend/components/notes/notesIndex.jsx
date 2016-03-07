@@ -126,11 +126,17 @@ var noteIndex = React.createClass({
   generateNoteIndexItems: function () {
     var noteComponents = [];
     this.state.notes.map(function (note) {
-        noteComponents.push( <li className="notes" key={note.id}>
+        var noteClass;
+        if(parseInt(this.state.selectedNote.id) === note.id){
+          noteClass = "notes selected";
+        } else {
+          noteClass = "notes";
+        }
+
+        noteComponents.push( <li className={noteClass} key={note.id}>
           <NoteIndexItem
               className="title"
               note={note}
-              selected={this.state.selectedNote.id}
               onClick={this.selectNote}/></li> );
     }.bind(this)
 

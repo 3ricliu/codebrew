@@ -1,6 +1,6 @@
 .notebook-form {
   /*outline: 3px solid white;*/
-  width: 22%;
+  width: 37%;
   left: 20%;
   top: 3%;
   position: absolute;
@@ -18,19 +18,37 @@
   right: 0;
 }
 
+
+.notebook-form > input {
+  color: white;
+  border: 3px solid white;
+  position: static;
+  top: 2px;
+}
+
+.notebook-form > .btn {
+  position: relative;
+  left: 4px;
+  top: 2px;
+}
+
+.notebook-name-input {
+  padding: 6px 6px;
+}
+
 .user-logout {
   position: relative;
   padding: 10px;
   width: 100%;
   height: 5%;
   top: 78%;
-
+}
 /*
   position: absolute;
   bottom: 8%;
   left: -10px;
-  width: 85%;*/
-}
+  width: 85%;
+} */
 
 /*
 .all-notes {
@@ -90,18 +108,6 @@
   font-size: 23px;
 }
 
-.notebook-form > input {
-  color: white;
-  border: 1px solid white;
-  position: relative;
-  top: 2px
-}
-
-.notebook-form > .btn {
-  position: relative;
-  left: 4px;
-  top: 2px;
-}
 
 .notebooks {
   padding: 10px;
@@ -134,7 +140,7 @@
   overflow-y: scroll;
   position: absolute;
   width: 90%;
-  top: 23%;
+  top: 24%;
   left: 20px;
 }
 
@@ -192,12 +198,6 @@
 }
 
 
-
-
-
-
-
-
 /* new notebook form button */
 
 
@@ -205,7 +205,7 @@
 .new-notebook-button {
 	border: 3px solid #fff;
 	color: #fff;
-  position: absolute;
+  position: static;
   outline: 1px solid white;
   left: 9px
 }
@@ -226,11 +226,11 @@
 	display: inline-block;
 	letter-spacing: 1px;
 	outline: none;
-	position: relative;
+	/*position: relative;*/
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
-  font-size: 15px
+  font-size: 16px
 }
 
 .new-notebook-button:after {
@@ -239,4 +239,24 @@
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
+}
+
+
+/* notebooks selection */
+
+.notebooks {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.notebooks.selected{
+  color: #34495E;
+	background: #fff;
+}
+
+.notebooks:hover,
+.notebooks:active {
+  	color: #34495E;
+  	background: #fff;
 }

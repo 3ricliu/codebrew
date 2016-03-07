@@ -31,14 +31,9 @@ var noteIndexItem = React.createClass({
 
 
   render: function () {
-    var selected;
-    if(this.props.selected === this.props.note.id){
-      selected = "selected";
-    }
 
     return(
-      <ul className={selected}
-          className="note-index-item"
+      <div className="note-index-item"
           onClick={this.props.onClick.bind(null, this.props.note)}>
           <div className="note-summary-title">
             {this.props.note.title.substr(0,60)}
@@ -49,7 +44,7 @@ var noteIndexItem = React.createClass({
 
           <br />
           <input type="button" value="Delete" onClick={this.deleteNote} />
-      </ul>
+      </div>
     );
   }
 

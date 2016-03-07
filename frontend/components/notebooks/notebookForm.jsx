@@ -5,6 +5,7 @@ var React = require('react'),
 
 var NotebookServerActions = require('../../actions/notebookServerActions');
 
+
 var notebookForm = React.createClass({
   mixins: [History],
   getInitialState: function() {
@@ -54,7 +55,7 @@ var notebookForm = React.createClass({
     if(this.props.params.notebook_id){
       return "Edit";
     } else {
-      return "New";
+      return "Create";
     }
   },
 
@@ -74,6 +75,7 @@ var notebookForm = React.createClass({
 
         <input size="30"
                value={this.state.title}
+               className="notebook-name-input"
                onChange={this.updateTitle} />
 
 
@@ -83,5 +85,4 @@ var notebookForm = React.createClass({
   }
 });
 
-//  <Link to={'/home/notebooks'}></Link>
 module.exports = notebookForm;

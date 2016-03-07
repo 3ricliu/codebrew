@@ -126,6 +126,9 @@ var noteForm = React.createClass({
           <br/>
           <div className='note-form-buttons'>
             <input type="button" value="Create Snippet" className="note-form-button snippet" onClick={this.createSnippet} />
+            <div className='pop-out'>
+              Hotkey: "cmd + \" in editor
+            </div>
             <input type="submit" value={this.props.buttonTitle} className="note-form-button save" />
           </div>
         </form>

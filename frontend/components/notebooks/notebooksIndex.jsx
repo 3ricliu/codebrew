@@ -32,7 +32,7 @@ var notebooksIndex = React.createClass({
     // } //this will be the next selected notebook
   },
 
-  receiveNotebooks: function() {
+  receiveNotebooks: function () {
     var notebooks = NotebookStore.all();
     if(notebooks.length === 0 ){
       this.history.push("/home/notebooks");
@@ -45,13 +45,29 @@ var notebooksIndex = React.createClass({
     }
   },
 
-  render: function() {
-    var notebooks = this.state.notebooks.map(function(notebook) {
-      return(<li className="notebooks" key={notebook.id}>
-          <NotebookIndexItem key={notebook.id} notebook={notebook} />
-            </li>);
-    });
 
+  generateNotebookIndexItems: function () {
+    var notebooks = [];
+
+    this.state.notebooks.map(function(notebook) {
+
+      var notebookClass;
+      if(parseInt(this.state.selectedNotebookId) === notebook.id){
+        notebookClass = "notebooks selected";
+      } else {
+        notebookClass = "notebooks";
+      }
+
+      notebooks.push(<li className={notebookClass} key={notebook.id}>
+              <NotebookIndexItem key={notebook.id}
+                                 notebook={notebook}/>
+            </li>);
+    }.bind(this));
+
+    return notebooks;
+  },
+
+  render: function() {
     var childrenWithProps = React.Children.map(this.props.children, function(child) {
       return React.cloneElement(child, {notebooks: this.state.notebooks});
     }.bind(this));
@@ -70,7 +86,7 @@ var notebooksIndex = React.createClass({
           <div className="notebook-desc">Notebooks</div>
           <br/>
           <ul className="nav-notebook-list">
-            {notebooks}
+            {this.generateNotebookIndexItems()}
           </ul>
           <div className="tag-desc">Tags</div>
           <ul className="nav-tag-list">
