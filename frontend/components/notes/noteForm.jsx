@@ -5,8 +5,6 @@ require("prosemirror/dist/menu/menubar");
 var NoteServerActions = require('../../actions/noteServerActions'),
     TagNoteIndex = require('../tags/tagNoteIndex');
 
-var PrismCode = require('react-prism');
-
 var _editor;
 
 var noteForm = React.createClass({
