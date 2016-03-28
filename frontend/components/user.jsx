@@ -30,7 +30,7 @@ var user = React.createClass({
 
   render: function() {
     return(<div className="user-logout">
-            <button className="nav-button logout" onClick={this.logOut}>{this.state.user} | Log Out</button>
+            <button className="nav-button logout" onClick={this.logOut}> Log Out</button>
             </div>);
   }
 });

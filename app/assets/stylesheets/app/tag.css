@@ -11,11 +11,9 @@
 }
 
 .nav-tag-list {
-  position: absolute;
-  width: 88%;
-  top: 72%;
-  position: absolute;
-  height: 16%;
+  width: 100%;
+  padding-top: 10px;
+  height: 12%;
   overflow-y: auto;
 }
 
@@ -150,5 +148,5 @@
   height: 6%;
   position: absolute;
   width: 100%;
-  bottom: 8%;
+  bottom: 7%;
 }

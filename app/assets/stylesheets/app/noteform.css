@@ -15,6 +15,7 @@
   top: 11%;
   height: 75%;
   outline: solid;
+  background-color: #2C3E50;
 }
 
 .ProseMirror {
@@ -23,7 +24,7 @@
 }
 
 .ProseMirror-content {
-  height: 96%;
+  height: 95%;
   overflow-y: auto;
 }
 
@@ -38,21 +39,30 @@
 
 
 .ProseMirror-content > p {
-  font-size: 14.5px;
+  font-size: 12px;
 }
 
-/*.quill {
-  width: 87%;
-  position: absolute;
-  left: 6%;
-  top: 11%;
-  height: 80%;
-  outline: solid;
+.ProseMirror-content > blockquote ol li p{
+  font-size: 11px;
 }
 
-.quill-contents {
-  height: 95%
-}*/
+.ProseMirror-content > blockquote ol li{
+  font-size: 11px;
+}
+
+.ProseMirror-content ul {
+  list-style: initial;
+  font-size: 11px;
+}
+
+.ProseMirror-content li {
+  font-size: 11px;
+}
+
+.ProseMirror-content > blockquote {
+  font-size: 11px
+}
+
 
 .note-title {
   top: 2%;
@@ -82,18 +92,11 @@ input[type=button] {
 
 pre {
   padding: 18px;
-  background: lavender;
+  background: #67809F;
 }
 
 code span {
   font-family:monospace;
-  color: #657b83;
-}
-
-.ProseMirror-content ul {
-  list-style: initial;
-}
-
-.ProseMirror-content > blockquote {
-  font-size: 12px
+  font-size: 10px;
+  color: white;
 }

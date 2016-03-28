@@ -8,7 +8,9 @@
     </div>
     <%= button_to "Sign Out", session_url, method: :delete, class: "btn nav" %>
   <% else %>
-    <% unless(params["controller"] == "sessions") %>
+    <% if(params["controller"] == "sessions") %>
+      <%= button_to "Sign up", new_user_url, method: :get, class: "btn nav" %>
+    <% else %>
       <%= button_to "Sign In", new_session_url, method: :get, class: "btn nav" %>
     <% end %>
   <% end %>

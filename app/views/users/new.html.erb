@@ -11,7 +11,7 @@
 
 
 
-  <form action="<%= users_url %>" method="post">
+  <form action="<%= users_url %>" method="post" class="sign_up">
     <%= render "/helpers/auth" %>
 
     <div class="sign-up">
@@ -33,7 +33,7 @@
   <div class="errors">
     <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
   </div>
-  
+
   <form action="<%= session_url %>" method="post">
     <%= render "/helpers/auth" %>
     <input type="hidden" name="user[username]" value="Guest@codebrew.com">
