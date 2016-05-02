@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     end
 
     # user.try(user.correct_password?(password)) ? user : nil
-    return nil
+    nil
   end
 
   def self.generate_session_token

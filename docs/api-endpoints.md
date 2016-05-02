@@ -40,6 +40,5 @@
 
 - `GET /api/tags`
 - `POST /api/notes/:note_id/tags`:
-  - if note doesn't already exist, it will be created
 - `DELETE /api/notes/:note_id/tags/:tag_name`: remove tag from note by
   name
