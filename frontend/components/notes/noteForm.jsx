@@ -56,6 +56,18 @@ var noteForm = React.createClass({
     //just do logic to take new note off the page when searching.
   },
 
+  determineDeleteButton: function () {
+    if(this.state.id !== undefined){
+      return (<input type="button"
+                     value="Delete"
+                     className="note-form-button snippet"
+                     onClick={this.deleteNote} />);
+    }
+  },
+
+  deleteNote: function () {
+    NoteServerActions.deleteNote(this.state.id);
+  },
 
   componentWillReceiveProps: function (nextProps) {
 
@@ -93,7 +105,7 @@ var noteForm = React.createClass({
   render: function () {
     var noteAction;
     var tagComponent = this.createTagComponent();
-
+    var deleteButton = this.determineDeleteButton();
     if(this.createOrEdit()){
       noteAction = this.createNote;
     } else {
@@ -123,11 +135,8 @@ var noteForm = React.createClass({
             <div id='editor' />
           <br/>
           <div className='note-form-buttons'>
-            <input type="button" value="Create Snippet" className="note-form-button snippet" onClick={this.createSnippet} />
-            <div className='pop-out'>
-              Hotkey: "cmd + \" in editor
-            </div>
-            <input type="submit" value={this.props.buttonTitle} className="note-form-button save" />
+            <input type="submit" value={this.props.buttonTitle} className="note-form-button save/" />
+            {deleteButton}
           </div>
         </form>
         {tagComponent}

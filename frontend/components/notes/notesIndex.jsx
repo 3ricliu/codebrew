@@ -1,10 +1,13 @@
-var React = require('react');
+var React = require('react'),
+    Link = require('react-router').Link;
 
 var NoteStore = require('../../stores/noteStore'),
     NoteServerActions = require('../../actions/noteServerActions');
 
 var NoteIndexItem = require('./noteIndexItem'),
     NoteForm = require('./noteForm');
+
+
 
 var noteIndex = React.createClass({
   getInitialState: function() {
@@ -50,7 +53,7 @@ var noteIndex = React.createClass({
           prevSelectedNote = allNotes[editing];
         }
     }
-    // console.log("receiving notes");
+
     this.setState({ notes: allNotes, selectedNote: prevSelectedNote });
   },
 
@@ -69,7 +72,6 @@ var noteIndex = React.createClass({
   },
 
   selectNote: function (note) {
-    // console.log("selecting note");
     this.setState({selectedNote: note});
   },
 
@@ -108,15 +110,26 @@ var noteIndex = React.createClass({
     }
   },
 
+  determineNotebookButtons: function () {
+    if(this.props.params.notebook_id !== undefined) {
+      return (<div><Link to={'/home/notebooks/edit/' + this.props.params.notebook_id}>
+                <input className="nb-edit nb-btn" type="button" value="Edit" />
+              </Link>
+            <input className="nb-delete nb-btn"type="button" value="Delete" onClick={this.deleteNotebook} />
+            </div>
+            );
+    }
+  },
+
   determineNoteForm: function () {
     var noteForForm = {title: "", body: ""};
-    var action = "Create Note";
+    var action = "Create";
 
     if(this.state.notes.length !==0){
       if(this.state.selectedNote === undefined) {
         this.state.selectedNote = noteForForm;
       } else if(this.state.selectedNote.title !== "") {
-        action = "Save Changes";
+        action = "Update";
       }
       noteForForm = this.state.selectedNote;
     }
@@ -147,15 +160,16 @@ var noteIndex = React.createClass({
 
 
   render: function () {
-
     var formParams = this.determineNoteForm();
     var createButton = this.determineCreateButton();
+    var notebookEditButtons = this.determineNotebookButtons();
     return(
       <div className="notes-col">
         <div className="notes-list-col">
           <div className="notebook-title">
             {this.findNotebookTitle()}
           </div>
+            {notebookEditButtons}
             <br/>
             {createButton}
           <ul className="note-index-items">

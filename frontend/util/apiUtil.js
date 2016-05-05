@@ -59,7 +59,7 @@ var apiUtil = {
 
   deleteNote: function (deleteNote) {
     $.ajax ({
-      url: '/api/notes/' + deleteNote.id,
+      url: '/api/notes/' + deleteNote,
       method: 'DELETE',
       data: {note: deleteNote},
       success: function (deletedNote) {

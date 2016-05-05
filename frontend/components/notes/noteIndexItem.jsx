@@ -25,11 +25,6 @@ var noteIndexItem = React.createClass({
   },
 
 
-  deleteNote: function () {
-    NoteServerActions.deleteNote(this.props.note);
-  },
-
-
   render: function () {
 
     return(
@@ -41,9 +36,6 @@ var noteIndexItem = React.createClass({
           <br />
             {this.summary()}
           <br />
-
-          <br />
-          <input type="button" value="Delete" onClick={this.deleteNote} />
       </div>
     );
   }

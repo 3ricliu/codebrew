@@ -15,11 +15,6 @@ var notebookIndexItem = React.createClass({
       <Link className="title" to={'home/notebooks/' + this.props.notebook.id + '/notes'}>
         {this.props.notebook.title.substr(0,75)}
       </Link>
-      <br />
-      <Link to={'/home/notebooks/edit/' + this.props.notebook.id}>
-        <input className="nb-edit nb-btn" type="button" value="Edit" />
-      </Link>
-      <input className="nb-delete nb-btn"type="button" value="Delete" onClick={this.deleteNotebook} />
     </div>);
   }
 });
