@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
       user.correct_password?(password) ? (return user) : (return nil)
     end
 
-    # user.try(user.correct_password?(password)) ? user : nil
     nil
   end
 

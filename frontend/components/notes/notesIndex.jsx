@@ -1,5 +1,5 @@
-var React = require('react'),
-    Link = require('react-router').Link;
+var React = require('react');
+
 
 var NoteStore = require('../../stores/noteStore'),
     NoteServerActions = require('../../actions/noteServerActions');
@@ -110,17 +110,6 @@ var noteIndex = React.createClass({
     }
   },
 
-  determineNotebookButtons: function () {
-    if(this.props.params.notebook_id !== undefined) {
-      return (<div><Link to={'/home/notebooks/edit/' + this.props.params.notebook_id}>
-                <input className="nb-edit nb-btn" type="button" value="Edit" />
-              </Link>
-            <input className="nb-delete nb-btn"type="button" value="Delete" onClick={this.deleteNotebook} />
-            </div>
-            );
-    }
-  },
-
   determineNoteForm: function () {
     var noteForForm = {title: "", body: ""};
     var action = "Create";
@@ -162,14 +151,12 @@ var noteIndex = React.createClass({
   render: function () {
     var formParams = this.determineNoteForm();
     var createButton = this.determineCreateButton();
-    var notebookEditButtons = this.determineNotebookButtons();
     return(
       <div className="notes-col">
         <div className="notes-list-col">
           <div className="notebook-title">
             {this.findNotebookTitle()}
           </div>
-            {notebookEditButtons}
             <br/>
             {createButton}
           <ul className="note-index-items">
