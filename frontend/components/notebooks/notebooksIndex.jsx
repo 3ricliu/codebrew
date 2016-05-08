@@ -73,8 +73,8 @@ var notebooksIndex = React.createClass({
     }.bind(this));
 
     return(
-      <div className="notes-container">
-        <div className="notebooks-col">
+      <div className="notes-container row">
+        <div className="notebooks-col col-lg-2 col-md-2 col-s-2 col-xs-2">
           <div className="all-notes">
             <Link to={'home/notebooks/notes'}
                   className="nav-button">All Notes</Link>

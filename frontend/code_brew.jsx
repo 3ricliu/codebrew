@@ -15,7 +15,7 @@ var NotesIndex = require('./components/notes/notesIndex'),
 
 var App = React.createClass({
   render: function () {
-    return (<div className="container">
+    return (<div className="container-fluid">
         {this.props.children}
         </div>
     );

@@ -1,275 +1,275 @@
-.notebook-form {
-  /*outline: 3px solid white;*/
-  width: 37%;
-  left: 20%;
-  top: 3%;
-  position: absolute;
-  padding: 5px;
-}
-
-.new-notebook-form {
-  padding: 10px;
-}
-
-.new-notebook-form a {
-  position: relative;
-  padding: 10px auto;
-  width: 100%;
-  right: 0;
-}
-
-
-.notebook-form > input {
-  color: white;
-  border: 3px solid white;
-  position: static;
-  top: 2px;
-}
-
-.notebook-form > .btn {
-  position: relative;
-  left: 4px;
-  top: 2px;
-}
-
-.notebook-name-input {
-  padding: 6px 6px;
-}
-
-.user-logout {
-  padding: 10px;
-  width: 100%;
-  height: 11%;
-}
-
-.edit-button {
-  content: image-url('edit.png');
-  height: 15px;
-width: 15px;
-top: 12px;
-left: 19px;
-padding-left: 0px;
-padding-right: 0px;
-}
-
-.trash-button {
-  content: image-url('trash.png');
-  height: 15px;
-width: 15px;
-top: 12px;
-left: 30px;
-  cursor: pointer;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-/*
-  position: absolute;
-  bottom: 8%;
-  left: -10px;
-  width: 85%;
-} */
-
-/*
-.all-notes {
-  padding: 10px;
-}
-
-.all-notes a {
-  position: relative;
-  padding: 10px auto;
-  width: 100%;
-  right: 0;
-}*/
-
-.user-logout > span {
-  position: absolute;
-  left: 75px;
-}
-
-.user-logout > button {
-  position: relative;
-  width: 100%;
-  text-align: center;
-}
-
-
-.nav-button .logout {
-  position: absolute;
-  right: 31px;
-}
-
-.all-notes {
-  padding: 10px;
-}
-
-.all-notes a {
-  position: relative;
-  padding: 10px auto;
-  width: 100%;
-  right: 0;
-}
-
-.notebook-desc {
-  padding: 10px;
-  top: 18%;
-  border-bottom: 3px solid white;
-  width: 100%;
-  font-size: 23px;
-}
-
-.tag-desc {
-  padding: 10px;
-  border-bottom: 3px solid white;
-  width: 100%;
-  font-size: 23px;
-}
-
-
-.notebooks {
-  padding: 10px;
-  border-bottom: 1px solid black;
-}
-
-.nb-delete {
-  float: right;
-}
-
-.nb-btn  {
-  font-size: 12px;
-}
-
-.nb-btn:hover {
-  cursor: pointer;
-}
-
-.title {
-  padding: 10px 0px 10px 0px;
-  display: inline-block;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  width: 100%;
-}
-
-
-.nav-notebook-list {
-  height: 40%;
-  overflow-y: scroll;
-  width: 102%;
-}
-
-.notes-list-col > li:after {
-  content: '';
-  clear: both;
-  display: block;
-
-}
-
-
-.nav-button {
-	border: 3px solid #fff;
-	color: #fff;
-  position: absolute;
-  outline: 1px solid white;
-}
-
-/* Button 1a */
-.nav-button:hover,
-.nav-button:active {
-	color: #34495E;
-	background: #fff;
-}
-.nav-button {
-  outline: 1px solid white;
-	font-family: inherit;
-	font-size: inherit;
-	color: inherit;
-	background: none;
-	padding: 10px 10px;
-	display: inline-block;
-	letter-spacing: 1px;
-	outline: none;
-	position: relative;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-  font-size: 15px
-}
-
-.nav-button:after {
-	position: absolute;
-	z-index: -1;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-}
-
-
-.buttons {
-  top: 93%;
-  position: absolute;
-  width: 100%;
-}
-
-
-/* new notebook form button */
-
-
-
-.new-notebook-button {
-	border: 3px solid #fff;
-	color: #fff;
-  position: static;
-  outline: 1px solid white;
-  left: 9px
-}
-
-/* Button 1a */
-.new-notebook-button:hover,
-.new-notebook-button:active {
-	color: #34495E;
-	background: #fff;
-}
-.new-notebook-button {
-  outline: 1px solid white;
-	font-family: inherit;
-	font-size: inherit;
-	color: inherit;
-	background: none;
-	padding: 6px 6px;
-	display: inline-block;
-	letter-spacing: 1px;
-	outline: none;
-	/*position: relative;*/
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-  font-size: 16px
-}
-
-.new-notebook-button:after {
-	position: absolute;
-	z-index: -1;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-}
-
-
-/* notebooks selection */
-
-.notebooks {
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.notebooks.selected{
-  color: #34495E;
-	background: #fff;
-}
-
-.notebooks:hover,
-.notebooks:active {
-  	color: #34495E;
-  	background: #fff;
-}
+// .notebook-form {
+//   /*outline: 3px solid white;*/
+//   width: 37%;
+//   left: 20%;
+//   top: 3%;
+//   position: absolute;
+//   padding: 5px;
+// }
+//
+// .new-notebook-form {
+//   padding: 10px;
+// }
+//
+// .new-notebook-form a {
+//   position: relative;
+//   padding: 10px auto;
+//   width: 100%;
+//   right: 0;
+// }
+//
+//
+// .notebook-form > input {
+//   color: white;
+//   border: 3px solid white;
+//   position: static;
+//   top: 2px;
+// }
+//
+// .notebook-form > .btn {
+//   position: relative;
+//   left: 4px;
+//   top: 2px;
+// }
+//
+// .notebook-name-input {
+//   padding: 6px 6px;
+// }
+//
+// .user-logout {
+//   padding: 10px;
+//   width: 100%;
+//   height: 11%;
+// }
+//
+// .edit-button {
+//   content: image-url('edit.png');
+//   height: 15px;
+// width: 15px;
+// top: 12px;
+// left: 19px;
+// padding-left: 0px;
+// padding-right: 0px;
+// }
+//
+// .trash-button {
+//   content: image-url('trash.png');
+//   height: 15px;
+// width: 15px;
+// top: 12px;
+// left: 30px;
+//   cursor: pointer;
+//   padding-left: 0px;
+//   padding-right: 0px;
+// }
+// /*
+//   position: absolute;
+//   bottom: 8%;
+//   left: -10px;
+//   width: 85%;
+// } */
+//
+// /*
+// .all-notes {
+//   padding: 10px;
+// }
+//
+// .all-notes a {
+//   position: relative;
+//   padding: 10px auto;
+//   width: 100%;
+//   right: 0;
+// }*/
+//
+// .user-logout > span {
+//   position: absolute;
+//   left: 75px;
+// }
+//
+// .user-logout > button {
+//   position: relative;
+//   width: 100%;
+//   text-align: center;
+// }
+//
+//
+// .nav-button .logout {
+//   position: absolute;
+//   right: 31px;
+// }
+//
+// .all-notes {
+//   padding: 10px;
+// }
+//
+// .all-notes a {
+//   position: relative;
+//   padding: 10px auto;
+//   width: 100%;
+//   right: 0;
+// }
+//
+// .notebook-desc {
+//   padding: 10px;
+//   top: 18%;
+//   border-bottom: 3px solid white;
+//   width: 100%;
+//   font-size: 23px;
+// }
+//
+// .tag-desc {
+//   padding: 10px;
+//   border-bottom: 3px solid white;
+//   width: 100%;
+//   font-size: 23px;
+// }
+//
+//
+// .notebooks {
+//   padding: 10px;
+//   border-bottom: 1px solid black;
+// }
+//
+// .nb-delete {
+//   float: right;
+// }
+//
+// .nb-btn  {
+//   font-size: 12px;
+// }
+//
+// .nb-btn:hover {
+//   cursor: pointer;
+// }
+//
+// .title {
+//   padding: 10px 0px 10px 0px;
+//   display: inline-block;
+//   text-overflow: ellipsis;
+//   word-wrap: break-word;
+//   width: 100%;
+// }
+//
+//
+// .nav-notebook-list {
+//   height: 40%;
+//   overflow-y: scroll;
+//   width: 102%;
+// }
+//
+// .notes-list-col > li:after {
+//   content: '';
+//   clear: both;
+//   display: block;
+//
+// }
+//
+//
+// .nav-button {
+// 	border: 3px solid #fff;
+// 	color: #fff;
+//   position: absolute;
+//   outline: 1px solid white;
+// }
+//
+// /* Button 1a */
+// .nav-button:hover,
+// .nav-button:active {
+// 	color: #34495E;
+// 	background: #fff;
+// }
+// .nav-button {
+//   outline: 1px solid white;
+// 	font-family: inherit;
+// 	font-size: inherit;
+// 	color: inherit;
+// 	background: none;
+// 	padding: 10px 10px;
+// 	display: inline-block;
+// 	letter-spacing: 1px;
+// 	outline: none;
+// 	position: relative;
+// 	-webkit-transition: all 0.3s;
+// 	-moz-transition: all 0.3s;
+// 	transition: all 0.3s;
+//   font-size: 15px
+// }
+//
+// .nav-button:after {
+// 	position: absolute;
+// 	z-index: -1;
+// 	-webkit-transition: all 0.3s;
+// 	-moz-transition: all 0.3s;
+// 	transition: all 0.3s;
+// }
+//
+//
+// .buttons {
+//   top: 93%;
+//   position: absolute;
+//   width: 100%;
+// }
+//
+//
+// /* new notebook form button */
+//
+//
+//
+// .new-notebook-button {
+// 	border: 3px solid #fff;
+// 	color: #fff;
+//   position: static;
+//   outline: 1px solid white;
+//   left: 9px
+// }
+//
+// /* Button 1a */
+// .new-notebook-button:hover,
+// .new-notebook-button:active {
+// 	color: #34495E;
+// 	background: #fff;
+// }
+// .new-notebook-button {
+//   outline: 1px solid white;
+// 	font-family: inherit;
+// 	font-size: inherit;
+// 	color: inherit;
+// 	background: none;
+// 	padding: 6px 6px;
+// 	display: inline-block;
+// 	letter-spacing: 1px;
+// 	outline: none;
+// 	/*position: relative;*/
+// 	-webkit-transition: all 0.3s;
+// 	-moz-transition: all 0.3s;
+// 	transition: all 0.3s;
+//   font-size: 16px
+// }
+//
+// .new-notebook-button:after {
+// 	position: absolute;
+// 	z-index: -1;
+// 	-webkit-transition: all 0.3s;
+// 	-moz-transition: all 0.3s;
+// 	transition: all 0.3s;
+// }
+//
+//
+// /* notebooks selection */
+//
+// .notebooks {
+//   -webkit-transition: all 0.3s;
+//   -moz-transition: all 0.3s;
+//   transition: all 0.3s;
+// }
+//
+// .notebooks.selected{
+//   color: #34495E;
+// 	background: #fff;
+// }
+//
+// .notebooks:hover,
+// .notebooks:active {
+//   	color: #34495E;
+//   	background: #fff;
+// }
