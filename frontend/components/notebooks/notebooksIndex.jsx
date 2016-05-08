@@ -7,7 +7,8 @@ var NotebookStore = require('../../stores/notebookStore'),
     NotebookForm = require('./notebooksIndex'),
     NotebookIndexItem = require('./notebookIndexItem'),
     TagNavIndex = require('../tags/tagNavIndex'),
-    User = require('../user');
+    User = require('../user'),
+    Bootstrap = " col-lg-12 col-md-12 col-sm-12 col-xs-12";
 
 var notebooksIndex = React.createClass({
   mixins: [History],
@@ -57,8 +58,7 @@ var notebooksIndex = React.createClass({
       } else {
         notebookClass = "notebooks";
       }
-
-      notebooks.push(<li className={notebookClass} key={notebook.id}>
+      notebooks.push(<li className={notebookClass + Bootstrap} key={notebook.id}>
               <NotebookIndexItem key={notebook.id}
                                  notebook={notebook}/>
             </li>);

@@ -12,14 +12,14 @@ var notebookIndexItem = React.createClass({
   render: function() {
     return(
     <div>
-      <Link className="title" to={'home/notebooks/' + this.props.notebook.id + '/notes'}>
+      <Link className="title col-lg-8 col-md-8 col-sm-8 col-xs-8" to={'home/notebooks/' + this.props.notebook.id + '/notes'}>
         {this.props.notebook.title.substr(0,75)}
       </Link>
 
-      <Link to={'/home/notebooks/edit/' + this.props.notebook.id} className="edit-button">
-
+      <Link to={'/home/notebooks/edit/' + this.props.notebook.id} className="edit-button col-lg-2 col-md-2 col-sm-2 col-xs-2">
       </Link>
-        <span type="button" className="trash-button" onClick={this.deleteNotebook}></span>
+      <span type="button" className="trash-button col-lg-2 col-md-2 col-sm-2 col-xs-2" onClick={this.deleteNotebook}>
+      </span>
     </div>);
   }
 });

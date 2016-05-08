@@ -44,13 +44,23 @@
 
 .edit-button {
   content: image-url('edit.png');
-  width: 15px;
+  height: 15px;
+width: 15px;
+top: 12px;
+left: 19px;
+padding-left: 0px;
+padding-right: 0px;
 }
 
 .trash-button {
   content: image-url('trash.png');
-  width: 15px;
+  height: 15px;
+width: 15px;
+top: 12px;
+left: 30px;
   cursor: pointer;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 /*
   position: absolute;
