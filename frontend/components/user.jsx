@@ -29,8 +29,8 @@ var user = React.createClass({
   },
 
   render: function() {
-    return(<div className="user-logout">
-            <button className="nav-button logout" onClick={this.logOut}> Log Out</button>
+    return(<div className="nav-buttons logout col-xs-12">
+            <button className="nav-button" onClick={this.logOut}>Log Out</button>
             </div>);
   }
 });

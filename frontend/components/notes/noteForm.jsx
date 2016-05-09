@@ -121,11 +121,7 @@ var noteForm = React.createClass({
 
     return(
       <div className="note-container">
-
         <br/>
-
-        <form onSubmit={noteAction}>
-
         <input className="note-title"
                value={this.state.title}
                placeholder={"New Title"}
@@ -134,12 +130,11 @@ var noteForm = React.createClass({
           <br/>
             <div id='editor' />
           <br/>
+              {tagComponent}
           <div className='note-form-buttons'>
-            <input type="submit" value={this.props.buttonTitle} className="note-form-button save/" />
+            <input type="button" value={this.props.buttonTitle} className="note-form-button save" onClick={noteAction}/>
             {deleteButton}
           </div>
-        </form>
-        {tagComponent}
       </div>
     );
   }

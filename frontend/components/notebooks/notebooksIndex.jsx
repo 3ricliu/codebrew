@@ -7,8 +7,7 @@ var NotebookStore = require('../../stores/notebookStore'),
     NotebookForm = require('./notebooksIndex'),
     NotebookIndexItem = require('./notebookIndexItem'),
     TagNavIndex = require('../tags/tagNavIndex'),
-    User = require('../user'),
-    Bootstrap = " col-lg-12 col-md-12 col-sm-12 col-xs-12";
+    User = require('../user');
 
 var notebooksIndex = React.createClass({
   mixins: [History],
@@ -58,7 +57,7 @@ var notebooksIndex = React.createClass({
       } else {
         notebookClass = "notebooks";
       }
-      notebooks.push(<li className={notebookClass + Bootstrap} key={notebook.id}>
+      notebooks.push(<li className={notebookClass} key={notebook.id}>
               <NotebookIndexItem key={notebook.id}
                                  notebook={notebook}/>
             </li>);
@@ -74,25 +73,40 @@ var notebooksIndex = React.createClass({
 
     return(
       <div className="notes-container row">
-        <div className="notebooks-col col-lg-2 col-md-2 col-s-2 col-xs-2">
-          <div className="all-notes">
-            <Link to={'home/notebooks/notes'}
-                  className="nav-button">All Notes</Link>
+        <div className="notebooks-col col-xs-2">
+
+          <div className="row">
+            <div className="all-notes nav-buttons col-xs-12">
+              <Link to={'home/notebooks/notes'}
+                    className="nav-button">All Notes</Link>
+            </div>
           </div>
-          <div className="new-notebook-form">
-            <Link to={'home/notebooks/new'}
-                  className="nav-button">New Notebook</Link>
+
+          <div className="row">
+            <div className="new-notebook nav-buttons col-xs-12">
+              <Link to={'home/notebooks/new'}
+                    className="nav-button">New Notebook</Link>
+            </div>
           </div>
-          <div className="notebook-desc">Notebooks</div>
-          <br/>
-          <ul className="nav-notebook-list">
-            {this.generateNotebookIndexItems()}
-          </ul>
-          <div className="tag-desc">Tags</div>
-          <ul className="nav-tag-list">
+
+          <div className="row">
+            <div className="notebook-desc col-xs-12">Notebooks</div>
+            <br/>
+            <ul className="nav-notebook-list col-xs-12">
+              {this.generateNotebookIndexItems()}
+            </ul>
+          </div>
+
+          <div className="row">
+          <div className="tag-desc col-xs-12">Tags</div>
+          <ul className="nav-tag-list col-xs-12">
             <TagNavIndex />
           </ul>
-          <User />
+          </div>
+
+          <div className="row">
+            <User />
+          </div>
         </div>
         {childrenWithProps}
       </div>

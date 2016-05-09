@@ -1,21 +1,23 @@
 // .tag-list {
-//   color: white;
-//   list-style-type: none;
-//   position: absolute;
-//   bottom: 6%;
-//   left: 5%;
-//   padding: 8px;
-//   width: 88.5%;
-//   height: 8%;
-//   overflow-y: auto;
+//   // color: white;
+//   // list-style-type: none;
+//   // position: absolute;
+//   // bottom: 6%;
+//   // left: 5%;
+//   // padding: 8px;
+//   // width: 88.5%;
+//   // height: 8%;
+//   // overflow-y: auto;
+//
+//
 // }
 //
-// .nav-tag-list {
-//   width: 100%;
-//   padding-top: 10px;
-//   height: 12%;
-//   overflow-y: auto;
-// }
+.nav-tag-list {
+  // width: 100%;
+  padding-top: 0px 10px 0px 10px;
+  height: 120px;
+  overflow-y: auto;
+}
 //
 // .tag-form {
 //   display: inline;
@@ -23,17 +25,17 @@
 //   /*bottom: 8.5%;
 //   left: 6%;*/
 // }
-//
-//
-//
-// .new-tag-bar {
-//   border-bottom: 1px solid white;
-//   font-size: 13px;
-//   width: 100px;
-//   text-align: center;
-//   color: white;
-//   padding: 2px;
-// }
+
+
+
+.new-tag-bar {
+  // border-bottom: 1px solid white;
+  // font-size: 13px;
+  width: 56px;
+  // text-align: center;
+  // color: white;
+  // padding: 2px;
+}
 //
 // .tag-submit {
 //   /*position: absolute;*/
@@ -104,15 +106,24 @@
 //
 //
 // /* taglist in notes section */
-// #tag-list {
-//   position: absolute;
-//   bottom: 5%;
-//   left: 5%;
-//   padding: 8px;
-//   height: 51px;
-//   overflow-y: auto;
-//   width: 88.5%;
-// }
+#tag-list {
+  // position: absolute;
+  // bottom: 5%;
+  // left: 5%;
+  // padding: 8px;
+  // height: 51px;
+  // overflow-y: auto;
+  // width: 88.5%;
+
+  display: inline-flex;
+  overflow-x: auto;
+  padding-left: 10px;
+}
+
+
+#tag-list > li {
+  display: inline-table;
+}
 //
 // #tag-list li{
 //   list-style: none;
