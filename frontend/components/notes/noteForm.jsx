@@ -61,7 +61,7 @@ var noteForm = React.createClass({
     if(this.state.id !== undefined){
       return (<input type="button"
                      value="Delete"
-                     className="note-form-button snippet col-xs-3 col-xs-offset-5"
+                     className="note-form-button snippet col-xs-3 col-xs-offset-5 text-center"
                      onClick={this.deleteNote} />);
     }
   },
@@ -92,6 +92,8 @@ var noteForm = React.createClass({
     var tagComponent;
     if(this.props.note.id !== undefined) {
       tagComponent = <TagNoteIndex noteId={this.props.note.id} />;
+    } else {
+      tagComponent = <br/>;
     }
     return tagComponent;
   },
@@ -118,8 +120,7 @@ var noteForm = React.createClass({
     //   Prism.highlightElement(test);
     //   debugger;
     // }
-
-
+    
     return(
       <div className="note-container">
         <br/>
@@ -131,11 +132,10 @@ var noteForm = React.createClass({
 
         </div>
             <div id="editor" />
-          <br/>
               {tagComponent}
           <div className="row note-form-buttons">
               <div className="col-xs-6">
-                <input type="button" value={this.props.buttonTitle} className="note-form-button save col-xs-3 col-xs-offset-5" onClick={noteAction}/>
+                <input type="button" value={this.props.buttonTitle} className="note-form-button save col-xs-3 col-xs-offset-5 text-center" onClick={noteAction}/>
               </div>
               <div className="col-xs-6">
                 {deleteButton}

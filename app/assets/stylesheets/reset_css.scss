@@ -21,6 +21,7 @@ span, article, footer, time, small {
 
 a:hover, a:visited, a:link, a:active {
   text-decoration: none;
+  color: #D2D7D3
 }
 //
 // html, body {
@@ -33,11 +34,11 @@ ul {
   list-style: none;
 }
 //
-// img {
-//   display: block;
-//   width: 100%;
-//   height: auto;
-// }
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 //
 // input[type="password"],
 // input[type="email"],

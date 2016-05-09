@@ -105,8 +105,8 @@ var noteIndex = React.createClass({
 
   determineCreateButton: function () {
     if(this.props.params.notebook_id !== undefined){
-      return (<button className="create-note col-xs-2"
-                      onClick={this.createNewNote}>New</button>);
+      return (<span className="create-note col-xs-2 new-note-button"
+                      onClick={this.createNewNote}>New</span>);
     }
   },
 
@@ -155,12 +155,13 @@ var noteIndex = React.createClass({
       <div className="notes-col col-xs-10">
           <div className="row">
             <div className="notes-list-col col-xs-3">
-              <div className="row">
-                <div className="notebook-title col-xs-10">
+              <div className="row title-and-new">
+                <div className="notebook-title col-xs-10 text-center">
                   {this.findNotebookTitle()}
                 </div>
               {createButton}
-            </div>
+              </div>
+
               <ul className="note-index-items">
                 {this.generateNoteIndexItems()}
               </ul>

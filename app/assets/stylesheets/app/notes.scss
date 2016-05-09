@@ -64,19 +64,29 @@
   text-align: center;
   // font-weight: bold;
   // padding: 10px;
-  font-size: 23px;
+  font-size: 25px;
   // width: 100%;
 }
-//
-// .note-summary-title {
-//   margin: 0px 0px -10px 0px;
-//   font-size: 14px;
-//   font-weight: bolder;
-// }
+
+.note-summary-title {
+  // margin: 0px 0px -10px 0px;
+  font-size: 14px;
+  font-weight: bolder;
+  padding-bottom: 5px;
+}
+
+.note-index-item > span {
+  font-size: 12px;
+}
+
+.note-index-item {
+  padding: 15px 15px 15px 15px;
+  border-bottom: 1px solid black;
+}
 //
 .note-index-items {
   // font-size: 12px;
-  padding: 10px 15px 0px 15px;
+  padding: 10px 5px 0px 5px;
 }
 //
 // .note-index-item {
@@ -96,11 +106,6 @@
 //   width: 88%;
 //   top: 10%;
 // }
-//
-.note-form-buttons > button {
-  text-align: center !important;
-}
-
 //
 
 
@@ -123,7 +128,7 @@
 	font-size: inherit;
 	color: inherit;
 	background: none;
-	padding: 10px 10px;
+	padding: 10px 5px 10px 5px;
 	display: inline-block;
 	letter-spacing: 1px;
 	outline: none;
@@ -149,31 +154,44 @@
   // width: 100%;
   color: #D2D7D3;
 }
+
+.new-note-button {
+  content: image-url('new_note.png');
+  cursor: pointer;
+  height: 20px;
+  padding: 0px;
+  width: 25px;
+  top: 7px;
+}
+
+.title-and-new {
+  padding: 30px 0px 10px 0px;
+}
 //
 //
 //
 //
 //
-//
-// /* notes selection */
-//
-// .notes {
-//   -webkit-transition: all 0.3s;
-//   -moz-transition: all 0.3s;
-//   transition: all 0.3s;
-// }
-//
-// .notes.selected{
-//   color: #34495E;
-// 	background: #fff;
-// }
-//
-// .notes:hover,
-// .notes:active {
-//   	color: #34495E;
-//   	background: #fff;
-// }
-//
+
+/* notes selection */
+
+.notes {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.notes.selected{
+  color: #34495E;
+	background: #fff;
+}
+
+.notes:hover,
+.notes:active {
+  	color: #34495E;
+  	background: #fff;
+}
+
 .notes {
   cursor: pointer;
 }

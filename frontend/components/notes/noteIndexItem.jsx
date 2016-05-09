@@ -33,9 +33,7 @@ var noteIndexItem = React.createClass({
           <div className="note-summary-title">
             {this.props.note.title.substr(0,60)}
           </div>
-          <br />
             {this.summary()}
-          <br />
       </div>
     );
   }
