@@ -17,6 +17,11 @@
   padding-top: 0px 10px 0px 10px;
   height: 120px;
   overflow-y: auto;
+  color: #3498DB;
+}
+
+.tag-item {
+  color: #3498DB !important;
 }
 //
 // .tag-form {
@@ -29,7 +34,7 @@
 
 
 .new-tag-bar {
-  // border-bottom: 1px solid white;
+  border-bottom: 1px solid #3498DB;
   // font-size: 13px;
   width: 56px;
   // text-align: center;
@@ -118,6 +123,7 @@
   display: inline-flex;
   overflow-x: auto;
   padding-left: 10px;
+  color: #3498DB;
 }
 
 

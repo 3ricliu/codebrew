@@ -155,13 +155,13 @@
 //   cursor: pointer;
 // }
 //
-// .title {
-//   padding: 10px 0px 10px 0px;
-//   display: inline-block;
-//   text-overflow: ellipsis;
-//   word-wrap: break-word;
-//   width: 100%;
-// }
+.title {
+  // padding: 10px 0px 10px 0px;
+  // display: inline-block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  // width: 100%;
+}
 //
 //
 .nav-notebook-list {
@@ -183,7 +183,7 @@
 .nav-button {
 	border: 2px solid #fff;
 	color: #fff;
-  position: absolute;
+  // position: absolute;
   outline: 1px solid white;
   width:100%;
 }
@@ -212,7 +212,7 @@
 }
 
 .nav-button:after {
-	position: absolute;
+	// position: absolute;
 	z-index: -1;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;

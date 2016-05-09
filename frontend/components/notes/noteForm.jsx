@@ -1,5 +1,6 @@
 var React = require('react');
 var Prosemirror = require('prosemirror');
+var Prism = require('prismjs');
 require("prosemirror/dist/menu/menubar");
 
 var NoteServerActions = require('../../actions/noteServerActions'),
@@ -60,7 +61,7 @@ var noteForm = React.createClass({
     if(this.state.id !== undefined){
       return (<input type="button"
                      value="Delete"
-                     className="note-form-button snippet"
+                     className="note-form-button snippet col-xs-3 col-xs-offset-5"
                      onClick={this.deleteNote} />);
     }
   },
@@ -122,18 +123,23 @@ var noteForm = React.createClass({
     return(
       <div className="note-container">
         <br/>
-        <input className="note-title"
+        <div className="row">
+        <input className="note-title col-xs-12"
                value={this.state.title}
                placeholder={"New Title"}
                onChange={this.updateTitle} />
 
-          <br/>
-            <div id='editor' />
+        </div>
+            <div id="editor" />
           <br/>
               {tagComponent}
-          <div className='note-form-buttons'>
-            <input type="button" value={this.props.buttonTitle} className="note-form-button save" onClick={noteAction}/>
-            {deleteButton}
+          <div className="row note-form-buttons">
+              <div className="col-xs-6">
+                <input type="button" value={this.props.buttonTitle} className="note-form-button save col-xs-3 col-xs-offset-5" onClick={noteAction}/>
+              </div>
+              <div className="col-xs-6">
+                {deleteButton}
+            </div>
           </div>
       </div>
     );

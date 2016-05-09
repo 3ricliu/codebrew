@@ -56,17 +56,17 @@
 //
 //
 //
-// .notebook-title {
-//   left: 0px;
-//   position: absolute;
-//   right: 0px;
-//   top: 14px;
-//   text-align: center;
-//   font-weight: bold;
-//   padding: 10px;
-//   font-size: 30px;
-//   width: 100%;
-// }
+.notebook-title {
+  // left: 0px;
+  // position: absolute;
+  // right: 0px;
+  // top: 14px;
+  text-align: center;
+  // font-weight: bold;
+  // padding: 10px;
+  font-size: 23px;
+  // width: 100%;
+}
 //
 // .note-summary-title {
 //   margin: 0px 0px -10px 0px;
@@ -74,9 +74,10 @@
 //   font-weight: bolder;
 // }
 //
-// .note-index-items {
-//   font-size: 12px;
-// }
+.note-index-items {
+  // font-size: 12px;
+  padding: 10px 15px 0px 15px;
+}
 //
 // .note-index-item {
 //   cursor: pointer;
@@ -96,60 +97,58 @@
 //   top: 10%;
 // }
 //
-// .note-form-buttons > .snippet {
-//   left: 28%
-// }
+.note-form-buttons > button {
+  text-align: center !important;
+}
+
 //
-// .note-form-buttons > .save {
-//   left: 46%
-// }
-//
-//
-//
-// .note-form-button {
-// 	border: 3px solid #fff;
-// 	color: #fff;
-//   position: absolute;
-//   outline: 1px solid wite;
-// }
-//
-// /* Button 1a */
-// .note-form-button:hover,
-// .note-form-button:active {
-// 	color: #34495E;
-// 	background: #fff;
-// }
-// .note-form-button {
-//   outline: 1px solid white;
-// 	font-family: inherit;
-// 	font-size: inherit;
-// 	color: inherit;
-// 	background: none;
-// 	padding: 10px 10px;
-// 	display: inline-block;
-// 	letter-spacing: 1px;
-// 	outline: none;
-// 	position: relative;
-// 	-webkit-transition: all 0.3s;
-// 	-moz-transition: all 0.3s;
-// 	transition: all 0.3s;
-//   font-size: 15px
-// }
-//
-// .note-form-button:after {
-// 	position: absolute;
-// 	z-index: -1;
-// 	-webkit-transition: all 0.3s;
-// 	-moz-transition: all 0.3s;
-// 	transition: all 0.3s;
-// }
+
+
+.note-form-button {
+	border: 2px solid #fff;
+	color: #fff;
+  // position: absolute;
+  outline: 1px solid white;
+}
+
+/* Button 1a */
+.note-form-button:hover,
+.note-form-button:active {
+	color: #34495E;
+	background: #fff;
+}
+.note-form-button {
+  outline: 1px solid white;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	padding: 10px 10px;
+	display: inline-block;
+	letter-spacing: 1px;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  font-size: 15px
+}
+
+.note-form-button:after {
+	// position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
 //
 //
-// .note-form-buttons {
-//   top: 93%;
-//   position: absolute;
-//   width: 100%;
-// }
+.note-form-buttons {
+  // top: 93%;
+  // position: absolute;
+  // width: 100%;
+  color: #D2D7D3;
+}
 //
 //
 //
@@ -175,7 +174,9 @@
 //   	background: #fff;
 // }
 //
-//
+.notes {
+  cursor: pointer;
+}
 //
 //
 //
