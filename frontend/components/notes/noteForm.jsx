@@ -114,12 +114,6 @@ var noteForm = React.createClass({
       noteAction = this.updateNote;
     }
 
-    // var highlight;
-    // if(this.props.note.id !== undefined){
-    //   Prism.highlightElement(test);
-    //   debugger;
-    // }
-
     return(
       <div className="note-container">
         <br/>
@@ -130,17 +124,19 @@ var noteForm = React.createClass({
                onChange={this.updateTitle} />
 
         </div>
-            <div id="editor" />
-              {tagComponent}
-          <br></br>
-          <div className="row note-form-buttons">
-              <div className="col-xs-6">
-                <input type="button" value={this.props.buttonTitle} className="note-form-button save col-xs-3 col-xs-offset-5 text-center" onClick={noteAction}/>
-              </div>
-              <div className="col-xs-6">
-                {deleteButton}
-            </div>
+        <div id="editor" />
+        {tagComponent}
+        <br></br>
+        <div className="row note-form-buttons">
+          <div className="col-xs-6">
+            <input type="button"
+                   value={this.props.buttonTitle}
+                   className="note-form-button save col-xs-3 col-xs-offset-5 text-center" onClick={noteAction}/>
           </div>
+          <div className="col-xs-6">
+            {deleteButton}
+          </div>
+        </div>
       </div>
     );
   }

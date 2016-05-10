@@ -3,9 +3,7 @@ class Api::NotesController < ApplicationController
   before_filter :require_sign_in!
 
   def index
-    # what if we wanted to show all notes in all notebooks?
     @notebook = Notebook.find_by_id(params[:notebook_id])
-    # this might not be necessary long term
     if(@notebook.nil?)
       @notes = Note.where(user_id: current_user.id) #render all the notes
     else
@@ -34,8 +32,7 @@ class Api::NotesController < ApplicationController
   def create
     @note = Note.new(notes_params)
     @note.title = "Untitled" if @note.title.empty?
-    @note.user_id = current_user.id # do we even need this since the current user won't
-    # even have access to any other user's notes to edit?
+    @note.user_id = current_user.id
     @note.notebook_id = params[:note][:notebookId];
 
     if @note.save
@@ -57,7 +54,8 @@ class Api::NotesController < ApplicationController
   def destroy
     @note = Note.find_by_id(params[:id])
     @note.destroy
-    render :show # does this need to be changed later?
+    
+    render :show
   end
 
   def notes_params

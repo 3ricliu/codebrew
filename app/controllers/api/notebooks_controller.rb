@@ -3,6 +3,7 @@ class Api::NotebooksController < ApplicationController
 
   def index
     @notebooks = Notebook.where(user_id: current_user.id)
+    
     render :index
   end
 
@@ -11,6 +12,7 @@ class Api::NotebooksController < ApplicationController
     if @notebook
       @notebook = nil unless @notebook.user_id == current_user.id
     end
+
     render :show
   end
 
@@ -38,6 +40,7 @@ class Api::NotebooksController < ApplicationController
   def destroy
     @notebook = Notebook.find_by_id(params[:id])
     @notebook.destroy
+
     render :show
   end
 

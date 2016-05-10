@@ -2,8 +2,10 @@ class Api::TagsController < ApplicationController
   before_filter :require_sign_in!
 
   def index
-    tags = Tag.includes(:notes);
+    tags = Tag.includes(:notes)
+
     @tags_with_note_ids = []
+
     tags.each do |tag|
       current_tag = []
       current_tag_note_ids = []
@@ -18,6 +20,7 @@ class Api::TagsController < ApplicationController
         @tags_with_note_ids.push(current_tag.push(current_tag_note_ids))
       end
     end
+
     render :index
   end
 
@@ -30,6 +33,7 @@ class Api::TagsController < ApplicationController
       @tag.notes.each do |note|
         @note_id.push(note.id)
       end
+
       render :show
     else
       @tag = Tag.new(name: tags_params["name"])
@@ -37,10 +41,12 @@ class Api::TagsController < ApplicationController
       if @tag.save
         @tag.notes.push(note)
         @note_id = [note.id]
+
         render :show
       else
         render json: @note.errors.full_messages, status: 422
       end
+
     end
   end
 
@@ -50,6 +56,7 @@ class Api::TagsController < ApplicationController
     @tag.notes.delete(disassociate_note)
 
     @note_id = []
+
     if(@tag.notes.empty?)
       @tag.destroy
     else
@@ -59,10 +66,6 @@ class Api::TagsController < ApplicationController
     end
 
     render :show
-    # disassociate_note.tags.find_by_id(@tag.id).delete
-    # @tag = Tag.find_by_id(params[:id])
-    # @tag.destroy
-    # render :show
   end
 
   private
