@@ -120,7 +120,7 @@ var noteForm = React.createClass({
     //   Prism.highlightElement(test);
     //   debugger;
     // }
-    
+
     return(
       <div className="note-container">
         <br/>
@@ -133,6 +133,7 @@ var noteForm = React.createClass({
         </div>
             <div id="editor" />
               {tagComponent}
+          <br></br>
           <div className="row note-form-buttons">
               <div className="col-xs-6">
                 <input type="button" value={this.props.buttonTitle} className="note-form-button save col-xs-3 col-xs-offset-5 text-center" onClick={noteAction}/>

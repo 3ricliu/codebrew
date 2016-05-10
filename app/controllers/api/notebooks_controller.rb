@@ -17,6 +17,7 @@ class Api::NotebooksController < ApplicationController
   def create
     @notebook = Notebook.new(notebook_params)
     @notebook.user_id = current_user.id
+    @notebook.title.capitalize!
 
     if @notebook.save
       render :show

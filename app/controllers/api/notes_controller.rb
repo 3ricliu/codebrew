@@ -33,6 +33,7 @@ class Api::NotesController < ApplicationController
 
   def create
     @note = Note.new(notes_params)
+    @note.title = "Untitled" if @note.title.empty?
     @note.user_id = current_user.id # do we even need this since the current user won't
     # even have access to any other user's notes to edit?
     @note.notebook_id = params[:note][:notebookId];

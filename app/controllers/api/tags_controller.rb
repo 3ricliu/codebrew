@@ -33,6 +33,7 @@ class Api::TagsController < ApplicationController
       render :show
     else
       @tag = Tag.new(name: tags_params["name"])
+      @tag.name = @tag.name.split.each(&:capitalize!).join
       if @tag.save
         @tag.notes.push(note)
         @note_id = [note.id]

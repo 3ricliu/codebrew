@@ -105,7 +105,7 @@ var noteIndex = React.createClass({
 
   determineCreateButton: function () {
     if(this.props.params.notebook_id !== undefined){
-      return (<span className="create-note col-xs-2 new-note-button"
+      return (<span className="create-note new-note-button"
                       onClick={this.createNewNote}>New</span>);
     }
   },

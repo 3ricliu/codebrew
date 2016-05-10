@@ -71,15 +71,15 @@ var notebookForm = React.createClass({
     }
 
     return (
-      <form className="notebook-form" onSubmit={formAction}>
+      <form className="notebook-form col-xs-5" onSubmit={formAction}>
 
-        <input size="30"
-               value={this.state.title}
-               className="notebook-name-input"
-               onChange={this.updateTitle} />
+      <input size="30"
+             value={this.state.title}
+             className="notebook-name-input"
+             onChange={this.updateTitle} />
 
 
-             <input type="submit" value={buttonText} className="new-notebook-button" />
+           <input type="submit" value={buttonText} className="new-notebook-button" />
       </form>
     );
   }

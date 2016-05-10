@@ -1,14 +1,14 @@
-// .notebook-form {
-//   /*outline: 3px solid white;*/
-//   width: 37%;
-//   left: 20%;
-//   top: 3%;
-//   position: absolute;
-//   padding: 5px;
-// }
+.notebook-form {
+  /*outline: 3px solid white;*/
+  // width: 37%;
+  // left: 20%;
+  // top: 3%;
+  // position: absolute;
+  padding: 42px;
+}
 //
 // .new-notebook-form {
-//   padding: 10px;
+//   padding: 42px;
 // }
 //
 // .new-notebook-form a {
@@ -18,13 +18,8 @@
 //   right: 0;
 // }
 //
-//
-// .notebook-form > input {
-//   color: white;
-//   border: 3px solid white;
-//   position: static;
-//   top: 2px;
-// }
+
+
 //
 // .notebook-form > .btn {
 //   position: relative;
@@ -32,9 +27,6 @@
 //   top: 2px;
 // }
 //
-// .notebook-name-input {
-//   padding: 6px 6px;
-// }
 //
 // .user-logout {
 //   padding: 10px;
@@ -42,18 +34,29 @@
 //   height: 11%;
 // }
 //
-// .edit-button {
-//   content: image-url('edit.png');
+.edit-button {
+  content: image-url('edit.png');
+  height: 20px;
 //   height: 15px;
 // width: 15px;
 // top: 12px;
 // left: 19px;
 // padding-left: 0px;
 // padding-right: 0px;
-// }
-//
-// .trash-button {
-//   content: image-url('trash.png');
+// height: 15px;
+// width: 15px;
+/* position: absolute; */
+padding: 0px;
+}
+
+.notebook-index-item {
+  position: relative;
+}
+
+.trash-button {
+  content: image-url('trash.png');
+  height: 20px;
+  cursor: pointer;
 //   height: 15px;
 // width: 15px;
 // top: 12px;
@@ -61,7 +64,11 @@
 //   cursor: pointer;
 //   padding-left: 0px;
 //   padding-right: 0px;
-// }
+  // height: 15px;
+  // width: 15px;
+  /* position: absolute; */
+  padding: 0px 0px 0px 5px;
+}
 // /*
 //   position: absolute;
 //   bottom: 8%;
@@ -124,24 +131,33 @@
 // }
 
 .notebook-desc {
-  padding: 20px 10px 0px 10px;
+  padding: 20px 10px 10px 10px;
   border-bottom: 3px solid white;
   width: 100%;
-  font-size: 23px;
+  font-size: 25px;
+  color: #D2D7D3;
 }
-//
+
 .tag-desc {
   padding: 0px 10px 0px 10px;
   border-bottom: 3px solid white;
   width: 100%;
-  font-size: 23px;
+  font-size: 25px;
+  color: #D2D7D3;
 }
 //
 //
-// .notebooks {
-//   padding: 10px;
-//   border-bottom: 1px solid black;
-// }
+.notebooks {
+  padding: 10px;
+  border-bottom: 1px solid black;
+  width: 98%;
+  padding-left: 5px;
+  margin-left: 2px !important;
+}
+
+button > .trash-button {
+  padding-left: 0px;
+}
 //
 // .nb-delete {
 //   float: right;
@@ -155,19 +171,22 @@
 //   cursor: pointer;
 // }
 //
-.title {
+.notebook-index-item > .title {
   // padding: 10px 0px 10px 0px;
   // display: inline-block;
   text-overflow: ellipsis;
   word-wrap: break-word;
   // width: 100%;
+  padding-right: 0px;
 }
 //
 //
 .nav-notebook-list {
-  height: 300px;
+  height: 325px;
   overflow-y: scroll;
   padding: 5px;
+  font-size: 15px;
+  padding-top: 10px;
   // width: 102%;
   // top: 90px;
 }
@@ -229,63 +248,79 @@
 //
 // /* new notebook form button */
 //
-//
-//
-// .new-notebook-button {
-// 	border: 3px solid #fff;
-// 	color: #fff;
-//   position: static;
-//   outline: 1px solid white;
-//   left: 9px
-// }
-//
-// /* Button 1a */
-// .new-notebook-button:hover,
-// .new-notebook-button:active {
-// 	color: #34495E;
-// 	background: #fff;
-// }
-// .new-notebook-button {
-//   outline: 1px solid white;
-// 	font-family: inherit;
-// 	font-size: inherit;
-// 	color: inherit;
-// 	background: none;
-// 	padding: 6px 6px;
-// 	display: inline-block;
-// 	letter-spacing: 1px;
-// 	outline: none;
-// 	/*position: relative;*/
-// 	-webkit-transition: all 0.3s;
-// 	-moz-transition: all 0.3s;
-// 	transition: all 0.3s;
-//   font-size: 16px
-// }
-//
-// .new-notebook-button:after {
-// 	position: absolute;
-// 	z-index: -1;
-// 	-webkit-transition: all 0.3s;
-// 	-moz-transition: all 0.3s;
-// 	transition: all 0.3s;
-// }
-//
-//
-// /* notebooks selection */
-//
-// .notebooks {
-//   -webkit-transition: all 0.3s;
-//   -moz-transition: all 0.3s;
-//   transition: all 0.3s;
-// }
-//
-// .notebooks.selected{
-//   color: #34495E;
-// 	background: #fff;
-// }
-//
-// .notebooks:hover,
-// .notebooks:active {
-//   	color: #34495E;
-//   	background: #fff;
-// }
+
+.notebook-name-input {
+  padding: 6px 6px;
+}
+
+.notebook-form > input {
+  color: #D2D7D3;
+  border: 2px solid white;
+  position: static;
+  font-size: 16px;
+}
+
+
+.new-notebook-button {
+	border: 2px solid #fff;
+	color: #D2D7D3;
+  position: static;
+  outline: 1px solid white;
+  left: 9px;
+  margin-left: 7px;
+}
+
+/* Button 1a */
+.new-notebook-button:hover,
+.new-notebook-button:active {
+	color: #34495E;
+	background: #fff;
+}
+.new-notebook-button {
+  outline: 1px solid white;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	padding: 6px 6px;
+	display: inline-block;
+	letter-spacing: 1px;
+	outline: none;
+	/*position: relative;*/
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  font-size: 16px
+}
+
+.new-notebook-button:after {
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+
+/* notebooks selection */
+
+.notebooks {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.notebooks.selected{
+  color: #34495E;
+	background: #fff;
+}
+
+.notebooks.selected > .notebook-index-item > .title {
+  color: #34495E;
+}
+
+.notebooks:hover,
+.notebooks:active {
+  	color: #34495E;
+  	background: #fff;
+}

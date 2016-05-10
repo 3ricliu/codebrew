@@ -76,11 +76,11 @@
 }
 
 .note-index-item > span {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .note-index-item {
-  padding: 15px 15px 15px 15px;
+  padding: 12px;
   border-bottom: 1px solid black;
 }
 //
@@ -158,10 +158,11 @@
 .new-note-button {
   content: image-url('new_note.png');
   cursor: pointer;
-  height: 20px;
+  height: 33px;
+  // height: 20px;
   padding: 0px;
-  width: 25px;
-  top: 7px;
+  // width: 25px;
+  // top: 7px;
 }
 
 .title-and-new {

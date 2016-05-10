@@ -53,9 +53,9 @@ var notebooksIndex = React.createClass({
 
       var notebookClass;
       if(parseInt(this.state.selectedNotebookId) === notebook.id){
-        notebookClass = "notebooks selected";
+        notebookClass = "notebooks selected row";
       } else {
-        notebookClass = "notebooks";
+        notebookClass = "notebooks row";
       }
       notebooks.push(<li className={notebookClass} key={notebook.id}>
               <NotebookIndexItem key={notebook.id}
