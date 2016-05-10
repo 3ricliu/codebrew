@@ -1,6 +1,5 @@
 var React = require('react');
 var Prosemirror = require('prosemirror');
-var Prism = require('prismjs');
 require("prosemirror/dist/menu/menubar");
 
 var NoteServerActions = require('../../actions/noteServerActions'),
