@@ -8,19 +8,23 @@
 
 .brand {
   font-size: 40px;
+  font-weight: 100;
   display: inline-block;
   text-align: center;
   position: relative;
-  top: 17px;
 }
 
 .logo {
   content: image-url('logo.png');
   max-height: 40px;
   max-width: 40px;
+  padding-top: 10px;
   position: relative;
   display: inline;
-  top: 20px;
+}
+
+.text-middle {
+  padding-top: 15px;
 }
 
 #opening-tag {
@@ -34,6 +38,7 @@
   color: white;
   text-align: center;
   font-size: 40px;
+  font-weight: 100;
 }
 
 .sign_up {
@@ -51,31 +56,38 @@
 }
 
 .username {
-  position: relative;
+  // position: relative;
   float: right;
-  right: 200px;
-  top: 35px;
+  padding-top: 5px;
+  // right: 200px;
+  // top: 35px;
+}
+
+.login-and-user {
+  float: right !important;
+  bottom: 48px;
 }
 
 .btn.nav {
   padding: 10px 15px;
   position: relative;
   float: right;
-  bottom: 22px;
+  // bottom: 22px;
   right: 40px;
 }
 
 .centered {
   /*border: 5px solid #3CBC8D;*/
   position: fixed;
-  top: 50%;
+  top: 55%;
   left: 47%;
 /* bring your own prefixes */
   transform: translate(-50%, 0%);
   -webkit-transform: translate(-50%, 0%);
   -ms-transform: translate(-50%, 0%);
-  padding: 70px;
+  padding: 42px;
   margin: 50px;
+  width: 350px;
   background-color: #2C3E50;
   color: white;
   opacity: 0.9;
@@ -84,9 +96,10 @@
 
 .login {
   font-size: 25px;
+  font-weight: 100;
   position: relative;
   top: inherit;
-  bottom: 30px;
+  bottom: 20px;
 }
 
 .sign-up > input {
@@ -97,6 +110,25 @@
   position: relative;
   left: 6px;
 }
+
+.username {
+  font-weight: 100;
+}
+
+.username > input {
+  width: 200px;
+  margin-left: 3px;
+}
+
+.password {
+  font-weight: 100;
+}
+
+
+.password > input {
+  width: 200px;
+}
+
 
 
 input[type=text] {

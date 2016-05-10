@@ -6,38 +6,43 @@
   <h2>Organize Your Brain With Codebrew.</h2>
 </div>
 
-<div class="centered">
-  <h2 class="login">Sign Up!</h2>
-
-
-
-  <form action="<%= users_url %>" method="post" class="sign_up">
-    <%= render "/helpers/auth" %>
-
-    <div class="sign-up">
-      <label for="username"> Username
-        <input type="text" name="user[username]" value="">
-      </label>
+<div class=" centered">
+    <div class="row">
+      <h2 class="login col-xs-12 text-center">Sign Up!</h2>
     </div>
-    <br>
-    <div class="sign-up">
-      <label for="password"> Password
-        <input type="password" name="user[password]" value="" class="pw">
-      </label>
+
+
+    <form action="<%= users_url %>" method="post" class="sign_up">
+      <%= render "/helpers/auth" %>
+
+    <div class="row">
+      <div class="sign-up">
+        <label for="username" class="username col-xs-12"> Username
+          <input type="text" name="user[username]" value="">
+        </label>
+      </div>
+    </div>
       <br>
+      <div class="row">
+        <div class="sign-up">
+          <label for="password" class="password col-xs-12"> Password
+            <input type="password" name="user[password]" value="" class="pw">
+          </label>
+          <br>
+        </div>
+      </div>
+
+      <input type="submit" name="name" value="Sign Up!" class="login-btn btn">
+    </form>
+
+    <div class="errors">
+      <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
     </div>
 
-    <input type="submit" name="name" value="Sign Up!" class="login-btn btn">
-  </form>
-
-  <div class="errors">
-    <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
-  </div>
-
-  <form action="<%= session_url %>" method="post">
-    <%= render "/helpers/auth" %>
-    <input type="hidden" name="user[username]" value="Guest@codebrew.com">
-    <input type="hidden" name="user[password]" value="codecodecode">
-    <input class="guest-btn btn" type="submit" value="Explore as Guest">
-  </form>
+    <form action="<%= session_url %>" method="post">
+      <%= render "/helpers/auth" %>
+      <input type="hidden" name="user[username]" value="Guest@codebrew.com">
+      <input type="hidden" name="user[password]" value="codecodecode">
+      <input class="guest-btn btn" type="submit" value="Explore as Guest">
+    </form>
 </div>

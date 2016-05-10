@@ -5,26 +5,32 @@
 </div>
 
 <div class="centered">
-  <h2 class="login">Sign In!</h2>
+  <div class="row">
+    <h2 class="login col-xs-12 text-center">Sign In!</h2>
 
-  <form action="<%= session_url %>" method="post">
-    <%= render "/helpers/auth" %>
+    <form action="<%= session_url %>" method="post">
+      <%= render "/helpers/auth" %>
 
-    <div class="sign-up">
-      <label for="username"> Username
-        <input type="text" name="user[username]" value="">
-      </label>
-    </div>
-    <br>
-    <div class="sign-up">
-      <label for="password"> Password
-        <input type="password" name="user[password]" value="" class="pw">
-      </label>
+      <div class="row">
+      <div class="sign-up">
+        <label for="username" class="username col-xs-12"> Username
+          <input type="text" name="user[username]" value="">
+        </label>
+      </div>
+      </div>
       <br>
+      <div class="row">
+      <div class="sign-up">
+        <label for="password" class="password col-xs-12"> Password
+          <input type="password" name="user[password]" value="" class="pw">
+        </label>
+        <br>
+      </div>
+      </div>
+      <input type="submit" name="name" value="Sign In!" class="login-btn btn">
+    </form>
+    <div class="errors">
+      <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
     </div>
-    <input type="submit" name="name" value="Sign In!" class="login-btn btn">
-  </form>
-  <div class="errors">
-    <%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
   </div>
 </div>

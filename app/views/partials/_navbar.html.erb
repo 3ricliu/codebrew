@@ -1,11 +1,14 @@
-<div class="navbar">
+<div class="navbar container-fluid">
+  <div class="row">
+
+    <div class="col-xs-12 text-middle">
     <div class="logo"></div>
     <a href="/" class="brand">Codebrew</a>
+  </div>
 
+  <div class="col-xs-4 login-and-user">
   <% if signed_in? %>
-    <div class="username">
-      <%= current_user.username %>
-    </div>
+    <div class="logo62 col-xs-6 col-xs-offset-6">
     <%= button_to "Sign Out", session_url, method: :delete, class: "btn nav" %>
   <% else %>
     <% if(params["controller"] == "sessions") %>
@@ -14,4 +17,7 @@
       <%= button_to "Sign In", new_session_url, method: :get, class: "btn nav" %>
     <% end %>
   <% end %>
+  </div>
+  </div>
+  </div>
 </div>
