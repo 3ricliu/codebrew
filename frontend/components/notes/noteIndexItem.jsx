@@ -29,10 +29,12 @@ var noteIndexItem = React.createClass({
 
     return(
       <div className="note-index-item"
-          onClick={this.props.onClick.bind(null, this.props.note)}>
+           onClick={this.props.onClick.bind(null, this.props.note)}>
+
           <div className="note-summary-title">
             {this.props.note.title.substr(0,60)}
           </div>
+
             {this.summary()}
       </div>
     );

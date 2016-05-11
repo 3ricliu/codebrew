@@ -156,21 +156,26 @@ var noteIndex = React.createClass({
           <div className="row">
             <div className="notes-list-col col-xs-3">
               <div className="row title-and-new">
+
                 <div className="notebook-title col-xs-10 text-center">
                   {this.findNotebookTitle()}
                 </div>
-              {createButton}
+
+                {createButton}
               </div>
 
               <ul className="note-index-items">
                 {this.generateNoteIndexItems()}
               </ul>
+
             </div>
+
           <div className="notes-edit-col col-xs-9">
             <NoteForm note={formParams[0]}
               buttonTitle={formParams[1]}
               notebookId={this.props.params.notebook_id} />
           </div>
+          
         </div>
       </div>);
   }

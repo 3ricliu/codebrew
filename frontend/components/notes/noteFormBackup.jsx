@@ -77,25 +77,19 @@ var noteForm = React.createClass({
 
     return(
       <div className="note-container">
-
         <br/>
-
         <form onSubmit={noteAction}>
-
         <input className="note-title"
                value={this.state.title}
                placeholder={"Title your note"}
                onChange={this.updateTitle} />
-
           <br/>
             <ReactQuill theme="snow"
                       value={this.state.body}
                       onChange={this.updateBody} />;
           <br/>
           <input type="submit" value={this.props.buttonTitle} className="save"/>
-
         </form>
-
         {tagComponent}
       </div>
     );

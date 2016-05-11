@@ -98,16 +98,17 @@ var notebooksIndex = React.createClass({
           </div>
 
           <div className="row">
-          <div className="tag-desc col-xs-12">Tags</div>
-          <ul className="nav-tag-list col-xs-12">
-            <TagNavIndex />
-          </ul>
+            <div className="tag-desc col-xs-12">Tags</div>
+            <ul className="nav-tag-list col-xs-12">
+              <TagNavIndex />
+            </ul>
           </div>
 
           <div className="row">
             <User />
           </div>
         </div>
+        
         {childrenWithProps}
       </div>
     );

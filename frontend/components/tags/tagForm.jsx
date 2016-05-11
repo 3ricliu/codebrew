@@ -27,8 +27,7 @@ var tagForm = React.createClass({
                onChange={this.updateTitle}
                className="new-tag-bar"
                placeholder="new tag"/>
-
-             <input type="submit" value="+" className="tag-submit" />
+        <input type="submit" value="+" className="tag-submit" />
       </form>);
   }
 });

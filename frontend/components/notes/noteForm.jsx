@@ -118,11 +118,10 @@ var noteForm = React.createClass({
       <div className="note-container">
         <br/>
         <div className="row">
-        <input className="note-title col-xs-12"
-               value={this.state.title}
-               placeholder={"New Title"}
-               onChange={this.updateTitle} />
-
+          <input className="note-title col-xs-12"
+                 value={this.state.title}
+                 placeholder={"New Title"}
+                 onChange={this.updateTitle} />
         </div>
         <div id="editor" />
         {tagComponent}
